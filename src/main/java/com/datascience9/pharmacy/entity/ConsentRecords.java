@@ -1,0 +1,136 @@
+/**
+ * %% Copyright (C) 2025 DataScience 9 LLC %% Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance with the License. You may obtain a
+ * copy of the License at
+ *
+ * <p>http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * <p>Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing permissions and
+ * limitations under the License. #L%
+ */
+package com.datascience9.pharmacy.entity;
+
+import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import java.io.Serializable;
+import java.util.Map;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+/** Auto generated from a schema generated on $date$ */
+@Entity
+@Table(name = "consent_records")
+public class ConsentRecords implements Serializable {
+    private static final long serialVersionUID = 176284555409380059L;
+
+    /** Description: id. */
+    @jakarta.validation.constraints.NotNull
+    @jakarta.persistence.Id
+    @Column(columnDefinition = "UUID", name = "id")
+    private java.util.UUID id;
+
+    /** Description: patient_id. */
+    @Basic
+    @Column(columnDefinition = "UUID", name = "patient_id")
+    private java.util.UUID patientId;
+
+    /** Description: consent_type. */
+    @Basic
+    @Column(name = "consent_type")
+    private java.lang.String consentType;
+
+    /** Description: granted. */
+    @Basic
+    @Column(name = "granted")
+    private java.lang.Boolean granted;
+
+    /** Description: source. */
+    @Basic
+    @Column(name = "source")
+    private java.lang.String source;
+
+    /** Description: recorded_by. */
+    @Basic
+    @Column(columnDefinition = "UUID", name = "recorded_by")
+    private java.util.UUID recordedBy;
+
+    /** Description: recorded_at. */
+    @Basic
+    @Column(name = "recorded_at")
+    private java.sql.Timestamp recordedAt;
+
+    /** Description: metadata. */
+    @Basic
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb", name = "metadata")
+    private Map<String, Object> metadata;
+
+    public ConsentRecords() {}
+
+    public java.util.UUID getId() {
+        return this.id;
+    }
+
+    public void setId(java.util.UUID id) {
+        this.id = id;
+    }
+
+    public java.util.UUID getPatientId() {
+        return this.patientId;
+    }
+
+    public java.lang.String getConsentType() {
+        return this.consentType;
+    }
+
+    public java.lang.Boolean getGranted() {
+        return this.granted;
+    }
+
+    public java.lang.String getSource() {
+        return this.source;
+    }
+
+    public java.util.UUID getRecordedBy() {
+        return this.recordedBy;
+    }
+
+    public java.sql.Timestamp getRecordedAt() {
+        return this.recordedAt;
+    }
+
+    public java.util.Map<String, Object> getMetadata() {
+        return this.metadata;
+    }
+
+    public void setPatientId(java.util.UUID patientId) {
+        this.patientId = patientId;
+    }
+
+    public void setConsentType(java.lang.String consentType) {
+        this.consentType = consentType;
+    }
+
+    public void setGranted(java.lang.Boolean granted) {
+        this.granted = granted;
+    }
+
+    public void setSource(java.lang.String source) {
+        this.source = source;
+    }
+
+    public void setRecordedBy(java.util.UUID recordedBy) {
+        this.recordedBy = recordedBy;
+    }
+
+    public void setRecordedAt(java.sql.Timestamp recordedAt) {
+        this.recordedAt = recordedAt;
+    }
+
+    public void setMetadata(java.util.Map<String, Object> metadata) {
+        this.metadata = metadata;
+    }
+}

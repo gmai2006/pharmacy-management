@@ -1,0 +1,149 @@
+/**
+ * %% Copyright (C) 2025 DataScience 9 LLC %% Licensed under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance with the License. You may obtain a
+ * copy of the License at
+ *
+ * <p>http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * <p>Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing permissions and
+ * limitations under the License. #L%
+ */
+package com.datascience9.pharmacy.entity;
+
+import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import java.io.Serializable;
+
+/** Auto generated from a schema generated on $date$ */
+@Entity
+@Table(name = "efax_attachments")
+public class EfaxAttachments implements Serializable {
+    private static final long serialVersionUID = 176284555410363404L;
+
+    /** Description: id. */
+    @jakarta.validation.constraints.NotNull
+    @jakarta.persistence.Id
+    @Column(columnDefinition = "UUID", name = "id")
+    private java.util.UUID id;
+
+    /** Description: efax_job_id. */
+    @jakarta.validation.constraints.NotNull
+    @Basic
+    @Column(columnDefinition = "UUID", name = "efax_job_id")
+    private java.util.UUID efaxJobId;
+
+    /** Description: file_name. */
+    @jakarta.validation.constraints.NotNull
+    @Basic
+    @Column(name = "file_name")
+    private java.lang.String fileName;
+
+    /** Description: file_type. */
+    @jakarta.validation.constraints.NotNull
+    @Basic
+    @Column(name = "file_type")
+    private java.lang.String fileType;
+
+    /** Description: file_size_bytes. */
+    @Basic
+    @Column(name = "file_size_bytes")
+    private java.lang.Long fileSizeBytes;
+
+    /** Description: encrypted_path. */
+    @jakarta.validation.constraints.NotNull
+    @Basic
+    @Column(name = "encrypted_path")
+    private java.lang.String encryptedPath;
+
+    /** Description: checksum. */
+    @Basic
+    @Column(name = "checksum")
+    private java.lang.String checksum;
+
+    /** Description: page_number. */
+    @Basic
+    @Column(name = "page_number")
+    private java.lang.Integer pageNumber;
+
+    /** Description: created_at. */
+    @Basic
+    @Column(name = "created_at")
+    private java.sql.Timestamp createdAt;
+
+    public EfaxAttachments() {}
+
+    public java.util.UUID getId() {
+        return this.id;
+    }
+
+    public void setId(java.util.UUID id) {
+        this.id = id;
+    }
+
+    public java.util.UUID getEfaxJobId() {
+        return this.efaxJobId;
+    }
+
+    public java.lang.String getFileName() {
+        return this.fileName;
+    }
+
+    public java.lang.String getFileType() {
+        return this.fileType;
+    }
+
+    public java.lang.Long getFileSizeBytes() {
+        return this.fileSizeBytes;
+    }
+
+    public java.lang.String getEncryptedPath() {
+        return this.encryptedPath;
+    }
+
+    public java.lang.String getChecksum() {
+        return this.checksum;
+    }
+
+    public java.lang.Integer getPageNumber() {
+        return this.pageNumber;
+    }
+
+    public java.sql.Timestamp getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setEfaxJobId(java.util.UUID efaxJobId) {
+        this.efaxJobId = efaxJobId;
+    }
+
+    public void setFileName(java.lang.String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setFileType(java.lang.String fileType) {
+        this.fileType = fileType;
+    }
+
+    public void setFileSizeBytes(java.lang.Long fileSizeBytes) {
+        this.fileSizeBytes = fileSizeBytes;
+    }
+
+    public void setEncryptedPath(java.lang.String encryptedPath) {
+        this.encryptedPath = encryptedPath;
+    }
+
+    public void setChecksum(java.lang.String checksum) {
+        this.checksum = checksum;
+    }
+
+    public void setPageNumber(java.lang.Integer pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public void setCreatedAt(java.sql.Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+}
