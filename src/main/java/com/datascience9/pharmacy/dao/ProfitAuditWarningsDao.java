@@ -43,7 +43,7 @@ public class ProfitAuditWarningsDao {
      * @param id An ProfitAuditWarnings id.
      * @return The same ProfitAuditWarnings.
      */
-    public ProfitAuditWarnings find(java.lang.Long id) {
+    public ProfitAuditWarnings find(Long id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(ProfitAuditWarnings.class, id);
     }

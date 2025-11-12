@@ -43,7 +43,7 @@ public class AlertRulesDao {
      * @param id An AlertRules id.
      * @return The same AlertRules.
      */
-    public AlertRules find(java.lang.Integer id) {
+    public AlertRules find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(AlertRules.class, id);
     }

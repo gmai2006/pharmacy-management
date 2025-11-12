@@ -43,7 +43,7 @@ public class RolesDao {
      * @param id An Roles id.
      * @return The same Roles.
      */
-    public Roles find(java.lang.Integer id) {
+    public Roles find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(Roles.class, id);
     }

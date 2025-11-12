@@ -43,7 +43,7 @@ public class PrescriptionAuditDao {
      * @param id An PrescriptionAudit id.
      * @return The same PrescriptionAudit.
      */
-    public PrescriptionAudit find(java.lang.Long id) {
+    public PrescriptionAudit find(Long id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(PrescriptionAudit.class, id);
     }

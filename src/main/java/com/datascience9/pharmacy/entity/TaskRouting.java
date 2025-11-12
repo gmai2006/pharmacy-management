@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,23 +22,23 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "task_routing")
 public class TaskRouting implements Serializable {
-    private static final long serialVersionUID = 176284555407399221L;
+    private static final long serialVersionUID = 176294189246379050L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: queue_id. */
     @Basic
     @Column(name = "queue_id")
-    private java.lang.Integer queueId;
+    private Integer queueId;
 
     /** Description: rule_order. */
     @Basic
     @Column(name = "rule_order")
-    private java.lang.Integer ruleOrder;
+    private Integer ruleOrder;
 
     /** Description: rule. */
     @Basic
@@ -50,35 +48,35 @@ public class TaskRouting implements Serializable {
 
     public TaskRouting() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public java.lang.Integer getQueueId() {
+    public Integer getQueueId() {
         return this.queueId;
     }
 
-    public java.lang.Integer getRuleOrder() {
+    public Integer getRuleOrder() {
         return this.ruleOrder;
     }
 
-    public java.util.Map<String, Object> getRule() {
+    public Map<String, Object> getRule() {
         return this.rule;
     }
 
-    public void setQueueId(java.lang.Integer queueId) {
+    public void setQueueId(Integer queueId) {
         this.queueId = queueId;
     }
 
-    public void setRuleOrder(java.lang.Integer ruleOrder) {
+    public void setRuleOrder(Integer ruleOrder) {
         this.ruleOrder = ruleOrder;
     }
 
-    public void setRule(java.util.Map<String, Object> rule) {
+    public void setRule(Map<String, Object> rule) {
         this.rule = rule;
     }
 }

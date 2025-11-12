@@ -38,7 +38,7 @@ public class DefaultProfitAuditWarningsService implements ProfitAuditWarningsSer
 
     /** {@inheritDoc} */
     @Override
-    public ProfitAuditWarnings find(java.lang.Long id) {
+    public ProfitAuditWarnings find(Long id) {
 
         final ProfitAuditWarnings result = dao.find(id);
         logger.info("find(ProfitAuditWarnings) - exited - return value={} result ");

@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "dscsa_serials")
 public class DscsaSerials implements Serializable {
-    private static final long serialVersionUID = 17628455540544951L;
+    private static final long serialVersionUID = 176294189243588293L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -41,13 +39,13 @@ public class DscsaSerials implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "serial_number")
-    private java.lang.String serialNumber;
+    private String serialNumber;
 
     /** Description: status. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: trace_metadata. */
     @Basic
@@ -74,15 +72,15 @@ public class DscsaSerials implements Serializable {
         return this.batchId;
     }
 
-    public java.lang.String getSerialNumber() {
+    public String getSerialNumber() {
         return this.serialNumber;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public java.util.Map<String, Object> getTraceMetadata() {
+    public Map<String, Object> getTraceMetadata() {
         return this.traceMetadata;
     }
 
@@ -94,15 +92,15 @@ public class DscsaSerials implements Serializable {
         this.batchId = batchId;
     }
 
-    public void setSerialNumber(java.lang.String serialNumber) {
+    public void setSerialNumber(String serialNumber) {
         this.serialNumber = serialNumber;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setTraceMetadata(java.util.Map<String, Object> traceMetadata) {
+    public void setTraceMetadata(Map<String, Object> traceMetadata) {
         this.traceMetadata = traceMetadata;
     }
 

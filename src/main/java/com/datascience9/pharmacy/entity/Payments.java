@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "payments")
 public class Payments implements Serializable {
-    private static final long serialVersionUID = 17628455540782553L;
+    private static final long serialVersionUID = 17629418924715416L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -40,7 +38,7 @@ public class Payments implements Serializable {
     /** Description: payment_method. */
     @Basic
     @Column(name = "payment_method")
-    private java.lang.String paymentMethod;
+    private String paymentMethod;
 
     /** Description: amount. */
     @Basic
@@ -67,7 +65,7 @@ public class Payments implements Serializable {
         return this.posTransactionId;
     }
 
-    public java.lang.String getPaymentMethod() {
+    public String getPaymentMethod() {
         return this.paymentMethod;
     }
 
@@ -75,7 +73,7 @@ public class Payments implements Serializable {
         return this.amount;
     }
 
-    public java.util.Map<String, Object> getPaymentMeta() {
+    public Map<String, Object> getPaymentMeta() {
         return this.paymentMeta;
     }
 
@@ -83,7 +81,7 @@ public class Payments implements Serializable {
         this.posTransactionId = posTransactionId;
     }
 
-    public void setPaymentMethod(java.lang.String paymentMethod) {
+    public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 
@@ -91,7 +89,7 @@ public class Payments implements Serializable {
         this.amount = amount;
     }
 
-    public void setPaymentMeta(java.util.Map<String, Object> paymentMeta) {
+    public void setPaymentMeta(Map<String, Object> paymentMeta) {
         this.paymentMeta = paymentMeta;
     }
 }

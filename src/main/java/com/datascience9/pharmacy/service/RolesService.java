@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.Roles;
 import java.util.List;
 
 public interface RolesService {
-    public Roles find(java.lang.Integer id);
+    public Roles find(Integer id);
 
     /**
      * Select a list of Roles based on a given maximum number of returning records.

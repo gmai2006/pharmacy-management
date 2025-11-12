@@ -43,7 +43,7 @@ public class EncryptionKeysMetaDao {
      * @param id An EncryptionKeysMeta id.
      * @return The same EncryptionKeysMeta.
      */
-    public EncryptionKeysMeta find(java.lang.Integer id) {
+    public EncryptionKeysMeta find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(EncryptionKeysMeta.class, id);
     }

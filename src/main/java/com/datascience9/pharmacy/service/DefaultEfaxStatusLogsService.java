@@ -38,7 +38,7 @@ public class DefaultEfaxStatusLogsService implements EfaxStatusLogsService {
 
     /** {@inheritDoc} */
     @Override
-    public EfaxStatusLogs find(java.lang.Long id) {
+    public EfaxStatusLogs find(Long id) {
 
         final EfaxStatusLogs result = dao.find(id);
         logger.info("find(EfaxStatusLogs) - exited - return value={} result ");

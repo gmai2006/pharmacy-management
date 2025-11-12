@@ -43,7 +43,7 @@ public class EfaxStatusLogsDao {
      * @param id An EfaxStatusLogs id.
      * @return The same EfaxStatusLogs.
      */
-    public EfaxStatusLogs find(java.lang.Long id) {
+    public EfaxStatusLogs find(Long id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(EfaxStatusLogs.class, id);
     }

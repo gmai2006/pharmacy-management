@@ -43,7 +43,7 @@ public class DirFeesDao {
      * @param id An DirFees id.
      * @return The same DirFees.
      */
-    public DirFees find(java.lang.Long id) {
+    public DirFees find(Long id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(DirFees.class, id);
     }

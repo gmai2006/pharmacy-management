@@ -38,7 +38,7 @@ public class DefaultIntegrationsService implements IntegrationsService {
 
     /** {@inheritDoc} */
     @Override
-    public Integrations find(java.lang.Integer id) {
+    public Integrations find(Integer id) {
 
         final Integrations result = dao.find(id);
         logger.info("find(Integrations) - exited - return value={} result ");

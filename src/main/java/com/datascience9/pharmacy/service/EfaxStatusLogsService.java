@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.EfaxStatusLogs;
 import java.util.List;
 
 public interface EfaxStatusLogsService {
-    public EfaxStatusLogs find(java.lang.Long id);
+    public EfaxStatusLogs find(Long id);
 
     /**
      * Select a list of EfaxStatusLogs based on a given maximum number of returning records.

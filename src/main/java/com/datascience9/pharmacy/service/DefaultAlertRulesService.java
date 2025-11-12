@@ -38,7 +38,7 @@ public class DefaultAlertRulesService implements AlertRulesService {
 
     /** {@inheritDoc} */
     @Override
-    public AlertRules find(java.lang.Integer id) {
+    public AlertRules find(Integer id) {
 
         final AlertRules result = dao.find(id);
         logger.info("find(AlertRules) - exited - return value={} result ");

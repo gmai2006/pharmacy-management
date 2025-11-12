@@ -38,7 +38,7 @@ public class DefaultPrescriptionAuditService implements PrescriptionAuditService
 
     /** {@inheritDoc} */
     @Override
-    public PrescriptionAudit find(java.lang.Long id) {
+    public PrescriptionAudit find(Long id) {
 
         final PrescriptionAudit result = dao.find(id);
         logger.info("find(PrescriptionAudit) - exited - return value={} result ");

@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.Queues;
 import java.util.List;
 
 public interface QueuesService {
-    public Queues find(java.lang.Integer id);
+    public Queues find(Integer id);
 
     /**
      * Select a list of Queues based on a given maximum number of returning records.

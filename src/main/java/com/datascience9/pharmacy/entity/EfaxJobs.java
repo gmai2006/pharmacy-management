@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +24,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "efax_jobs")
 public class EfaxJobs implements Serializable {
-    private static final long serialVersionUID = 176284555410150048L;
+    private static final long serialVersionUID = 17629415365315097L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -58,38 +56,38 @@ public class EfaxJobs implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "direction")
-    private java.lang.String direction;
+    private String direction;
 
     /** Description: subject. */
     @Basic
     @Column(name = "subject")
-    private java.lang.String subject;
+    private String subject;
 
     /** Description: fax_number. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "fax_number")
-    private java.lang.String faxNumber;
+    private String faxNumber;
 
     /** Description: provider_name. */
     @Basic
     @Column(name = "provider_name")
-    private java.lang.String providerName;
+    private String providerName;
 
     /** Description: status. */
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: total_pages. */
     @Basic
     @Column(name = "total_pages")
-    private java.lang.Integer totalPages;
+    private Integer totalPages;
 
     /** Description: priority. */
     @Basic
     @Column(name = "priority")
-    private java.lang.String priority;
+    private String priority;
 
     /** Description: created_at. */
     @Basic
@@ -109,12 +107,12 @@ public class EfaxJobs implements Serializable {
     /** Description: error_message. */
     @Basic
     @Column(name = "error_message")
-    private java.lang.String errorMessage;
+    private String errorMessage;
 
     /** Description: retry_count. */
     @Basic
     @Column(name = "retry_count")
-    private java.lang.Integer retryCount;
+    private Integer retryCount;
 
     /** Description: metadata. */
     @Basic
@@ -151,31 +149,31 @@ public class EfaxJobs implements Serializable {
         return this.recipientId;
     }
 
-    public java.lang.String getDirection() {
+    public String getDirection() {
         return this.direction;
     }
 
-    public java.lang.String getSubject() {
+    public String getSubject() {
         return this.subject;
     }
 
-    public java.lang.String getFaxNumber() {
+    public String getFaxNumber() {
         return this.faxNumber;
     }
 
-    public java.lang.String getProviderName() {
+    public String getProviderName() {
         return this.providerName;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public java.lang.Integer getTotalPages() {
+    public Integer getTotalPages() {
         return this.totalPages;
     }
 
-    public java.lang.String getPriority() {
+    public String getPriority() {
         return this.priority;
     }
 
@@ -191,15 +189,15 @@ public class EfaxJobs implements Serializable {
         return this.completedAt;
     }
 
-    public java.lang.String getErrorMessage() {
+    public String getErrorMessage() {
         return this.errorMessage;
     }
 
-    public java.lang.Integer getRetryCount() {
+    public Integer getRetryCount() {
         return this.retryCount;
     }
 
-    public java.util.Map<String, Object> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return this.metadata;
     }
 
@@ -219,31 +217,31 @@ public class EfaxJobs implements Serializable {
         this.recipientId = recipientId;
     }
 
-    public void setDirection(java.lang.String direction) {
+    public void setDirection(String direction) {
         this.direction = direction;
     }
 
-    public void setSubject(java.lang.String subject) {
+    public void setSubject(String subject) {
         this.subject = subject;
     }
 
-    public void setFaxNumber(java.lang.String faxNumber) {
+    public void setFaxNumber(String faxNumber) {
         this.faxNumber = faxNumber;
     }
 
-    public void setProviderName(java.lang.String providerName) {
+    public void setProviderName(String providerName) {
         this.providerName = providerName;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setTotalPages(java.lang.Integer totalPages) {
+    public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
     }
 
-    public void setPriority(java.lang.String priority) {
+    public void setPriority(String priority) {
         this.priority = priority;
     }
 
@@ -259,15 +257,15 @@ public class EfaxJobs implements Serializable {
         this.completedAt = completedAt;
     }
 
-    public void setErrorMessage(java.lang.String errorMessage) {
+    public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
 
-    public void setRetryCount(java.lang.Integer retryCount) {
+    public void setRetryCount(Integer retryCount) {
         this.retryCount = retryCount;
     }
 
-    public void setMetadata(java.util.Map<String, Object> metadata) {
+    public void setMetadata(Map<String, Object> metadata) {
         this.metadata = metadata;
     }
 

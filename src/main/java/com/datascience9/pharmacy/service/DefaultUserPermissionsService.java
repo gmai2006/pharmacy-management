@@ -38,7 +38,7 @@ public class DefaultUserPermissionsService implements UserPermissionsService {
 
     /** {@inheritDoc} */
     @Override
-    public UserPermissions find(java.lang.Integer id) {
+    public UserPermissions find(Integer id) {
 
         final UserPermissions result = dao.find(id);
         logger.info("find(UserPermissions) - exited - return value={} result ");

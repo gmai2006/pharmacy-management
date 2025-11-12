@@ -13,19 +13,17 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "efax_attachments")
 public class EfaxAttachments implements Serializable {
-    private static final long serialVersionUID = 176284555410363404L;
+    private static final long serialVersionUID = 176294153653377135L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -39,34 +37,34 @@ public class EfaxAttachments implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "file_name")
-    private java.lang.String fileName;
+    private String fileName;
 
     /** Description: file_type. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "file_type")
-    private java.lang.String fileType;
+    private String fileType;
 
     /** Description: file_size_bytes. */
     @Basic
     @Column(name = "file_size_bytes")
-    private java.lang.Long fileSizeBytes;
+    private Long fileSizeBytes;
 
     /** Description: encrypted_path. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "encrypted_path")
-    private java.lang.String encryptedPath;
+    private String encryptedPath;
 
     /** Description: checksum. */
     @Basic
     @Column(name = "checksum")
-    private java.lang.String checksum;
+    private String checksum;
 
     /** Description: page_number. */
     @Basic
     @Column(name = "page_number")
-    private java.lang.Integer pageNumber;
+    private Integer pageNumber;
 
     /** Description: created_at. */
     @Basic
@@ -87,27 +85,27 @@ public class EfaxAttachments implements Serializable {
         return this.efaxJobId;
     }
 
-    public java.lang.String getFileName() {
+    public String getFileName() {
         return this.fileName;
     }
 
-    public java.lang.String getFileType() {
+    public String getFileType() {
         return this.fileType;
     }
 
-    public java.lang.Long getFileSizeBytes() {
+    public Long getFileSizeBytes() {
         return this.fileSizeBytes;
     }
 
-    public java.lang.String getEncryptedPath() {
+    public String getEncryptedPath() {
         return this.encryptedPath;
     }
 
-    public java.lang.String getChecksum() {
+    public String getChecksum() {
         return this.checksum;
     }
 
-    public java.lang.Integer getPageNumber() {
+    public Integer getPageNumber() {
         return this.pageNumber;
     }
 
@@ -119,27 +117,27 @@ public class EfaxAttachments implements Serializable {
         this.efaxJobId = efaxJobId;
     }
 
-    public void setFileName(java.lang.String fileName) {
+    public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
-    public void setFileType(java.lang.String fileType) {
+    public void setFileType(String fileType) {
         this.fileType = fileType;
     }
 
-    public void setFileSizeBytes(java.lang.Long fileSizeBytes) {
+    public void setFileSizeBytes(Long fileSizeBytes) {
         this.fileSizeBytes = fileSizeBytes;
     }
 
-    public void setEncryptedPath(java.lang.String encryptedPath) {
+    public void setEncryptedPath(String encryptedPath) {
         this.encryptedPath = encryptedPath;
     }
 
-    public void setChecksum(java.lang.String checksum) {
+    public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
 
-    public void setPageNumber(java.lang.Integer pageNumber) {
+    public void setPageNumber(Integer pageNumber) {
         this.pageNumber = pageNumber;
     }
 

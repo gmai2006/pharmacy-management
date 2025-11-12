@@ -13,26 +13,24 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "profit_audit_warnings")
 public class ProfitAuditWarnings implements Serializable {
-    private static final long serialVersionUID = 176284555408384557L;
+    private static final long serialVersionUID = 176294189247780026L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Long id;
+    private Long id;
 
     /** Description: related_object_type. */
     @Basic
     @Column(name = "related_object_type")
-    private java.lang.String relatedObjectType;
+    private String relatedObjectType;
 
     /** Description: related_object_id. */
     @Basic
@@ -42,12 +40,12 @@ public class ProfitAuditWarnings implements Serializable {
     /** Description: warning_code. */
     @Basic
     @Column(name = "warning_code")
-    private java.lang.String warningCode;
+    private String warningCode;
 
     /** Description: description. */
     @Basic
     @Column(name = "description")
-    private java.lang.String description;
+    private String description;
 
     /** Description: created_at. */
     @Basic
@@ -56,15 +54,15 @@ public class ProfitAuditWarnings implements Serializable {
 
     public ProfitAuditWarnings() {}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public java.lang.String getRelatedObjectType() {
+    public String getRelatedObjectType() {
         return this.relatedObjectType;
     }
 
@@ -72,11 +70,11 @@ public class ProfitAuditWarnings implements Serializable {
         return this.relatedObjectId;
     }
 
-    public java.lang.String getWarningCode() {
+    public String getWarningCode() {
         return this.warningCode;
     }
 
-    public java.lang.String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
@@ -84,7 +82,7 @@ public class ProfitAuditWarnings implements Serializable {
         return this.createdAt;
     }
 
-    public void setRelatedObjectType(java.lang.String relatedObjectType) {
+    public void setRelatedObjectType(String relatedObjectType) {
         this.relatedObjectType = relatedObjectType;
     }
 
@@ -92,11 +90,11 @@ public class ProfitAuditWarnings implements Serializable {
         this.relatedObjectId = relatedObjectId;
     }
 
-    public void setWarningCode(java.lang.String warningCode) {
+    public void setWarningCode(String warningCode) {
         this.warningCode = warningCode;
     }
 
-    public void setDescription(java.lang.String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

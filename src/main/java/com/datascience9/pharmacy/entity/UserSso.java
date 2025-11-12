@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "user_sso")
 public class UserSso implements Serializable {
-    private static final long serialVersionUID = 176284555403730179L;
+    private static final long serialVersionUID = 176294189240986533L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -42,13 +40,13 @@ public class UserSso implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "provider")
-    private java.lang.String provider;
+    private String provider;
 
     /** Description: external_id. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "external_id")
-    private java.lang.String externalId;
+    private String externalId;
 
     /** Description: metadata. */
     @Basic
@@ -70,15 +68,15 @@ public class UserSso implements Serializable {
         return this.userId;
     }
 
-    public java.lang.String getProvider() {
+    public String getProvider() {
         return this.provider;
     }
 
-    public java.lang.String getExternalId() {
+    public String getExternalId() {
         return this.externalId;
     }
 
-    public java.util.Map<String, Object> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return this.metadata;
     }
 
@@ -86,15 +84,15 @@ public class UserSso implements Serializable {
         this.userId = userId;
     }
 
-    public void setProvider(java.lang.String provider) {
+    public void setProvider(String provider) {
         this.provider = provider;
     }
 
-    public void setExternalId(java.lang.String externalId) {
+    public void setExternalId(String externalId) {
         this.externalId = externalId;
     }
 
-    public void setMetadata(java.util.Map<String, Object> metadata) {
+    public void setMetadata(Map<String, Object> metadata) {
         this.metadata = metadata;
     }
 }

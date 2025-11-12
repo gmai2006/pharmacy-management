@@ -38,7 +38,7 @@ public class DefaultAwpReclaimsService implements AwpReclaimsService {
 
     /** {@inheritDoc} */
     @Override
-    public AwpReclaims find(java.lang.Long id) {
+    public AwpReclaims find(Long id) {
 
         final AwpReclaims result = dao.find(id);
         logger.info("find(AwpReclaims) - exited - return value={} result ");

@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "efax_incoming")
 public class EfaxIncoming implements Serializable {
-    private static final long serialVersionUID = 176284555410683081L;
+    private static final long serialVersionUID = 176294153653666061L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -36,12 +34,12 @@ public class EfaxIncoming implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "from_fax_number")
-    private java.lang.String fromFaxNumber;
+    private String fromFaxNumber;
 
     /** Description: from_name. */
     @Basic
     @Column(name = "from_name")
-    private java.lang.String fromName;
+    private String fromName;
 
     /** Description: received_at. */
     @Basic
@@ -51,18 +49,18 @@ public class EfaxIncoming implements Serializable {
     /** Description: total_pages. */
     @Basic
     @Column(name = "total_pages")
-    private java.lang.Integer totalPages;
+    private Integer totalPages;
 
     /** Description: file_path. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "file_path")
-    private java.lang.String filePath;
+    private String filePath;
 
     /** Description: checksum. */
     @Basic
     @Column(name = "checksum")
-    private java.lang.String checksum;
+    private String checksum;
 
     /** Description: linked_patient_id. */
     @Basic
@@ -95,11 +93,11 @@ public class EfaxIncoming implements Serializable {
         this.id = id;
     }
 
-    public java.lang.String getFromFaxNumber() {
+    public String getFromFaxNumber() {
         return this.fromFaxNumber;
     }
 
-    public java.lang.String getFromName() {
+    public String getFromName() {
         return this.fromName;
     }
 
@@ -107,15 +105,15 @@ public class EfaxIncoming implements Serializable {
         return this.receivedAt;
     }
 
-    public java.lang.Integer getTotalPages() {
+    public Integer getTotalPages() {
         return this.totalPages;
     }
 
-    public java.lang.String getFilePath() {
+    public String getFilePath() {
         return this.filePath;
     }
 
-    public java.lang.String getChecksum() {
+    public String getChecksum() {
         return this.checksum;
     }
 
@@ -131,15 +129,15 @@ public class EfaxIncoming implements Serializable {
         return this.processedBy;
     }
 
-    public java.util.Map<String, Object> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return this.metadata;
     }
 
-    public void setFromFaxNumber(java.lang.String fromFaxNumber) {
+    public void setFromFaxNumber(String fromFaxNumber) {
         this.fromFaxNumber = fromFaxNumber;
     }
 
-    public void setFromName(java.lang.String fromName) {
+    public void setFromName(String fromName) {
         this.fromName = fromName;
     }
 
@@ -147,15 +145,15 @@ public class EfaxIncoming implements Serializable {
         this.receivedAt = receivedAt;
     }
 
-    public void setTotalPages(java.lang.Integer totalPages) {
+    public void setTotalPages(Integer totalPages) {
         this.totalPages = totalPages;
     }
 
-    public void setFilePath(java.lang.String filePath) {
+    public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
 
-    public void setChecksum(java.lang.String checksum) {
+    public void setChecksum(String checksum) {
         this.checksum = checksum;
     }
 
@@ -171,7 +169,7 @@ public class EfaxIncoming implements Serializable {
         this.processedBy = processedBy;
     }
 
-    public void setMetadata(java.util.Map<String, Object> metadata) {
+    public void setMetadata(Map<String, Object> metadata) {
         this.metadata = metadata;
     }
 }

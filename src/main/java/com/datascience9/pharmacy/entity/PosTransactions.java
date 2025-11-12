@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +24,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "pos_transactions")
 public class PosTransactions implements Serializable {
-    private static final long serialVersionUID = 176284555407519531L;
+    private static final long serialVersionUID = 176294189246717731L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -47,7 +45,7 @@ public class PosTransactions implements Serializable {
     /** Description: station_id. */
     @Basic
     @Column(name = "station_id")
-    private java.lang.String stationId;
+    private String stationId;
 
     /** Description: total_amount. */
     @jakarta.validation.constraints.NotNull
@@ -58,7 +56,7 @@ public class PosTransactions implements Serializable {
     /** Description: status. */
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: created_at. */
     @Basic
@@ -92,7 +90,7 @@ public class PosTransactions implements Serializable {
         return this.patientId;
     }
 
-    public java.lang.String getStationId() {
+    public String getStationId() {
         return this.stationId;
     }
 
@@ -100,7 +98,7 @@ public class PosTransactions implements Serializable {
         return this.totalAmount;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
@@ -108,7 +106,7 @@ public class PosTransactions implements Serializable {
         return this.createdAt;
     }
 
-    public java.util.Map<String, Object> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return this.metadata;
     }
 
@@ -120,7 +118,7 @@ public class PosTransactions implements Serializable {
         this.patientId = patientId;
     }
 
-    public void setStationId(java.lang.String stationId) {
+    public void setStationId(String stationId) {
         this.stationId = stationId;
     }
 
@@ -128,7 +126,7 @@ public class PosTransactions implements Serializable {
         this.totalAmount = totalAmount;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -136,7 +134,7 @@ public class PosTransactions implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public void setMetadata(java.util.Map<String, Object> metadata) {
+    public void setMetadata(Map<String, Object> metadata) {
         this.metadata = metadata;
     }
 

@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,18 +22,18 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "purchase_orders")
 public class PurchaseOrders implements Serializable {
-    private static final long serialVersionUID = 176284555405748822L;
+    private static final long serialVersionUID = 17629418924393652L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
     /** Description: wholesaler_id. */
     @Basic
     @Column(name = "wholesaler_id")
-    private java.lang.Integer wholesalerId;
+    private Integer wholesalerId;
 
     /** Description: created_by. */
     @Basic
@@ -45,7 +43,7 @@ public class PurchaseOrders implements Serializable {
     /** Description: status. */
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: ordered_at. */
     @Basic
@@ -73,7 +71,7 @@ public class PurchaseOrders implements Serializable {
         this.id = id;
     }
 
-    public java.lang.Integer getWholesalerId() {
+    public Integer getWholesalerId() {
         return this.wholesalerId;
     }
 
@@ -81,7 +79,7 @@ public class PurchaseOrders implements Serializable {
         return this.createdBy;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
@@ -93,11 +91,11 @@ public class PurchaseOrders implements Serializable {
         return this.expectedArrival;
     }
 
-    public java.util.Map<String, Object> getPayload() {
+    public Map<String, Object> getPayload() {
         return this.payload;
     }
 
-    public void setWholesalerId(java.lang.Integer wholesalerId) {
+    public void setWholesalerId(Integer wholesalerId) {
         this.wholesalerId = wholesalerId;
     }
 
@@ -105,7 +103,7 @@ public class PurchaseOrders implements Serializable {
         this.createdBy = createdBy;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -117,7 +115,7 @@ public class PurchaseOrders implements Serializable {
         this.expectedArrival = expectedArrival;
     }
 
-    public void setPayload(java.util.Map<String, Object> payload) {
+    public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
 }

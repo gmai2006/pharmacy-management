@@ -38,7 +38,7 @@ public class DefaultTaskRoutingService implements TaskRoutingService {
 
     /** {@inheritDoc} */
     @Override
-    public TaskRouting find(java.lang.Integer id) {
+    public TaskRouting find(Integer id) {
 
         final TaskRouting result = dao.find(id);
         logger.info("find(TaskRouting) - exited - return value={} result ");

@@ -43,7 +43,7 @@ public class QueuesDao {
      * @param id An Queues id.
      * @return The same Queues.
      */
-    public Queues find(java.lang.Integer id) {
+    public Queues find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(Queues.class, id);
     }

@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,13 +22,13 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "access_logs")
 public class AccessLogs implements Serializable {
-    private static final long serialVersionUID = 176284555409718163L;
+    private static final long serialVersionUID = 176294153652899962L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Long id;
+    private Long id;
 
     /** Description: user_id. */
     @Basic
@@ -46,7 +44,7 @@ public class AccessLogs implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "entity_type")
-    private java.lang.String entityType;
+    private String entityType;
 
     /** Description: entity_id. */
     @Basic
@@ -57,12 +55,12 @@ public class AccessLogs implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "action")
-    private java.lang.String action;
+    private String action;
 
     /** Description: access_reason. */
     @Basic
     @Column(name = "access_reason")
-    private java.lang.String accessReason;
+    private String accessReason;
 
     /** Description: access_context. */
     @Basic
@@ -73,12 +71,12 @@ public class AccessLogs implements Serializable {
     /** Description: ip_address. */
     @Basic
     @Column(name = "ip_address")
-    private java.lang.String ipAddress;
+    private String ipAddress;
 
     /** Description: user_agent. */
     @Basic
     @Column(name = "user_agent")
-    private java.lang.String userAgent;
+    private String userAgent;
 
     /** Description: accessed_at. */
     @Basic
@@ -87,11 +85,11 @@ public class AccessLogs implements Serializable {
 
     public AccessLogs() {}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -103,7 +101,7 @@ public class AccessLogs implements Serializable {
         return this.patientId;
     }
 
-    public java.lang.String getEntityType() {
+    public String getEntityType() {
         return this.entityType;
     }
 
@@ -111,23 +109,23 @@ public class AccessLogs implements Serializable {
         return this.entityId;
     }
 
-    public java.lang.String getAction() {
+    public String getAction() {
         return this.action;
     }
 
-    public java.lang.String getAccessReason() {
+    public String getAccessReason() {
         return this.accessReason;
     }
 
-    public java.util.Map<String, Object> getAccessContext() {
+    public Map<String, Object> getAccessContext() {
         return this.accessContext;
     }
 
-    public java.lang.String getIpAddress() {
+    public String getIpAddress() {
         return this.ipAddress;
     }
 
-    public java.lang.String getUserAgent() {
+    public String getUserAgent() {
         return this.userAgent;
     }
 
@@ -143,7 +141,7 @@ public class AccessLogs implements Serializable {
         this.patientId = patientId;
     }
 
-    public void setEntityType(java.lang.String entityType) {
+    public void setEntityType(String entityType) {
         this.entityType = entityType;
     }
 
@@ -151,23 +149,23 @@ public class AccessLogs implements Serializable {
         this.entityId = entityId;
     }
 
-    public void setAction(java.lang.String action) {
+    public void setAction(String action) {
         this.action = action;
     }
 
-    public void setAccessReason(java.lang.String accessReason) {
+    public void setAccessReason(String accessReason) {
         this.accessReason = accessReason;
     }
 
-    public void setAccessContext(java.util.Map<String, Object> accessContext) {
+    public void setAccessContext(Map<String, Object> accessContext) {
         this.accessContext = accessContext;
     }
 
-    public void setIpAddress(java.lang.String ipAddress) {
+    public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
 
-    public void setUserAgent(java.lang.String userAgent) {
+    public void setUserAgent(String userAgent) {
         this.userAgent = userAgent;
     }
 

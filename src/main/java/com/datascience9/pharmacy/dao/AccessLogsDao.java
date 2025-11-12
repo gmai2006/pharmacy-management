@@ -43,7 +43,7 @@ public class AccessLogsDao {
      * @param id An AccessLogs id.
      * @return The same AccessLogs.
      */
-    public AccessLogs find(java.lang.Long id) {
+    public AccessLogs find(Long id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(AccessLogs.class, id);
     }

@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,18 +22,18 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "alert_logs")
 public class AlertLogs implements Serializable {
-    private static final long serialVersionUID = 176284555408632694L;
+    private static final long serialVersionUID = 176294189248215424L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Long id;
+    private Long id;
 
     /** Description: alert_rule_id. */
     @Basic
     @Column(name = "alert_rule_id")
-    private java.lang.Integer alertRuleId;
+    private Integer alertRuleId;
 
     /** Description: prescription_id. */
     @Basic
@@ -61,12 +59,12 @@ public class AlertLogs implements Serializable {
     /** Description: action_taken. */
     @Basic
     @Column(name = "action_taken")
-    private java.lang.String actionTaken;
+    private String actionTaken;
 
     /** Description: override_reason. */
     @Basic
     @Column(name = "override_reason")
-    private java.lang.String overrideReason;
+    private String overrideReason;
 
     /** Description: created_at. */
     @Basic
@@ -75,15 +73,15 @@ public class AlertLogs implements Serializable {
 
     public AlertLogs() {}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public java.lang.Integer getAlertRuleId() {
+    public Integer getAlertRuleId() {
         return this.alertRuleId;
     }
 
@@ -99,15 +97,15 @@ public class AlertLogs implements Serializable {
         return this.triggeredBy;
     }
 
-    public java.util.Map<String, Object> getContext() {
+    public Map<String, Object> getContext() {
         return this.context;
     }
 
-    public java.lang.String getActionTaken() {
+    public String getActionTaken() {
         return this.actionTaken;
     }
 
-    public java.lang.String getOverrideReason() {
+    public String getOverrideReason() {
         return this.overrideReason;
     }
 
@@ -115,7 +113,7 @@ public class AlertLogs implements Serializable {
         return this.createdAt;
     }
 
-    public void setAlertRuleId(java.lang.Integer alertRuleId) {
+    public void setAlertRuleId(Integer alertRuleId) {
         this.alertRuleId = alertRuleId;
     }
 
@@ -131,15 +129,15 @@ public class AlertLogs implements Serializable {
         this.triggeredBy = triggeredBy;
     }
 
-    public void setContext(java.util.Map<String, Object> context) {
+    public void setContext(Map<String, Object> context) {
         this.context = context;
     }
 
-    public void setActionTaken(java.lang.String actionTaken) {
+    public void setActionTaken(String actionTaken) {
         this.actionTaken = actionTaken;
     }
 
-    public void setOverrideReason(java.lang.String overrideReason) {
+    public void setOverrideReason(String overrideReason) {
         this.overrideReason = overrideReason;
     }
 

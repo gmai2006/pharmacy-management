@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,23 +22,23 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "encryption_keys_meta")
 public class EncryptionKeysMeta implements Serializable {
-    private static final long serialVersionUID = 176284555409547199L;
+    private static final long serialVersionUID = 176294153652525340L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: key_id. */
     @Basic
     @Column(name = "key_id")
-    private java.lang.String keyId;
+    private String keyId;
 
     /** Description: purpose. */
     @Basic
     @Column(name = "purpose")
-    private java.lang.String purpose;
+    private String purpose;
 
     /** Description: created_at. */
     @Basic
@@ -60,19 +58,19 @@ public class EncryptionKeysMeta implements Serializable {
 
     public EncryptionKeysMeta() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public java.lang.String getKeyId() {
+    public String getKeyId() {
         return this.keyId;
     }
 
-    public java.lang.String getPurpose() {
+    public String getPurpose() {
         return this.purpose;
     }
 
@@ -84,15 +82,15 @@ public class EncryptionKeysMeta implements Serializable {
         return this.rotatedAt;
     }
 
-    public java.util.Map<String, Object> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return this.metadata;
     }
 
-    public void setKeyId(java.lang.String keyId) {
+    public void setKeyId(String keyId) {
         this.keyId = keyId;
     }
 
-    public void setPurpose(java.lang.String purpose) {
+    public void setPurpose(String purpose) {
         this.purpose = purpose;
     }
 
@@ -104,7 +102,7 @@ public class EncryptionKeysMeta implements Serializable {
         this.rotatedAt = rotatedAt;
     }
 
-    public void setMetadata(java.util.Map<String, Object> metadata) {
+    public void setMetadata(Map<String, Object> metadata) {
         this.metadata = metadata;
     }
 }

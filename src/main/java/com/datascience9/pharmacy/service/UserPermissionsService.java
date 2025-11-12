@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.UserPermissions;
 import java.util.List;
 
 public interface UserPermissionsService {
-    public UserPermissions find(java.lang.Integer id);
+    public UserPermissions find(Integer id);
 
     /**
      * Select a list of UserPermissions based on a given maximum number of returning records.

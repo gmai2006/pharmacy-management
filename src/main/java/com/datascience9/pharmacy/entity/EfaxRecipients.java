@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +21,11 @@ import java.util.List;
 @Entity
 @Table(name = "efax_recipients")
 public class EfaxRecipients implements Serializable {
-    private static final long serialVersionUID = 176284555409929445L;
+    private static final long serialVersionUID = 176294153653064497L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -35,33 +33,33 @@ public class EfaxRecipients implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "name")
-    private java.lang.String name;
+    private String name;
 
     /** Description: organization. */
     @Basic
     @Column(name = "organization")
-    private java.lang.String organization;
+    private String organization;
 
     /** Description: fax_number. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "fax_number")
-    private java.lang.String faxNumber;
+    private String faxNumber;
 
     /** Description: email. */
     @Basic
     @Column(name = "email")
-    private java.lang.String email;
+    private String email;
 
     /** Description: contact_type. */
     @Basic
     @Column(name = "contact_type")
-    private java.lang.String contactType;
+    private String contactType;
 
     /** Description: is_verified. */
     @Basic
     @Column(name = "is_verified")
-    private java.lang.Boolean isVerified;
+    private Boolean isVerified;
 
     /** Description: last_verified_at. */
     @Basic
@@ -85,27 +83,27 @@ public class EfaxRecipients implements Serializable {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public java.lang.String getOrganization() {
+    public String getOrganization() {
         return this.organization;
     }
 
-    public java.lang.String getFaxNumber() {
+    public String getFaxNumber() {
         return this.faxNumber;
     }
 
-    public java.lang.String getEmail() {
+    public String getEmail() {
         return this.email;
     }
 
-    public java.lang.String getContactType() {
+    public String getContactType() {
         return this.contactType;
     }
 
-    public java.lang.Boolean getIsVerified() {
+    public Boolean getIsVerified() {
         return this.isVerified;
     }
 
@@ -117,27 +115,27 @@ public class EfaxRecipients implements Serializable {
         return this.createdAt;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setOrganization(java.lang.String organization) {
+    public void setOrganization(String organization) {
         this.organization = organization;
     }
 
-    public void setFaxNumber(java.lang.String faxNumber) {
+    public void setFaxNumber(String faxNumber) {
         this.faxNumber = faxNumber;
     }
 
-    public void setEmail(java.lang.String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setContactType(java.lang.String contactType) {
+    public void setContactType(String contactType) {
         this.contactType = contactType;
     }
 
-    public void setIsVerified(java.lang.Boolean isVerified) {
+    public void setIsVerified(Boolean isVerified) {
         this.isVerified = isVerified;
     }
 

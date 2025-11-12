@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +24,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "prescription_items")
 public class PrescriptionItems implements Serializable {
-    private static final long serialVersionUID = 176284555406275974L;
+    private static final long serialVersionUID = 176294189244652722L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -48,27 +46,27 @@ public class PrescriptionItems implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "quantity")
-    private java.lang.Integer quantity;
+    private Integer quantity;
 
     /** Description: days_supply. */
     @Basic
     @Column(name = "days_supply")
-    private java.lang.Integer daysSupply;
+    private Integer daysSupply;
 
     /** Description: sig. */
     @Basic
     @Column(name = "sig")
-    private java.lang.String sig;
+    private String sig;
 
     /** Description: refills_allowed. */
     @Basic
     @Column(name = "refills_allowed")
-    private java.lang.Integer refillsAllowed;
+    private Integer refillsAllowed;
 
     /** Description: is_controlled. */
     @Basic
     @Column(name = "is_controlled")
-    private java.lang.Boolean isControlled;
+    private Boolean isControlled;
 
     /** Description: label_options. */
     @Basic
@@ -79,7 +77,7 @@ public class PrescriptionItems implements Serializable {
     /** Description: status. */
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: created_at. */
     @Basic
@@ -106,31 +104,31 @@ public class PrescriptionItems implements Serializable {
         return this.inventoryItemId;
     }
 
-    public java.lang.Integer getQuantity() {
+    public Integer getQuantity() {
         return this.quantity;
     }
 
-    public java.lang.Integer getDaysSupply() {
+    public Integer getDaysSupply() {
         return this.daysSupply;
     }
 
-    public java.lang.String getSig() {
+    public String getSig() {
         return this.sig;
     }
 
-    public java.lang.Integer getRefillsAllowed() {
+    public Integer getRefillsAllowed() {
         return this.refillsAllowed;
     }
 
-    public java.lang.Boolean getIsControlled() {
+    public Boolean getIsControlled() {
         return this.isControlled;
     }
 
-    public java.util.Map<String, Object> getLabelOptions() {
+    public Map<String, Object> getLabelOptions() {
         return this.labelOptions;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
@@ -146,31 +144,31 @@ public class PrescriptionItems implements Serializable {
         this.inventoryItemId = inventoryItemId;
     }
 
-    public void setQuantity(java.lang.Integer quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public void setDaysSupply(java.lang.Integer daysSupply) {
+    public void setDaysSupply(Integer daysSupply) {
         this.daysSupply = daysSupply;
     }
 
-    public void setSig(java.lang.String sig) {
+    public void setSig(String sig) {
         this.sig = sig;
     }
 
-    public void setRefillsAllowed(java.lang.Integer refillsAllowed) {
+    public void setRefillsAllowed(Integer refillsAllowed) {
         this.refillsAllowed = refillsAllowed;
     }
 
-    public void setIsControlled(java.lang.Boolean isControlled) {
+    public void setIsControlled(Boolean isControlled) {
         this.isControlled = isControlled;
     }
 
-    public void setLabelOptions(java.util.Map<String, Object> labelOptions) {
+    public void setLabelOptions(Map<String, Object> labelOptions) {
         this.labelOptions = labelOptions;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

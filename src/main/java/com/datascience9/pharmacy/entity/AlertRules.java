@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,24 +24,24 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "alert_rules")
 public class AlertRules implements Serializable {
-    private static final long serialVersionUID = 176284555408458741L;
+    private static final long serialVersionUID = 176294189248080814L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: name. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "name")
-    private java.lang.String name;
+    private String name;
 
     /** Description: description. */
     @Basic
     @Column(name = "description")
-    private java.lang.String description;
+    private String description;
 
     /** Description: rule_json. */
     @jakarta.validation.constraints.NotNull
@@ -55,12 +53,12 @@ public class AlertRules implements Serializable {
     /** Description: severity. */
     @Basic
     @Column(name = "severity")
-    private java.lang.String severity;
+    private String severity;
 
     /** Description: active. */
     @Basic
     @Column(name = "active")
-    private java.lang.Boolean active;
+    private Boolean active;
 
     /** Description: created_at. */
     @Basic
@@ -71,31 +69,31 @@ public class AlertRules implements Serializable {
 
     public AlertRules() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public java.lang.String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
-    public java.util.Map<String, Object> getRuleJson() {
+    public Map<String, Object> getRuleJson() {
         return this.ruleJson;
     }
 
-    public java.lang.String getSeverity() {
+    public String getSeverity() {
         return this.severity;
     }
 
-    public java.lang.Boolean getActive() {
+    public Boolean getActive() {
         return this.active;
     }
 
@@ -103,23 +101,23 @@ public class AlertRules implements Serializable {
         return this.createdAt;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(java.lang.String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setRuleJson(java.util.Map<String, Object> ruleJson) {
+    public void setRuleJson(Map<String, Object> ruleJson) {
         this.ruleJson = ruleJson;
     }
 
-    public void setSeverity(java.lang.String severity) {
+    public void setSeverity(String severity) {
         this.severity = severity;
     }
 
-    public void setActive(java.lang.Boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 

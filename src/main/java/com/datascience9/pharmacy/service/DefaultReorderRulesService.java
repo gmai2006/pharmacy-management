@@ -38,7 +38,7 @@ public class DefaultReorderRulesService implements ReorderRulesService {
 
     /** {@inheritDoc} */
     @Override
-    public ReorderRules find(java.lang.Integer id) {
+    public ReorderRules find(Integer id) {
 
         final ReorderRules result = dao.find(id);
         logger.info("find(ReorderRules) - exited - return value={} result ");

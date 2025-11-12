@@ -13,21 +13,19 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "reorder_rules")
 public class ReorderRules implements Serializable {
-    private static final long serialVersionUID = 176284555405629171L;
+    private static final long serialVersionUID = 176294189243740453L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: inventory_item_id. */
     @Basic
@@ -38,26 +36,26 @@ public class ReorderRules implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "min_level")
-    private java.lang.Integer minLevel;
+    private Integer minLevel;
 
     /** Description: max_level. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "max_level")
-    private java.lang.Integer maxLevel;
+    private Integer maxLevel;
 
     /** Description: preferred_wholesalers. */
     @Basic
     @Column(name = "preferred_wholesalers")
-    private java.lang.Integer preferredWholesalers;
+    private Integer preferredWholesalers;
 
     public ReorderRules() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -65,15 +63,15 @@ public class ReorderRules implements Serializable {
         return this.inventoryItemId;
     }
 
-    public java.lang.Integer getMinLevel() {
+    public Integer getMinLevel() {
         return this.minLevel;
     }
 
-    public java.lang.Integer getMaxLevel() {
+    public Integer getMaxLevel() {
         return this.maxLevel;
     }
 
-    public java.lang.Integer getPreferredWholesalers() {
+    public Integer getPreferredWholesalers() {
         return this.preferredWholesalers;
     }
 
@@ -81,15 +79,15 @@ public class ReorderRules implements Serializable {
         this.inventoryItemId = inventoryItemId;
     }
 
-    public void setMinLevel(java.lang.Integer minLevel) {
+    public void setMinLevel(Integer minLevel) {
         this.minLevel = minLevel;
     }
 
-    public void setMaxLevel(java.lang.Integer maxLevel) {
+    public void setMaxLevel(Integer maxLevel) {
         this.maxLevel = maxLevel;
     }
 
-    public void setPreferredWholesalers(java.lang.Integer preferredWholesalers) {
+    public void setPreferredWholesalers(Integer preferredWholesalers) {
         this.preferredWholesalers = preferredWholesalers;
     }
 }

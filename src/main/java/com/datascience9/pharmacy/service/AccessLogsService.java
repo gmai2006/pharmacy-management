@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.AccessLogs;
 import java.util.List;
 
 public interface AccessLogsService {
-    public AccessLogs find(java.lang.Long id);
+    public AccessLogs find(Long id);
 
     /**
      * Select a list of AccessLogs based on a given maximum number of returning records.

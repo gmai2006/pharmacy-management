@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.ProfitAuditWarnings;
 import java.util.List;
 
 public interface ProfitAuditWarningsService {
-    public ProfitAuditWarnings find(java.lang.Long id);
+    public ProfitAuditWarnings find(Long id);
 
     /**
      * Select a list of ProfitAuditWarnings based on a given maximum number of returning records.

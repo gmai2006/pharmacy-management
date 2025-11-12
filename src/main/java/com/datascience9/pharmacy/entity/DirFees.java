@@ -13,21 +13,19 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "dir_fees")
 public class DirFees implements Serializable {
-    private static final long serialVersionUID = 176284555408150331L;
+    private static final long serialVersionUID = 176294189247456814L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Long id;
+    private Long id;
 
     /** Description: claim_id. */
     @Basic
@@ -42,7 +40,7 @@ public class DirFees implements Serializable {
     /** Description: reason. */
     @Basic
     @Column(name = "reason")
-    private java.lang.String reason;
+    private String reason;
 
     /** Description: recorded_at. */
     @Basic
@@ -51,11 +49,11 @@ public class DirFees implements Serializable {
 
     public DirFees() {}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,7 +65,7 @@ public class DirFees implements Serializable {
         return this.amount;
     }
 
-    public java.lang.String getReason() {
+    public String getReason() {
         return this.reason;
     }
 
@@ -83,7 +81,7 @@ public class DirFees implements Serializable {
         this.amount = amount;
     }
 
-    public void setReason(java.lang.String reason) {
+    public void setReason(String reason) {
         this.reason = reason;
     }
 

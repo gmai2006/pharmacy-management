@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,28 +22,28 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "integration_events")
 public class IntegrationEvents implements Serializable {
-    private static final long serialVersionUID = 176284555408838929L;
+    private static final long serialVersionUID = 176294153652019687L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
     /** Description: integration_id. */
     @Basic
     @Column(name = "integration_id")
-    private java.lang.Integer integrationId;
+    private Integer integrationId;
 
     /** Description: event_type. */
     @Basic
     @Column(name = "event_type")
-    private java.lang.String eventType;
+    private String eventType;
 
     /** Description: external_id. */
     @Basic
     @Column(name = "external_id")
-    private java.lang.String externalId;
+    private String externalId;
 
     /** Description: payload. */
     @Basic
@@ -61,7 +59,7 @@ public class IntegrationEvents implements Serializable {
     /** Description: status. */
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     public IntegrationEvents() {}
 
@@ -73,19 +71,19 @@ public class IntegrationEvents implements Serializable {
         this.id = id;
     }
 
-    public java.lang.Integer getIntegrationId() {
+    public Integer getIntegrationId() {
         return this.integrationId;
     }
 
-    public java.lang.String getEventType() {
+    public String getEventType() {
         return this.eventType;
     }
 
-    public java.lang.String getExternalId() {
+    public String getExternalId() {
         return this.externalId;
     }
 
-    public java.util.Map<String, Object> getPayload() {
+    public Map<String, Object> getPayload() {
         return this.payload;
     }
 
@@ -93,23 +91,23 @@ public class IntegrationEvents implements Serializable {
         return this.processedAt;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public void setIntegrationId(java.lang.Integer integrationId) {
+    public void setIntegrationId(Integer integrationId) {
         this.integrationId = integrationId;
     }
 
-    public void setEventType(java.lang.String eventType) {
+    public void setEventType(String eventType) {
         this.eventType = eventType;
     }
 
-    public void setExternalId(java.lang.String externalId) {
+    public void setExternalId(String externalId) {
         this.externalId = externalId;
     }
 
-    public void setPayload(java.util.Map<String, Object> payload) {
+    public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
 
@@ -117,7 +115,7 @@ public class IntegrationEvents implements Serializable {
         this.processedAt = processedAt;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }

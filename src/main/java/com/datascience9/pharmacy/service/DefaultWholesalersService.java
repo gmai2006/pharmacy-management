@@ -38,7 +38,7 @@ public class DefaultWholesalersService implements WholesalersService {
 
     /** {@inheritDoc} */
     @Override
-    public Wholesalers find(java.lang.Integer id) {
+    public Wholesalers find(Integer id) {
 
         final Wholesalers result = dao.find(id);
         logger.info("find(Wholesalers) - exited - return value={} result ");

@@ -38,7 +38,7 @@ public class DefaultAccessLogsService implements AccessLogsService {
 
     /** {@inheritDoc} */
     @Override
-    public AccessLogs find(java.lang.Long id) {
+    public AccessLogs find(Long id) {
 
         final AccessLogs result = dao.find(id);
         logger.info("find(AccessLogs) - exited - return value={} result ");

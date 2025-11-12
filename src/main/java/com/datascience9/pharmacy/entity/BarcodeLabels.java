@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "barcode_labels")
 public class BarcodeLabels implements Serializable {
-    private static final long serialVersionUID = 176284555407466141L;
+    private static final long serialVersionUID = 176294189246498330L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -41,12 +39,12 @@ public class BarcodeLabels implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "barcode")
-    private java.lang.String barcode;
+    private String barcode;
 
     /** Description: label_type. */
     @Basic
     @Column(name = "label_type")
-    private java.lang.String labelType;
+    private String labelType;
 
     /** Description: generated_at. */
     @Basic
@@ -78,11 +76,11 @@ public class BarcodeLabels implements Serializable {
         return this.prescriptionItemId;
     }
 
-    public java.lang.String getBarcode() {
+    public String getBarcode() {
         return this.barcode;
     }
 
-    public java.lang.String getLabelType() {
+    public String getLabelType() {
         return this.labelType;
     }
 
@@ -94,7 +92,7 @@ public class BarcodeLabels implements Serializable {
         return this.printedBy;
     }
 
-    public java.util.Map<String, Object> getPrintPayload() {
+    public Map<String, Object> getPrintPayload() {
         return this.printPayload;
     }
 
@@ -102,11 +100,11 @@ public class BarcodeLabels implements Serializable {
         this.prescriptionItemId = prescriptionItemId;
     }
 
-    public void setBarcode(java.lang.String barcode) {
+    public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
 
-    public void setLabelType(java.lang.String labelType) {
+    public void setLabelType(String labelType) {
         this.labelType = labelType;
     }
 
@@ -118,7 +116,7 @@ public class BarcodeLabels implements Serializable {
         this.printedBy = printedBy;
     }
 
-    public void setPrintPayload(java.util.Map<String, Object> printPayload) {
+    public void setPrintPayload(Map<String, Object> printPayload) {
         this.printPayload = printPayload;
     }
 }

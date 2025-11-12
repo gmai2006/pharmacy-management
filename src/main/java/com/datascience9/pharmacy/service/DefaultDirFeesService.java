@@ -38,7 +38,7 @@ public class DefaultDirFeesService implements DirFeesService {
 
     /** {@inheritDoc} */
     @Override
-    public DirFees find(java.lang.Long id) {
+    public DirFees find(Long id) {
 
         final DirFees result = dao.find(id);
         logger.info("find(DirFees) - exited - return value={} result ");

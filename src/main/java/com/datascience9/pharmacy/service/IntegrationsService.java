@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.Integrations;
 import java.util.List;
 
 public interface IntegrationsService {
-    public Integrations find(java.lang.Integer id);
+    public Integrations find(Integer id);
 
     /**
      * Select a list of Integrations based on a given maximum number of returning records.

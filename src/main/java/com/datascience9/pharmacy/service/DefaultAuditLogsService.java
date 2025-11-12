@@ -38,7 +38,7 @@ public class DefaultAuditLogsService implements AuditLogsService {
 
     /** {@inheritDoc} */
     @Override
-    public AuditLogs find(java.lang.Long id) {
+    public AuditLogs find(Long id) {
 
         final AuditLogs result = dao.find(id);
         logger.info("find(AuditLogs) - exited - return value={} result ");

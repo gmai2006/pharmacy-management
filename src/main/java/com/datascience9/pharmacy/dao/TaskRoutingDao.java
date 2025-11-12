@@ -43,7 +43,7 @@ public class TaskRoutingDao {
      * @param id An TaskRouting id.
      * @return The same TaskRouting.
      */
-    public TaskRouting find(java.lang.Integer id) {
+    public TaskRouting find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(TaskRouting.class, id);
     }

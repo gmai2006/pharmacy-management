@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.Workflows;
 import java.util.List;
 
 public interface WorkflowsService {
-    public Workflows find(java.lang.Integer id);
+    public Workflows find(Integer id);
 
     /**
      * Select a list of Workflows based on a given maximum number of returning records.

@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.TaskRouting;
 import java.util.List;
 
 public interface TaskRoutingService {
-    public TaskRouting find(java.lang.Integer id);
+    public TaskRouting find(Integer id);
 
     /**
      * Select a list of TaskRouting based on a given maximum number of returning records.

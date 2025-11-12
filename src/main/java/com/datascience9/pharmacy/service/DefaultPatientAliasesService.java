@@ -38,7 +38,7 @@ public class DefaultPatientAliasesService implements PatientAliasesService {
 
     /** {@inheritDoc} */
     @Override
-    public PatientAliases find(java.lang.Integer id) {
+    public PatientAliases find(Integer id) {
 
         final PatientAliases result = dao.find(id);
         logger.info("find(PatientAliases) - exited - return value={} result ");

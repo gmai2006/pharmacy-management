@@ -13,21 +13,19 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "patient_aliases")
 public class PatientAliases implements Serializable {
-    private static final long serialVersionUID = 176284555404477481L;
+    private static final long serialVersionUID = 176294189242192846L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: patient_id. */
     @Basic
@@ -37,12 +35,12 @@ public class PatientAliases implements Serializable {
     /** Description: alias_type. */
     @Basic
     @Column(name = "alias_type")
-    private java.lang.String aliasType;
+    private String aliasType;
 
     /** Description: alias_value. */
     @Basic
     @Column(name = "alias_value")
-    private java.lang.String aliasValue;
+    private String aliasValue;
 
     /** Description: created_at. */
     @Basic
@@ -51,11 +49,11 @@ public class PatientAliases implements Serializable {
 
     public PatientAliases() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -63,11 +61,11 @@ public class PatientAliases implements Serializable {
         return this.patientId;
     }
 
-    public java.lang.String getAliasType() {
+    public String getAliasType() {
         return this.aliasType;
     }
 
-    public java.lang.String getAliasValue() {
+    public String getAliasValue() {
         return this.aliasValue;
     }
 
@@ -79,11 +77,11 @@ public class PatientAliases implements Serializable {
         this.patientId = patientId;
     }
 
-    public void setAliasType(java.lang.String aliasType) {
+    public void setAliasType(String aliasType) {
         this.aliasType = aliasType;
     }
 
-    public void setAliasValue(java.lang.String aliasValue) {
+    public void setAliasValue(String aliasValue) {
         this.aliasValue = aliasValue;
     }
 

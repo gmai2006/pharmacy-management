@@ -38,7 +38,7 @@ public class DefaultRolesService implements RolesService {
 
     /** {@inheritDoc} */
     @Override
-    public Roles find(java.lang.Integer id) {
+    public Roles find(Integer id) {
 
         final Roles result = dao.find(id);
         logger.info("find(Roles) - exited - return value={} result ");

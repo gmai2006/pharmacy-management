@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,50 +21,50 @@ import java.util.List;
 @Entity
 @Table(name = "roles")
 public class Roles implements Serializable {
-    private static final long serialVersionUID = 176284555402158910L;
+    private static final long serialVersionUID = 176294189239246955L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: name. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "name")
-    private java.lang.String name;
+    private String name;
 
     /** Description: description. */
     @Basic
     @Column(name = "description")
-    private java.lang.String description;
+    private String description;
 
     @Transient List<Users> users;
 
     public Roles() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public java.lang.String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(java.lang.String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 

@@ -43,7 +43,7 @@ public class WorkflowsDao {
      * @param id An Workflows id.
      * @return The same Workflows.
      */
-    public Workflows find(java.lang.Integer id) {
+    public Workflows find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(Workflows.class, id);
     }

@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.AlertLogs;
 import java.util.List;
 
 public interface AlertLogsService {
-    public AlertLogs find(java.lang.Long id);
+    public AlertLogs find(Long id);
 
     /**
      * Select a list of AlertLogs based on a given maximum number of returning records.

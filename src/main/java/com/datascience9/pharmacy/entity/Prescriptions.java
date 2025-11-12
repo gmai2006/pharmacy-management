@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +24,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "prescriptions")
 public class Prescriptions implements Serializable {
-    private static final long serialVersionUID = 176284555405913344L;
+    private static final long serialVersionUID = 176294189244254959L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -42,12 +40,12 @@ public class Prescriptions implements Serializable {
     /** Description: prescriber_name. */
     @Basic
     @Column(name = "prescriber_name")
-    private java.lang.String prescriberName;
+    private String prescriberName;
 
     /** Description: prescriber_dea. */
     @Basic
     @Column(name = "prescriber_dea")
-    private java.lang.String prescriberDea;
+    private String prescriberDea;
 
     /** Description: issue_date. */
     @Basic
@@ -58,17 +56,23 @@ public class Prescriptions implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
+
+    /** Description: workflow_step_id. */
+    @jakarta.validation.constraints.NotNull
+    @Basic
+    @Column(name = "workflow_step_id")
+    private Integer workflowStepId;
 
     /** Description: priority. */
     @Basic
     @Column(name = "priority")
-    private java.lang.String priority;
+    private String priority;
 
     /** Description: notes. */
     @Basic
     @Column(name = "notes")
-    private java.lang.String notes;
+    private String notes;
 
     /** Description: metadata. */
     @Basic
@@ -81,12 +85,41 @@ public class Prescriptions implements Serializable {
     @Column(name = "created_at")
     private java.sql.Timestamp createdAt;
 
-    @Transient List<PdmpQueries> pdmpqueries;
+    /** Description: queue_name. */
+    @Basic
+    @Column(name = "queue_name")
+    private String queueName;
+
+    /** Description: assigned_to. */
+    @Basic
+    @Column(columnDefinition = "UUID", name = "assigned_to")
+    private java.util.UUID assignedTo;
+
+    /** Description: last_status_update. */
+    @Basic
+    @Column(name = "last_status_update")
+    private java.sql.Timestamp lastStatusUpdate;
+
+    /** Description: estimated_ready_time. */
+    @Basic
+    @Column(name = "estimated_ready_time")
+    private java.sql.Timestamp estimatedReadyTime;
+
+    /** Description: pickup_time. */
+    @Basic
+    @Column(name = "pickup_time")
+    private java.sql.Timestamp pickupTime;
+
+    /** Description: completion_time. */
+    @Basic
+    @Column(name = "completion_time")
+    private java.sql.Timestamp completionTime;
+
+    @Transient List<PrescriptionClaims> prescriptionclaims;
+    @Transient List<PrescriptionCopays> prescriptioncopays;
     @Transient List<PrescriptionAudit> prescriptionaudit;
-    @Transient List<EfaxIncoming> efaxincoming;
     @Transient List<Claims> claims;
     @Transient List<PrescriptionItems> prescriptionitems;
-    @Transient List<EfaxJobs> efaxjobs;
     @Transient List<AlertLogs> alertlogs;
     @Transient List<PosTransactions> postransactions;
     @Transient List<PrescriptionTransfers> prescriptiontransfers;
@@ -106,11 +139,11 @@ public class Prescriptions implements Serializable {
         return this.patientId;
     }
 
-    public java.lang.String getPrescriberName() {
+    public String getPrescriberName() {
         return this.prescriberName;
     }
 
-    public java.lang.String getPrescriberDea() {
+    public String getPrescriberDea() {
         return this.prescriberDea;
     }
 
@@ -118,19 +151,23 @@ public class Prescriptions implements Serializable {
         return this.issueDate;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public java.lang.String getPriority() {
+    public Integer getWorkflowStepId() {
+        return this.workflowStepId;
+    }
+
+    public String getPriority() {
         return this.priority;
     }
 
-    public java.lang.String getNotes() {
+    public String getNotes() {
         return this.notes;
     }
 
-    public java.util.Map<String, Object> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return this.metadata;
     }
 
@@ -138,15 +175,39 @@ public class Prescriptions implements Serializable {
         return this.createdAt;
     }
 
+    public String getQueueName() {
+        return this.queueName;
+    }
+
+    public java.util.UUID getAssignedTo() {
+        return this.assignedTo;
+    }
+
+    public java.sql.Timestamp getLastStatusUpdate() {
+        return this.lastStatusUpdate;
+    }
+
+    public java.sql.Timestamp getEstimatedReadyTime() {
+        return this.estimatedReadyTime;
+    }
+
+    public java.sql.Timestamp getPickupTime() {
+        return this.pickupTime;
+    }
+
+    public java.sql.Timestamp getCompletionTime() {
+        return this.completionTime;
+    }
+
     public void setPatientId(java.util.UUID patientId) {
         this.patientId = patientId;
     }
 
-    public void setPrescriberName(java.lang.String prescriberName) {
+    public void setPrescriberName(String prescriberName) {
         this.prescriberName = prescriberName;
     }
 
-    public void setPrescriberDea(java.lang.String prescriberDea) {
+    public void setPrescriberDea(String prescriberDea) {
         this.prescriberDea = prescriberDea;
     }
 
@@ -154,19 +215,23 @@ public class Prescriptions implements Serializable {
         this.issueDate = issueDate;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setPriority(java.lang.String priority) {
+    public void setWorkflowStepId(Integer workflowStepId) {
+        this.workflowStepId = workflowStepId;
+    }
+
+    public void setPriority(String priority) {
         this.priority = priority;
     }
 
-    public void setNotes(java.lang.String notes) {
+    public void setNotes(String notes) {
         this.notes = notes;
     }
 
-    public void setMetadata(java.util.Map<String, Object> metadata) {
+    public void setMetadata(Map<String, Object> metadata) {
         this.metadata = metadata;
     }
 
@@ -174,16 +239,40 @@ public class Prescriptions implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public List<PdmpQueries> getPdmpQueries() {
-        return this.pdmpqueries;
+    public void setQueueName(String queueName) {
+        this.queueName = queueName;
+    }
+
+    public void setAssignedTo(java.util.UUID assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+
+    public void setLastStatusUpdate(java.sql.Timestamp lastStatusUpdate) {
+        this.lastStatusUpdate = lastStatusUpdate;
+    }
+
+    public void setEstimatedReadyTime(java.sql.Timestamp estimatedReadyTime) {
+        this.estimatedReadyTime = estimatedReadyTime;
+    }
+
+    public void setPickupTime(java.sql.Timestamp pickupTime) {
+        this.pickupTime = pickupTime;
+    }
+
+    public void setCompletionTime(java.sql.Timestamp completionTime) {
+        this.completionTime = completionTime;
+    }
+
+    public List<PrescriptionClaims> getPrescriptionClaims() {
+        return this.prescriptionclaims;
+    }
+
+    public List<PrescriptionCopays> getPrescriptionCopays() {
+        return this.prescriptioncopays;
     }
 
     public List<PrescriptionAudit> getPrescriptionAudit() {
         return this.prescriptionaudit;
-    }
-
-    public List<EfaxIncoming> getEfaxIncoming() {
-        return this.efaxincoming;
     }
 
     public List<Claims> getClaims() {
@@ -192,10 +281,6 @@ public class Prescriptions implements Serializable {
 
     public List<PrescriptionItems> getPrescriptionItems() {
         return this.prescriptionitems;
-    }
-
-    public List<EfaxJobs> getEfaxJobs() {
-        return this.efaxjobs;
     }
 
     public List<AlertLogs> getAlertLogs() {
@@ -214,16 +299,16 @@ public class Prescriptions implements Serializable {
         return this.awpreclaims;
     }
 
-    public void setPdmpQueries(List<PdmpQueries> pdmpqueries) {
-        this.pdmpqueries = new ArrayList<>(pdmpqueries);
+    public void setPrescriptionClaims(List<PrescriptionClaims> prescriptionclaims) {
+        this.prescriptionclaims = new ArrayList<>(prescriptionclaims);
+    }
+
+    public void setPrescriptionCopays(List<PrescriptionCopays> prescriptioncopays) {
+        this.prescriptioncopays = new ArrayList<>(prescriptioncopays);
     }
 
     public void setPrescriptionAudit(List<PrescriptionAudit> prescriptionaudit) {
         this.prescriptionaudit = new ArrayList<>(prescriptionaudit);
-    }
-
-    public void setEfaxIncoming(List<EfaxIncoming> efaxincoming) {
-        this.efaxincoming = new ArrayList<>(efaxincoming);
     }
 
     public void setClaims(List<Claims> claims) {
@@ -232,10 +317,6 @@ public class Prescriptions implements Serializable {
 
     public void setPrescriptionItems(List<PrescriptionItems> prescriptionitems) {
         this.prescriptionitems = new ArrayList<>(prescriptionitems);
-    }
-
-    public void setEfaxJobs(List<EfaxJobs> efaxjobs) {
-        this.efaxjobs = new ArrayList<>(efaxjobs);
     }
 
     public void setAlertLogs(List<AlertLogs> alertlogs) {

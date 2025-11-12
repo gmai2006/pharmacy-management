@@ -43,7 +43,7 @@ public class IntegrationsDao {
      * @param id An Integrations id.
      * @return The same Integrations.
      */
-    public Integrations find(java.lang.Integer id) {
+    public Integrations find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(Integrations.class, id);
     }

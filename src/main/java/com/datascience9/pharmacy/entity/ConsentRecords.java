@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "consent_records")
 public class ConsentRecords implements Serializable {
-    private static final long serialVersionUID = 176284555409380059L;
+    private static final long serialVersionUID = 176294153652471008L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -40,17 +38,17 @@ public class ConsentRecords implements Serializable {
     /** Description: consent_type. */
     @Basic
     @Column(name = "consent_type")
-    private java.lang.String consentType;
+    private String consentType;
 
     /** Description: granted. */
     @Basic
     @Column(name = "granted")
-    private java.lang.Boolean granted;
+    private Boolean granted;
 
     /** Description: source. */
     @Basic
     @Column(name = "source")
-    private java.lang.String source;
+    private String source;
 
     /** Description: recorded_by. */
     @Basic
@@ -82,15 +80,15 @@ public class ConsentRecords implements Serializable {
         return this.patientId;
     }
 
-    public java.lang.String getConsentType() {
+    public String getConsentType() {
         return this.consentType;
     }
 
-    public java.lang.Boolean getGranted() {
+    public Boolean getGranted() {
         return this.granted;
     }
 
-    public java.lang.String getSource() {
+    public String getSource() {
         return this.source;
     }
 
@@ -102,7 +100,7 @@ public class ConsentRecords implements Serializable {
         return this.recordedAt;
     }
 
-    public java.util.Map<String, Object> getMetadata() {
+    public Map<String, Object> getMetadata() {
         return this.metadata;
     }
 
@@ -110,15 +108,15 @@ public class ConsentRecords implements Serializable {
         this.patientId = patientId;
     }
 
-    public void setConsentType(java.lang.String consentType) {
+    public void setConsentType(String consentType) {
         this.consentType = consentType;
     }
 
-    public void setGranted(java.lang.Boolean granted) {
+    public void setGranted(Boolean granted) {
         this.granted = granted;
     }
 
-    public void setSource(java.lang.String source) {
+    public void setSource(String source) {
         this.source = source;
     }
 
@@ -130,7 +128,7 @@ public class ConsentRecords implements Serializable {
         this.recordedAt = recordedAt;
     }
 
-    public void setMetadata(java.util.Map<String, Object> metadata) {
+    public void setMetadata(Map<String, Object> metadata) {
         this.metadata = metadata;
     }
 }

@@ -38,7 +38,7 @@ public class DefaultQueuesService implements QueuesService {
 
     /** {@inheritDoc} */
     @Override
-    public Queues find(java.lang.Integer id) {
+    public Queues find(Integer id) {
 
         final Queues result = dao.find(id);
         logger.info("find(Queues) - exited - return value={} result ");

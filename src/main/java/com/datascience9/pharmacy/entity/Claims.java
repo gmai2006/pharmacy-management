@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +24,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "claims")
 public class Claims implements Serializable {
-    private static final long serialVersionUID = 176284555407952599L;
+    private static final long serialVersionUID = 176294189247272301L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -42,12 +40,12 @@ public class Claims implements Serializable {
     /** Description: payer_name. */
     @Basic
     @Column(name = "payer_name")
-    private java.lang.String payerName;
+    private String payerName;
 
     /** Description: claim_status. */
     @Basic
     @Column(name = "claim_status")
-    private java.lang.String claimStatus;
+    private String claimStatus;
 
     /** Description: submitted_at. */
     @Basic
@@ -82,11 +80,11 @@ public class Claims implements Serializable {
         return this.prescriptionId;
     }
 
-    public java.lang.String getPayerName() {
+    public String getPayerName() {
         return this.payerName;
     }
 
-    public java.lang.String getClaimStatus() {
+    public String getClaimStatus() {
         return this.claimStatus;
     }
 
@@ -94,11 +92,11 @@ public class Claims implements Serializable {
         return this.submittedAt;
     }
 
-    public java.util.Map<String, Object> getResponse() {
+    public Map<String, Object> getResponse() {
         return this.response;
     }
 
-    public java.util.Map<String, Object> getFiscalFields() {
+    public Map<String, Object> getFiscalFields() {
         return this.fiscalFields;
     }
 
@@ -106,11 +104,11 @@ public class Claims implements Serializable {
         this.prescriptionId = prescriptionId;
     }
 
-    public void setPayerName(java.lang.String payerName) {
+    public void setPayerName(String payerName) {
         this.payerName = payerName;
     }
 
-    public void setClaimStatus(java.lang.String claimStatus) {
+    public void setClaimStatus(String claimStatus) {
         this.claimStatus = claimStatus;
     }
 
@@ -118,11 +116,11 @@ public class Claims implements Serializable {
         this.submittedAt = submittedAt;
     }
 
-    public void setResponse(java.util.Map<String, Object> response) {
+    public void setResponse(Map<String, Object> response) {
         this.response = response;
     }
 
-    public void setFiscalFields(java.util.Map<String, Object> fiscalFields) {
+    public void setFiscalFields(Map<String, Object> fiscalFields) {
         this.fiscalFields = fiscalFields;
     }
 

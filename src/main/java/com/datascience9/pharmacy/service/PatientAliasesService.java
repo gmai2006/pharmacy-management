@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.PatientAliases;
 import java.util.List;
 
 public interface PatientAliasesService {
-    public PatientAliases find(java.lang.Integer id);
+    public PatientAliases find(Integer id);
 
     /**
      * Select a list of PatientAliases based on a given maximum number of returning records.

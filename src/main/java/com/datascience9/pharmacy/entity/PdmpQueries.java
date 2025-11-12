@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "pdmp_queries")
 public class PdmpQueries implements Serializable {
-    private static final long serialVersionUID = 176284555409650753L;
+    private static final long serialVersionUID = 17629415365263155L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -53,23 +51,23 @@ public class PdmpQueries implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "state")
-    private java.lang.String state;
+    private String state;
 
     /** Description: query_reason. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "query_reason")
-    private java.lang.String queryReason;
+    private String queryReason;
 
     /** Description: status. */
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: response_code. */
     @Basic
     @Column(name = "response_code")
-    private java.lang.String responseCode;
+    private String responseCode;
 
     /** Description: response_payload. */
     @Basic
@@ -90,7 +88,7 @@ public class PdmpQueries implements Serializable {
     /** Description: error_message. */
     @Basic
     @Column(name = "error_message")
-    private java.lang.String errorMessage;
+    private String errorMessage;
 
     /** Description: created_at. */
     @Basic
@@ -119,23 +117,23 @@ public class PdmpQueries implements Serializable {
         return this.prescriptionId;
     }
 
-    public java.lang.String getState() {
+    public String getState() {
         return this.state;
     }
 
-    public java.lang.String getQueryReason() {
+    public String getQueryReason() {
         return this.queryReason;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public java.lang.String getResponseCode() {
+    public String getResponseCode() {
         return this.responseCode;
     }
 
-    public java.util.Map<String, Object> getResponsePayload() {
+    public Map<String, Object> getResponsePayload() {
         return this.responsePayload;
     }
 
@@ -147,7 +145,7 @@ public class PdmpQueries implements Serializable {
         return this.completedAt;
     }
 
-    public java.lang.String getErrorMessage() {
+    public String getErrorMessage() {
         return this.errorMessage;
     }
 
@@ -167,23 +165,23 @@ public class PdmpQueries implements Serializable {
         this.prescriptionId = prescriptionId;
     }
 
-    public void setState(java.lang.String state) {
+    public void setState(String state) {
         this.state = state;
     }
 
-    public void setQueryReason(java.lang.String queryReason) {
+    public void setQueryReason(String queryReason) {
         this.queryReason = queryReason;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setResponseCode(java.lang.String responseCode) {
+    public void setResponseCode(String responseCode) {
         this.responseCode = responseCode;
     }
 
-    public void setResponsePayload(java.util.Map<String, Object> responsePayload) {
+    public void setResponsePayload(Map<String, Object> responsePayload) {
         this.responsePayload = responsePayload;
     }
 
@@ -195,7 +193,7 @@ public class PdmpQueries implements Serializable {
         this.completedAt = completedAt;
     }
 
-    public void setErrorMessage(java.lang.String errorMessage) {
+    public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
 

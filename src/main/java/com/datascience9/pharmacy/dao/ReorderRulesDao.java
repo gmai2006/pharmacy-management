@@ -43,7 +43,7 @@ public class ReorderRulesDao {
      * @param id An ReorderRules id.
      * @return The same ReorderRules.
      */
-    public ReorderRules find(java.lang.Integer id) {
+    public ReorderRules find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(ReorderRules.class, id);
     }

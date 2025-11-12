@@ -43,7 +43,7 @@ public class AlertLogsDao {
      * @param id An AlertLogs id.
      * @return The same AlertLogs.
      */
-    public AlertLogs find(java.lang.Long id) {
+    public AlertLogs find(Long id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(AlertLogs.class, id);
     }

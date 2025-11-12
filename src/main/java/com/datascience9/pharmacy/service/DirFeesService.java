@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.DirFees;
 import java.util.List;
 
 public interface DirFeesService {
-    public DirFees find(java.lang.Long id);
+    public DirFees find(Long id);
 
     /**
      * Select a list of DirFees based on a given maximum number of returning records.

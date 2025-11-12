@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.Wholesalers;
 import java.util.List;
 
 public interface WholesalersService {
-    public Wholesalers find(java.lang.Integer id);
+    public Wholesalers find(Integer id);
 
     /**
      * Select a list of Wholesalers based on a given maximum number of returning records.

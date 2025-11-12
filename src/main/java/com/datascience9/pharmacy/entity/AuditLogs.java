@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,18 +22,18 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "audit_logs")
 public class AuditLogs implements Serializable {
-    private static final long serialVersionUID = 176284555409168892L;
+    private static final long serialVersionUID = 176294153652384373L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Long id;
+    private Long id;
 
     /** Description: entity_type. */
     @Basic
     @Column(name = "entity_type")
-    private java.lang.String entityType;
+    private String entityType;
 
     /** Description: entity_id. */
     @Basic
@@ -50,7 +48,7 @@ public class AuditLogs implements Serializable {
     /** Description: action. */
     @Basic
     @Column(name = "action")
-    private java.lang.String action;
+    private String action;
 
     /** Description: payload. */
     @Basic
@@ -61,12 +59,12 @@ public class AuditLogs implements Serializable {
     /** Description: ip_address. */
     @Basic
     @Column(name = "ip_address")
-    private java.lang.String ipAddress;
+    private String ipAddress;
 
     /** Description: user_agent. */
     @Basic
     @Column(name = "user_agent")
-    private java.lang.String userAgent;
+    private String userAgent;
 
     /** Description: created_at. */
     @Basic
@@ -75,15 +73,15 @@ public class AuditLogs implements Serializable {
 
     public AuditLogs() {}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public java.lang.String getEntityType() {
+    public String getEntityType() {
         return this.entityType;
     }
 
@@ -95,19 +93,19 @@ public class AuditLogs implements Serializable {
         return this.userId;
     }
 
-    public java.lang.String getAction() {
+    public String getAction() {
         return this.action;
     }
 
-    public java.util.Map<String, Object> getPayload() {
+    public Map<String, Object> getPayload() {
         return this.payload;
     }
 
-    public java.lang.String getIpAddress() {
+    public String getIpAddress() {
         return this.ipAddress;
     }
 
-    public java.lang.String getUserAgent() {
+    public String getUserAgent() {
         return this.userAgent;
     }
 
@@ -115,7 +113,7 @@ public class AuditLogs implements Serializable {
         return this.createdAt;
     }
 
-    public void setEntityType(java.lang.String entityType) {
+    public void setEntityType(String entityType) {
         this.entityType = entityType;
     }
 
@@ -127,19 +125,19 @@ public class AuditLogs implements Serializable {
         this.userId = userId;
     }
 
-    public void setAction(java.lang.String action) {
+    public void setAction(String action) {
         this.action = action;
     }
 
-    public void setPayload(java.util.Map<String, Object> payload) {
+    public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
 
-    public void setIpAddress(java.lang.String ipAddress) {
+    public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
     }
 
-    public void setUserAgent(java.lang.String userAgent) {
+    public void setUserAgent(String userAgent) {
         this.userAgent = userAgent;
     }
 

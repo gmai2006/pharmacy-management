@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,19 +24,19 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "wholesalers")
 public class Wholesalers implements Serializable {
-    private static final long serialVersionUID = 176284555404878700L;
+    private static final long serialVersionUID = 176294189242627137L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: name. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "name")
-    private java.lang.String name;
+    private String name;
 
     /** Description: contact. */
     @Basic
@@ -49,42 +47,42 @@ public class Wholesalers implements Serializable {
     /** Description: trading_partner_id. */
     @Basic
     @Column(name = "trading_partner_id")
-    private java.lang.String tradingPartnerId;
+    private String tradingPartnerId;
 
     @Transient List<PurchaseOrders> purchaseorders;
     @Transient List<InventoryBatches> inventorybatches;
 
     public Wholesalers() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public java.util.Map<String, Object> getContact() {
+    public Map<String, Object> getContact() {
         return this.contact;
     }
 
-    public java.lang.String getTradingPartnerId() {
+    public String getTradingPartnerId() {
         return this.tradingPartnerId;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setContact(java.util.Map<String, Object> contact) {
+    public void setContact(Map<String, Object> contact) {
         this.contact = contact;
     }
 
-    public void setTradingPartnerId(java.lang.String tradingPartnerId) {
+    public void setTradingPartnerId(String tradingPartnerId) {
         this.tradingPartnerId = tradingPartnerId;
     }
 

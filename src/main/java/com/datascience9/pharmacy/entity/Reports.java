@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "reports")
 public class Reports implements Serializable {
-    private static final long serialVersionUID = 176284555409029648L;
+    private static final long serialVersionUID = 176294153652230452L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -41,12 +39,12 @@ public class Reports implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "name")
-    private java.lang.String name;
+    private String name;
 
     /** Description: description. */
     @Basic
     @Column(name = "description")
-    private java.lang.String description;
+    private String description;
 
     /** Description: filters. */
     @Basic
@@ -79,19 +77,19 @@ public class Reports implements Serializable {
         return this.ownerId;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public java.lang.String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
-    public java.util.Map<String, Object> getFilters() {
+    public Map<String, Object> getFilters() {
         return this.filters;
     }
 
-    public java.util.Map<String, Object> getSchedule() {
+    public Map<String, Object> getSchedule() {
         return this.schedule;
     }
 
@@ -103,19 +101,19 @@ public class Reports implements Serializable {
         this.ownerId = ownerId;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(java.lang.String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setFilters(java.util.Map<String, Object> filters) {
+    public void setFilters(Map<String, Object> filters) {
         this.filters = filters;
     }
 
-    public void setSchedule(java.util.Map<String, Object> schedule) {
+    public void setSchedule(Map<String, Object> schedule) {
         this.schedule = schedule;
     }
 

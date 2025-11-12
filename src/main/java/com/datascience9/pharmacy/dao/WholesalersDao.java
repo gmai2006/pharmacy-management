@@ -43,7 +43,7 @@ public class WholesalersDao {
      * @param id An Wholesalers id.
      * @return The same Wholesalers.
      */
-    public Wholesalers find(java.lang.Integer id) {
+    public Wholesalers find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(Wholesalers.class, id);
     }

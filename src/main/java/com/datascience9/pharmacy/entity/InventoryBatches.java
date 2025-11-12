@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +21,11 @@ import java.util.List;
 @Entity
 @Table(name = "inventory_batches")
 public class InventoryBatches implements Serializable {
-    private static final long serialVersionUID = 176284555405255501L;
+    private static final long serialVersionUID = 176294189243195171L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -39,7 +37,7 @@ public class InventoryBatches implements Serializable {
     /** Description: lot_number. */
     @Basic
     @Column(name = "lot_number")
-    private java.lang.String lotNumber;
+    private String lotNumber;
 
     /** Description: expiry_date. */
     @Basic
@@ -50,17 +48,17 @@ public class InventoryBatches implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "quantity_on_hand")
-    private java.lang.Integer quantityOnHand;
+    private Integer quantityOnHand;
 
     /** Description: location. */
     @Basic
     @Column(name = "location")
-    private java.lang.String location;
+    private String location;
 
     /** Description: wholesaler_id. */
     @Basic
     @Column(name = "wholesaler_id")
-    private java.lang.Integer wholesalerId;
+    private Integer wholesalerId;
 
     /** Description: created_at. */
     @Basic
@@ -83,7 +81,7 @@ public class InventoryBatches implements Serializable {
         return this.inventoryItemId;
     }
 
-    public java.lang.String getLotNumber() {
+    public String getLotNumber() {
         return this.lotNumber;
     }
 
@@ -91,15 +89,15 @@ public class InventoryBatches implements Serializable {
         return this.expiryDate;
     }
 
-    public java.lang.Integer getQuantityOnHand() {
+    public Integer getQuantityOnHand() {
         return this.quantityOnHand;
     }
 
-    public java.lang.String getLocation() {
+    public String getLocation() {
         return this.location;
     }
 
-    public java.lang.Integer getWholesalerId() {
+    public Integer getWholesalerId() {
         return this.wholesalerId;
     }
 
@@ -111,7 +109,7 @@ public class InventoryBatches implements Serializable {
         this.inventoryItemId = inventoryItemId;
     }
 
-    public void setLotNumber(java.lang.String lotNumber) {
+    public void setLotNumber(String lotNumber) {
         this.lotNumber = lotNumber;
     }
 
@@ -119,15 +117,15 @@ public class InventoryBatches implements Serializable {
         this.expiryDate = expiryDate;
     }
 
-    public void setQuantityOnHand(java.lang.Integer quantityOnHand) {
+    public void setQuantityOnHand(Integer quantityOnHand) {
         this.quantityOnHand = quantityOnHand;
     }
 
-    public void setLocation(java.lang.String location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
-    public void setWholesalerId(java.lang.Integer wholesalerId) {
+    public void setWholesalerId(Integer wholesalerId) {
         this.wholesalerId = wholesalerId;
     }
 

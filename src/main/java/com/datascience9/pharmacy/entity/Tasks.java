@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "tasks")
 public class Tasks implements Serializable {
-    private static final long serialVersionUID = 176284555407191542L;
+    private static final long serialVersionUID = 176294189245997938L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -36,7 +34,7 @@ public class Tasks implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "object_type")
-    private java.lang.String objectType;
+    private String objectType;
 
     /** Description: object_id. */
     @jakarta.validation.constraints.NotNull
@@ -47,17 +45,17 @@ public class Tasks implements Serializable {
     /** Description: workflow_id. */
     @Basic
     @Column(name = "workflow_id")
-    private java.lang.Integer workflowId;
+    private Integer workflowId;
 
     /** Description: step_id. */
     @Basic
     @Column(name = "step_id")
-    private java.lang.Integer stepId;
+    private Integer stepId;
 
     /** Description: queue_id. */
     @Basic
     @Column(name = "queue_id")
-    private java.lang.Integer queueId;
+    private Integer queueId;
 
     /** Description: assignee. */
     @Basic
@@ -67,7 +65,7 @@ public class Tasks implements Serializable {
     /** Description: status. */
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: payload. */
     @Basic
@@ -78,7 +76,7 @@ public class Tasks implements Serializable {
     /** Description: priority. */
     @Basic
     @Column(name = "priority")
-    private java.lang.Integer priority;
+    private Integer priority;
 
     /** Description: created_at. */
     @Basic
@@ -100,7 +98,7 @@ public class Tasks implements Serializable {
         this.id = id;
     }
 
-    public java.lang.String getObjectType() {
+    public String getObjectType() {
         return this.objectType;
     }
 
@@ -108,15 +106,15 @@ public class Tasks implements Serializable {
         return this.objectId;
     }
 
-    public java.lang.Integer getWorkflowId() {
+    public Integer getWorkflowId() {
         return this.workflowId;
     }
 
-    public java.lang.Integer getStepId() {
+    public Integer getStepId() {
         return this.stepId;
     }
 
-    public java.lang.Integer getQueueId() {
+    public Integer getQueueId() {
         return this.queueId;
     }
 
@@ -124,15 +122,15 @@ public class Tasks implements Serializable {
         return this.assignee;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public java.util.Map<String, Object> getPayload() {
+    public Map<String, Object> getPayload() {
         return this.payload;
     }
 
-    public java.lang.Integer getPriority() {
+    public Integer getPriority() {
         return this.priority;
     }
 
@@ -144,7 +142,7 @@ public class Tasks implements Serializable {
         return this.dueAt;
     }
 
-    public void setObjectType(java.lang.String objectType) {
+    public void setObjectType(String objectType) {
         this.objectType = objectType;
     }
 
@@ -152,15 +150,15 @@ public class Tasks implements Serializable {
         this.objectId = objectId;
     }
 
-    public void setWorkflowId(java.lang.Integer workflowId) {
+    public void setWorkflowId(Integer workflowId) {
         this.workflowId = workflowId;
     }
 
-    public void setStepId(java.lang.Integer stepId) {
+    public void setStepId(Integer stepId) {
         this.stepId = stepId;
     }
 
-    public void setQueueId(java.lang.Integer queueId) {
+    public void setQueueId(Integer queueId) {
         this.queueId = queueId;
     }
 
@@ -168,15 +166,15 @@ public class Tasks implements Serializable {
         this.assignee = assignee;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setPayload(java.util.Map<String, Object> payload) {
+    public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
 
-    public void setPriority(java.lang.Integer priority) {
+    public void setPriority(Integer priority) {
         this.priority = priority;
     }
 

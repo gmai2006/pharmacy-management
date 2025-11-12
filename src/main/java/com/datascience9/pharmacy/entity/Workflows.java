@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,24 +24,24 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "workflows")
 public class Workflows implements Serializable {
-    private static final long serialVersionUID = 176284555406727872L;
+    private static final long serialVersionUID = 176294189245313323L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: name. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "name")
-    private java.lang.String name;
+    private String name;
 
     /** Description: description. */
     @Basic
     @Column(name = "description")
-    private java.lang.String description;
+    private String description;
 
     /** Description: config. */
     @Basic
@@ -66,23 +64,23 @@ public class Workflows implements Serializable {
 
     public Workflows() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public java.lang.String getDescription() {
+    public String getDescription() {
         return this.description;
     }
 
-    public java.util.Map<String, Object> getConfig() {
+    public Map<String, Object> getConfig() {
         return this.config;
     }
 
@@ -94,15 +92,15 @@ public class Workflows implements Serializable {
         return this.createdAt;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(java.lang.String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setConfig(java.util.Map<String, Object> config) {
+    public void setConfig(Map<String, Object> config) {
         this.config = config;
     }
 

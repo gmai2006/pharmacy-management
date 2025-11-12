@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.AlertRules;
 import java.util.List;
 
 public interface AlertRulesService {
-    public AlertRules find(java.lang.Integer id);
+    public AlertRules find(Integer id);
 
     /**
      * Select a list of AlertRules based on a given maximum number of returning records.

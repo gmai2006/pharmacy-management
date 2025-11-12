@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,49 +24,49 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "inventory_items")
 public class InventoryItems implements Serializable {
-    private static final long serialVersionUID = 176284555404918186L;
+    private static final long serialVersionUID = 176294189242822516L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
     /** Description: ndc. */
     @Basic
     @Column(name = "ndc")
-    private java.lang.String ndc;
+    private String ndc;
 
     /** Description: sku. */
     @Basic
     @Column(name = "sku")
-    private java.lang.String sku;
+    private String sku;
 
     /** Description: name. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "name")
-    private java.lang.String name;
+    private String name;
 
     /** Description: strength. */
     @Basic
     @Column(name = "strength")
-    private java.lang.String strength;
+    private String strength;
 
     /** Description: form. */
     @Basic
     @Column(name = "form")
-    private java.lang.String form;
+    private String form;
 
     /** Description: pack_size. */
     @Basic
     @Column(name = "pack_size")
-    private java.lang.Integer packSize;
+    private Integer packSize;
 
     /** Description: reorder_rule_id. */
     @Basic
     @Column(name = "reorder_rule_id")
-    private java.lang.Integer reorderRuleId;
+    private Integer reorderRuleId;
 
     /** Description: attributes. */
     @Basic
@@ -95,35 +93,35 @@ public class InventoryItems implements Serializable {
         this.id = id;
     }
 
-    public java.lang.String getNdc() {
+    public String getNdc() {
         return this.ndc;
     }
 
-    public java.lang.String getSku() {
+    public String getSku() {
         return this.sku;
     }
 
-    public java.lang.String getName() {
+    public String getName() {
         return this.name;
     }
 
-    public java.lang.String getStrength() {
+    public String getStrength() {
         return this.strength;
     }
 
-    public java.lang.String getForm() {
+    public String getForm() {
         return this.form;
     }
 
-    public java.lang.Integer getPackSize() {
+    public Integer getPackSize() {
         return this.packSize;
     }
 
-    public java.lang.Integer getReorderRuleId() {
+    public Integer getReorderRuleId() {
         return this.reorderRuleId;
     }
 
-    public java.util.Map<String, Object> getAttributes() {
+    public Map<String, Object> getAttributes() {
         return this.attributes;
     }
 
@@ -131,35 +129,35 @@ public class InventoryItems implements Serializable {
         return this.createdAt;
     }
 
-    public void setNdc(java.lang.String ndc) {
+    public void setNdc(String ndc) {
         this.ndc = ndc;
     }
 
-    public void setSku(java.lang.String sku) {
+    public void setSku(String sku) {
         this.sku = sku;
     }
 
-    public void setName(java.lang.String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setStrength(java.lang.String strength) {
+    public void setStrength(String strength) {
         this.strength = strength;
     }
 
-    public void setForm(java.lang.String form) {
+    public void setForm(String form) {
         this.form = form;
     }
 
-    public void setPackSize(java.lang.Integer packSize) {
+    public void setPackSize(Integer packSize) {
         this.packSize = packSize;
     }
 
-    public void setReorderRuleId(java.lang.Integer reorderRuleId) {
+    public void setReorderRuleId(Integer reorderRuleId) {
         this.reorderRuleId = reorderRuleId;
     }
 
-    public void setAttributes(java.util.Map<String, Object> attributes) {
+    public void setAttributes(Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 

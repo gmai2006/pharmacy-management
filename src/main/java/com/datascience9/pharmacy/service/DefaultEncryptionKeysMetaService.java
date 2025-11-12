@@ -38,7 +38,7 @@ public class DefaultEncryptionKeysMetaService implements EncryptionKeysMetaServi
 
     /** {@inheritDoc} */
     @Override
-    public EncryptionKeysMeta find(java.lang.Integer id) {
+    public EncryptionKeysMeta find(Integer id) {
 
         final EncryptionKeysMeta result = dao.find(id);
         logger.info("find(EncryptionKeysMeta) - exited - return value={} result ");

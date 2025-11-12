@@ -13,19 +13,17 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "pos_signatures")
 public class PosSignatures implements Serializable {
-    private static final long serialVersionUID = 176284555407755649L;
+    private static final long serialVersionUID = 176294189246921798L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -37,7 +35,7 @@ public class PosSignatures implements Serializable {
     /** Description: station_id. */
     @Basic
     @Column(name = "station_id")
-    private java.lang.String stationId;
+    private String stationId;
 
     /** Description: signature_data. */
     @Basic
@@ -68,7 +66,7 @@ public class PosSignatures implements Serializable {
         return this.posTransactionId;
     }
 
-    public java.lang.String getStationId() {
+    public String getStationId() {
         return this.stationId;
     }
 
@@ -88,7 +86,7 @@ public class PosSignatures implements Serializable {
         this.posTransactionId = posTransactionId;
     }
 
-    public void setStationId(java.lang.String stationId) {
+    public void setStationId(String stationId) {
         this.stationId = stationId;
     }
 

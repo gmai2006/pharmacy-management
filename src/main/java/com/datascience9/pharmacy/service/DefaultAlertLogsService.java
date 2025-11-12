@@ -38,7 +38,7 @@ public class DefaultAlertLogsService implements AlertLogsService {
 
     /** {@inheritDoc} */
     @Override
-    public AlertLogs find(java.lang.Long id) {
+    public AlertLogs find(Long id) {
 
         final AlertLogs result = dao.find(id);
         logger.info("find(AlertLogs) - exited - return value={} result ");

@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.EncryptionKeysMeta;
 import java.util.List;
 
 public interface EncryptionKeysMetaService {
-    public EncryptionKeysMeta find(java.lang.Integer id);
+    public EncryptionKeysMeta find(Integer id);
 
     /**
      * Select a list of EncryptionKeysMeta based on a given maximum number of returning records.

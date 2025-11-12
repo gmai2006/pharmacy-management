@@ -43,7 +43,7 @@ public class UserPermissionsDao {
      * @param id An UserPermissions id.
      * @return The same UserPermissions.
      */
-    public UserPermissions find(java.lang.Integer id) {
+    public UserPermissions find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(UserPermissions.class, id);
     }

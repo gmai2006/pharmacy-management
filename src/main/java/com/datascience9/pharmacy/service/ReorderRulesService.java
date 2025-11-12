@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.ReorderRules;
 import java.util.List;
 
 public interface ReorderRulesService {
-    public ReorderRules find(java.lang.Integer id);
+    public ReorderRules find(Integer id);
 
     /**
      * Select a list of ReorderRules based on a given maximum number of returning records.

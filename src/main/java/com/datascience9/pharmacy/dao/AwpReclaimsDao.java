@@ -43,7 +43,7 @@ public class AwpReclaimsDao {
      * @param id An AwpReclaims id.
      * @return The same AwpReclaims.
      */
-    public AwpReclaims find(java.lang.Long id) {
+    public AwpReclaims find(Long id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(AwpReclaims.class, id);
     }

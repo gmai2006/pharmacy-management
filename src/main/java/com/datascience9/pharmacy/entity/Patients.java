@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,30 +24,30 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "patients")
 public class Patients implements Serializable {
-    private static final long serialVersionUID = 176284555404014387L;
+    private static final long serialVersionUID = 176294189241520997L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
     /** Description: mrn. */
     @Basic
     @Column(name = "mrn")
-    private java.lang.String mrn;
+    private String mrn;
 
     /** Description: first_name. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "first_name")
-    private java.lang.String firstName;
+    private String firstName;
 
     /** Description: last_name. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "last_name")
-    private java.lang.String lastName;
+    private String lastName;
 
     /** Description: dob. */
     @Basic
@@ -59,7 +57,7 @@ public class Patients implements Serializable {
     /** Description: gender. */
     @Basic
     @Column(name = "gender")
-    private java.lang.String gender;
+    private String gender;
 
     /** Description: contact. */
     @Basic
@@ -75,12 +73,12 @@ public class Patients implements Serializable {
     /** Description: is_student_record. */
     @Basic
     @Column(name = "is_student_record")
-    private java.lang.Boolean isStudentRecord;
+    private Boolean isStudentRecord;
 
     /** Description: preferred_language. */
     @Basic
     @Column(name = "preferred_language")
-    private java.lang.String preferredLanguage;
+    private String preferredLanguage;
 
     /** Description: accessibility_preferences. */
     @Basic
@@ -93,14 +91,11 @@ public class Patients implements Serializable {
     @Column(name = "created_at")
     private java.sql.Timestamp createdAt;
 
-    @Transient List<PdmpQueries> pdmpqueries;
-    @Transient List<EfaxIncoming> efaxincoming;
+    @Transient List<PrescriptionCopays> prescriptioncopays;
     @Transient List<PatientAliases> patientaliases;
-    @Transient List<AccessLogs> accesslogs;
-    @Transient List<EfaxJobs> efaxjobs;
+    @Transient List<PatientInsurances> patientinsurances;
     @Transient List<Prescriptions> prescriptions;
     @Transient List<AlertLogs> alertlogs;
-    @Transient List<ConsentRecords> consentrecords;
     @Transient List<PosTransactions> postransactions;
 
     public Patients() {}
@@ -113,15 +108,15 @@ public class Patients implements Serializable {
         this.id = id;
     }
 
-    public java.lang.String getMrn() {
+    public String getMrn() {
         return this.mrn;
     }
 
-    public java.lang.String getFirstName() {
+    public String getFirstName() {
         return this.firstName;
     }
 
-    public java.lang.String getLastName() {
+    public String getLastName() {
         return this.lastName;
     }
 
@@ -129,11 +124,11 @@ public class Patients implements Serializable {
         return this.dob;
     }
 
-    public java.lang.String getGender() {
+    public String getGender() {
         return this.gender;
     }
 
-    public java.util.Map<String, Object> getContact() {
+    public Map<String, Object> getContact() {
         return this.contact;
     }
 
@@ -141,15 +136,15 @@ public class Patients implements Serializable {
         return this.sensitiveData;
     }
 
-    public java.lang.Boolean getIsStudentRecord() {
+    public Boolean getIsStudentRecord() {
         return this.isStudentRecord;
     }
 
-    public java.lang.String getPreferredLanguage() {
+    public String getPreferredLanguage() {
         return this.preferredLanguage;
     }
 
-    public java.util.Map<String, Object> getAccessibilityPreferences() {
+    public Map<String, Object> getAccessibilityPreferences() {
         return this.accessibilityPreferences;
     }
 
@@ -157,15 +152,15 @@ public class Patients implements Serializable {
         return this.createdAt;
     }
 
-    public void setMrn(java.lang.String mrn) {
+    public void setMrn(String mrn) {
         this.mrn = mrn;
     }
 
-    public void setFirstName(java.lang.String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public void setLastName(java.lang.String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -173,11 +168,11 @@ public class Patients implements Serializable {
         this.dob = dob;
     }
 
-    public void setGender(java.lang.String gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public void setContact(java.util.Map<String, Object> contact) {
+    public void setContact(Map<String, Object> contact) {
         this.contact = contact;
     }
 
@@ -185,16 +180,15 @@ public class Patients implements Serializable {
         this.sensitiveData = sensitiveData;
     }
 
-    public void setIsStudentRecord(java.lang.Boolean isStudentRecord) {
+    public void setIsStudentRecord(Boolean isStudentRecord) {
         this.isStudentRecord = isStudentRecord;
     }
 
-    public void setPreferredLanguage(java.lang.String preferredLanguage) {
+    public void setPreferredLanguage(String preferredLanguage) {
         this.preferredLanguage = preferredLanguage;
     }
 
-    public void setAccessibilityPreferences(
-            java.util.Map<String, Object> accessibilityPreferences) {
+    public void setAccessibilityPreferences(Map<String, Object> accessibilityPreferences) {
         this.accessibilityPreferences = accessibilityPreferences;
     }
 
@@ -202,24 +196,16 @@ public class Patients implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public List<PdmpQueries> getPdmpQueries() {
-        return this.pdmpqueries;
-    }
-
-    public List<EfaxIncoming> getEfaxIncoming() {
-        return this.efaxincoming;
+    public List<PrescriptionCopays> getPrescriptionCopays() {
+        return this.prescriptioncopays;
     }
 
     public List<PatientAliases> getPatientAliases() {
         return this.patientaliases;
     }
 
-    public List<AccessLogs> getAccessLogs() {
-        return this.accesslogs;
-    }
-
-    public List<EfaxJobs> getEfaxJobs() {
-        return this.efaxjobs;
+    public List<PatientInsurances> getPatientInsurances() {
+        return this.patientinsurances;
     }
 
     public List<Prescriptions> getPrescriptions() {
@@ -230,32 +216,20 @@ public class Patients implements Serializable {
         return this.alertlogs;
     }
 
-    public List<ConsentRecords> getConsentRecords() {
-        return this.consentrecords;
-    }
-
     public List<PosTransactions> getPosTransactions() {
         return this.postransactions;
     }
 
-    public void setPdmpQueries(List<PdmpQueries> pdmpqueries) {
-        this.pdmpqueries = new ArrayList<>(pdmpqueries);
-    }
-
-    public void setEfaxIncoming(List<EfaxIncoming> efaxincoming) {
-        this.efaxincoming = new ArrayList<>(efaxincoming);
+    public void setPrescriptionCopays(List<PrescriptionCopays> prescriptioncopays) {
+        this.prescriptioncopays = new ArrayList<>(prescriptioncopays);
     }
 
     public void setPatientAliases(List<PatientAliases> patientaliases) {
         this.patientaliases = new ArrayList<>(patientaliases);
     }
 
-    public void setAccessLogs(List<AccessLogs> accesslogs) {
-        this.accesslogs = new ArrayList<>(accesslogs);
-    }
-
-    public void setEfaxJobs(List<EfaxJobs> efaxjobs) {
-        this.efaxjobs = new ArrayList<>(efaxjobs);
+    public void setPatientInsurances(List<PatientInsurances> patientinsurances) {
+        this.patientinsurances = new ArrayList<>(patientinsurances);
     }
 
     public void setPrescriptions(List<Prescriptions> prescriptions) {
@@ -264,10 +238,6 @@ public class Patients implements Serializable {
 
     public void setAlertLogs(List<AlertLogs> alertlogs) {
         this.alertlogs = new ArrayList<>(alertlogs);
-    }
-
-    public void setConsentRecords(List<ConsentRecords> consentrecords) {
-        this.consentrecords = new ArrayList<>(consentrecords);
     }
 
     public void setPosTransactions(List<PosTransactions> postransactions) {

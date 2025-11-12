@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,13 +22,13 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "prescription_audit")
 public class PrescriptionAudit implements Serializable {
-    private static final long serialVersionUID = 176284555406652069L;
+    private static final long serialVersionUID = 176294189245283769L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Long id;
+    private Long id;
 
     /** Description: prescription_id. */
     @Basic
@@ -46,7 +44,7 @@ public class PrescriptionAudit implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "action")
-    private java.lang.String action;
+    private String action;
 
     /** Description: diff. */
     @Basic
@@ -57,7 +55,7 @@ public class PrescriptionAudit implements Serializable {
     /** Description: reason. */
     @Basic
     @Column(name = "reason")
-    private java.lang.String reason;
+    private String reason;
 
     /** Description: created_at. */
     @Basic
@@ -66,11 +64,11 @@ public class PrescriptionAudit implements Serializable {
 
     public PrescriptionAudit() {}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -82,15 +80,15 @@ public class PrescriptionAudit implements Serializable {
         return this.userId;
     }
 
-    public java.lang.String getAction() {
+    public String getAction() {
         return this.action;
     }
 
-    public java.util.Map<String, Object> getDiff() {
+    public Map<String, Object> getDiff() {
         return this.diff;
     }
 
-    public java.lang.String getReason() {
+    public String getReason() {
         return this.reason;
     }
 
@@ -106,15 +104,15 @@ public class PrescriptionAudit implements Serializable {
         this.userId = userId;
     }
 
-    public void setAction(java.lang.String action) {
+    public void setAction(String action) {
         this.action = action;
     }
 
-    public void setDiff(java.util.Map<String, Object> diff) {
+    public void setDiff(Map<String, Object> diff) {
         this.diff = diff;
     }
 
-    public void setReason(java.lang.String reason) {
+    public void setReason(String reason) {
         this.reason = reason;
     }
 

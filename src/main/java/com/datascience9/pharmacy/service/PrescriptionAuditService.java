@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.PrescriptionAudit;
 import java.util.List;
 
 public interface PrescriptionAuditService {
-    public PrescriptionAudit find(java.lang.Long id);
+    public PrescriptionAudit find(Long id);
 
     /**
      * Select a list of PrescriptionAudit based on a given maximum number of returning records.

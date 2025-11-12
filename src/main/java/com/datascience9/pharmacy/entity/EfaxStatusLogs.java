@@ -13,21 +13,19 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "efax_status_logs")
 public class EfaxStatusLogs implements Serializable {
-    private static final long serialVersionUID = 176284555410568217L;
+    private static final long serialVersionUID = 176294153653516889L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Long id;
+    private Long id;
 
     /** Description: efax_job_id. */
     @jakarta.validation.constraints.NotNull
@@ -39,17 +37,17 @@ public class EfaxStatusLogs implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: message. */
     @Basic
     @Column(name = "message")
-    private java.lang.String message;
+    private String message;
 
     /** Description: provider_code. */
     @Basic
     @Column(name = "provider_code")
-    private java.lang.String providerCode;
+    private String providerCode;
 
     /** Description: created_at. */
     @Basic
@@ -58,11 +56,11 @@ public class EfaxStatusLogs implements Serializable {
 
     public EfaxStatusLogs() {}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,15 +68,15 @@ public class EfaxStatusLogs implements Serializable {
         return this.efaxJobId;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public java.lang.String getMessage() {
+    public String getMessage() {
         return this.message;
     }
 
-    public java.lang.String getProviderCode() {
+    public String getProviderCode() {
         return this.providerCode;
     }
 
@@ -90,15 +88,15 @@ public class EfaxStatusLogs implements Serializable {
         this.efaxJobId = efaxJobId;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setMessage(java.lang.String message) {
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    public void setProviderCode(java.lang.String providerCode) {
+    public void setProviderCode(String providerCode) {
         this.providerCode = providerCode;
     }
 

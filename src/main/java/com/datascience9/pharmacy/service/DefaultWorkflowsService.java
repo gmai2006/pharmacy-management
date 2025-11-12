@@ -38,7 +38,7 @@ public class DefaultWorkflowsService implements WorkflowsService {
 
     /** {@inheritDoc} */
     @Override
-    public Workflows find(java.lang.Integer id) {
+    public Workflows find(Integer id) {
 
         final Workflows result = dao.find(id);
         logger.info("find(Workflows) - exited - return value={} result ");

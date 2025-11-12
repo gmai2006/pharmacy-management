@@ -43,7 +43,7 @@ public class PatientAliasesDao {
      * @param id An PatientAliases id.
      * @return The same PatientAliases.
      */
-    public PatientAliases find(java.lang.Integer id) {
+    public PatientAliases find(Integer id) {
         final EntityManager em = dao.getEntityManager();
         return em.find(PatientAliases.class, id);
     }

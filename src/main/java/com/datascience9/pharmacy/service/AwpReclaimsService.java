@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.AwpReclaims;
 import java.util.List;
 
 public interface AwpReclaimsService {
-    public AwpReclaims find(java.lang.Long id);
+    public AwpReclaims find(Long id);
 
     /**
      * Select a list of AwpReclaims based on a given maximum number of returning records.

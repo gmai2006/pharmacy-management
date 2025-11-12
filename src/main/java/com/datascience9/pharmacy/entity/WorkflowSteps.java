@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,28 +24,28 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "workflow_steps")
 public class WorkflowSteps implements Serializable {
-    private static final long serialVersionUID = 176284555406838232L;
+    private static final long serialVersionUID = 176294189245616627L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: workflow_id. */
     @Basic
     @Column(name = "workflow_id")
-    private java.lang.Integer workflowId;
+    private Integer workflowId;
 
     /** Description: step_key. */
     @Basic
     @Column(name = "step_key")
-    private java.lang.String stepKey;
+    private String stepKey;
 
     /** Description: display_name. */
     @Basic
     @Column(name = "display_name")
-    private java.lang.String displayName;
+    private String displayName;
 
     /** Description: config. */
     @Basic
@@ -55,52 +53,61 @@ public class WorkflowSteps implements Serializable {
     @Column(columnDefinition = "jsonb", name = "config")
     private Map<String, Object> config;
 
+    @Transient List<Prescriptions> prescriptions;
     @Transient List<Tasks> tasks;
 
     public WorkflowSteps() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public java.lang.Integer getWorkflowId() {
+    public Integer getWorkflowId() {
         return this.workflowId;
     }
 
-    public java.lang.String getStepKey() {
+    public String getStepKey() {
         return this.stepKey;
     }
 
-    public java.lang.String getDisplayName() {
+    public String getDisplayName() {
         return this.displayName;
     }
 
-    public java.util.Map<String, Object> getConfig() {
+    public Map<String, Object> getConfig() {
         return this.config;
     }
 
-    public void setWorkflowId(java.lang.Integer workflowId) {
+    public void setWorkflowId(Integer workflowId) {
         this.workflowId = workflowId;
     }
 
-    public void setStepKey(java.lang.String stepKey) {
+    public void setStepKey(String stepKey) {
         this.stepKey = stepKey;
     }
 
-    public void setDisplayName(java.lang.String displayName) {
+    public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
 
-    public void setConfig(java.util.Map<String, Object> config) {
+    public void setConfig(Map<String, Object> config) {
         this.config = config;
+    }
+
+    public List<Prescriptions> getPrescriptions() {
+        return this.prescriptions;
     }
 
     public List<Tasks> getTasks() {
         return this.tasks;
+    }
+
+    public void setPrescriptions(List<Prescriptions> prescriptions) {
+        this.prescriptions = new ArrayList<>(prescriptions);
     }
 
     public void setTasks(List<Tasks> tasks) {

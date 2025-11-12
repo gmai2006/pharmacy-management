@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -24,11 +22,11 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "prescription_transfers")
 public class PrescriptionTransfers implements Serializable {
-    private static final long serialVersionUID = 176284555406463276L;
+    private static final long serialVersionUID = 176294189244929423L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -40,17 +38,17 @@ public class PrescriptionTransfers implements Serializable {
     /** Description: transfer_type. */
     @Basic
     @Column(name = "transfer_type")
-    private java.lang.String transferType;
+    private String transferType;
 
     /** Description: provider. */
     @Basic
     @Column(name = "provider")
-    private java.lang.String provider;
+    private String provider;
 
     /** Description: external_id. */
     @Basic
     @Column(name = "external_id")
-    private java.lang.String externalId;
+    private String externalId;
 
     /** Description: payload. */
     @Basic
@@ -66,12 +64,12 @@ public class PrescriptionTransfers implements Serializable {
     /** Description: status. */
     @Basic
     @Column(name = "status")
-    private java.lang.String status;
+    private String status;
 
     /** Description: signed. */
     @Basic
     @Column(name = "signed")
-    private java.lang.Boolean signed;
+    private Boolean signed;
 
     public PrescriptionTransfers() {}
 
@@ -87,19 +85,19 @@ public class PrescriptionTransfers implements Serializable {
         return this.prescriptionId;
     }
 
-    public java.lang.String getTransferType() {
+    public String getTransferType() {
         return this.transferType;
     }
 
-    public java.lang.String getProvider() {
+    public String getProvider() {
         return this.provider;
     }
 
-    public java.lang.String getExternalId() {
+    public String getExternalId() {
         return this.externalId;
     }
 
-    public java.util.Map<String, Object> getPayload() {
+    public Map<String, Object> getPayload() {
         return this.payload;
     }
 
@@ -107,11 +105,11 @@ public class PrescriptionTransfers implements Serializable {
         return this.transmittedAt;
     }
 
-    public java.lang.String getStatus() {
+    public String getStatus() {
         return this.status;
     }
 
-    public java.lang.Boolean getSigned() {
+    public Boolean getSigned() {
         return this.signed;
     }
 
@@ -119,19 +117,19 @@ public class PrescriptionTransfers implements Serializable {
         this.prescriptionId = prescriptionId;
     }
 
-    public void setTransferType(java.lang.String transferType) {
+    public void setTransferType(String transferType) {
         this.transferType = transferType;
     }
 
-    public void setProvider(java.lang.String provider) {
+    public void setProvider(String provider) {
         this.provider = provider;
     }
 
-    public void setExternalId(java.lang.String externalId) {
+    public void setExternalId(String externalId) {
         this.externalId = externalId;
     }
 
-    public void setPayload(java.util.Map<String, Object> payload) {
+    public void setPayload(Map<String, Object> payload) {
         this.payload = payload;
     }
 
@@ -139,11 +137,11 @@ public class PrescriptionTransfers implements Serializable {
         this.transmittedAt = transmittedAt;
     }
 
-    public void setStatus(java.lang.String status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setSigned(java.lang.Boolean signed) {
+    public void setSigned(Boolean signed) {
         this.signed = signed;
     }
 }

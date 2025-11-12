@@ -13,21 +13,19 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "user_permissions")
 public class UserPermissions implements Serializable {
-    private static final long serialVersionUID = 176284555403836072L;
+    private static final long serialVersionUID = 176294189241250871L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Integer id;
+    private Integer id;
 
     /** Description: user_id. */
     @Basic
@@ -38,13 +36,13 @@ public class UserPermissions implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "permission_key")
-    private java.lang.String permissionKey;
+    private String permissionKey;
 
     /** Description: granted. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "granted")
-    private java.lang.Boolean granted;
+    private Boolean granted;
 
     /** Description: granted_at. */
     @Basic
@@ -53,11 +51,11 @@ public class UserPermissions implements Serializable {
 
     public UserPermissions() {}
 
-    public java.lang.Integer getId() {
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -65,11 +63,11 @@ public class UserPermissions implements Serializable {
         return this.userId;
     }
 
-    public java.lang.String getPermissionKey() {
+    public String getPermissionKey() {
         return this.permissionKey;
     }
 
-    public java.lang.Boolean getGranted() {
+    public Boolean getGranted() {
         return this.granted;
     }
 
@@ -81,11 +79,11 @@ public class UserPermissions implements Serializable {
         this.userId = userId;
     }
 
-    public void setPermissionKey(java.lang.String permissionKey) {
+    public void setPermissionKey(String permissionKey) {
         this.permissionKey = permissionKey;
     }
 
-    public void setGranted(java.lang.Boolean granted) {
+    public void setGranted(Boolean granted) {
         this.granted = granted;
     }
 

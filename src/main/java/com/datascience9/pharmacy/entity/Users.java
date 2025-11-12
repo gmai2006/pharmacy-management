@@ -13,8 +13,6 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,11 +21,11 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 public class Users implements Serializable {
-    private static final long serialVersionUID = 176284555403314811L;
+    private static final long serialVersionUID = 176294189240342867L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -35,29 +33,29 @@ public class Users implements Serializable {
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "username")
-    private java.lang.String username;
+    private String username;
 
     /** Description: display_name. */
     @Basic
     @Column(name = "display_name")
-    private java.lang.String displayName;
+    private String displayName;
 
     /** Description: email. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "email")
-    private java.lang.String email;
+    private String email;
 
     /** Description: role_id. */
     @Basic
     @Column(name = "role_id")
-    private java.lang.Integer roleId;
+    private Integer roleId;
 
     /** Description: is_active. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "is_active")
-    private java.lang.Boolean isActive;
+    private Boolean isActive;
 
     /** Description: created_at. */
     @Basic
@@ -69,20 +67,15 @@ public class Users implements Serializable {
     @Column(name = "last_login_at")
     private java.sql.Timestamp lastLoginAt;
 
-    @Transient List<Reports> reports;
-    @Transient List<PdmpQueries> pdmpqueries;
     @Transient List<UserPermissions> userpermissions;
     @Transient List<PurchaseOrders> purchaseorders;
     @Transient List<Pharmacists> pharmacists;
     @Transient List<PrescriptionAudit> prescriptionaudit;
-    @Transient List<Workflows> workflows;
-    @Transient List<EfaxIncoming> efaxincoming;
     @Transient List<UserSso> usersso;
-    @Transient List<AccessLogs> accesslogs;
-    @Transient List<EfaxJobs> efaxjobs;
+    @Transient List<Workflows> workflows;
+    @Transient List<Prescriptions> prescriptions;
     @Transient List<BarcodeLabels> barcodelabels;
     @Transient List<AlertLogs> alertlogs;
-    @Transient List<ConsentRecords> consentrecords;
     @Transient List<Tasks> tasks;
     @Transient List<PosSignatures> possignatures;
 
@@ -96,23 +89,23 @@ public class Users implements Serializable {
         this.id = id;
     }
 
-    public java.lang.String getUsername() {
+    public String getUsername() {
         return this.username;
     }
 
-    public java.lang.String getDisplayName() {
+    public String getDisplayName() {
         return this.displayName;
     }
 
-    public java.lang.String getEmail() {
+    public String getEmail() {
         return this.email;
     }
 
-    public java.lang.Integer getRoleId() {
+    public Integer getRoleId() {
         return this.roleId;
     }
 
-    public java.lang.Boolean getIsActive() {
+    public Boolean getIsActive() {
         return this.isActive;
     }
 
@@ -124,23 +117,23 @@ public class Users implements Serializable {
         return this.lastLoginAt;
     }
 
-    public void setUsername(java.lang.String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setDisplayName(java.lang.String displayName) {
+    public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }
 
-    public void setEmail(java.lang.String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setRoleId(java.lang.Integer roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 
-    public void setIsActive(java.lang.Boolean isActive) {
+    public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
 
@@ -150,14 +143,6 @@ public class Users implements Serializable {
 
     public void setLastLoginAt(java.sql.Timestamp lastLoginAt) {
         this.lastLoginAt = lastLoginAt;
-    }
-
-    public List<Reports> getReports() {
-        return this.reports;
-    }
-
-    public List<PdmpQueries> getPdmpQueries() {
-        return this.pdmpqueries;
     }
 
     public List<UserPermissions> getUserPermissions() {
@@ -176,24 +161,16 @@ public class Users implements Serializable {
         return this.prescriptionaudit;
     }
 
-    public List<Workflows> getWorkflows() {
-        return this.workflows;
-    }
-
-    public List<EfaxIncoming> getEfaxIncoming() {
-        return this.efaxincoming;
-    }
-
     public List<UserSso> getUserSso() {
         return this.usersso;
     }
 
-    public List<AccessLogs> getAccessLogs() {
-        return this.accesslogs;
+    public List<Workflows> getWorkflows() {
+        return this.workflows;
     }
 
-    public List<EfaxJobs> getEfaxJobs() {
-        return this.efaxjobs;
+    public List<Prescriptions> getPrescriptions() {
+        return this.prescriptions;
     }
 
     public List<BarcodeLabels> getBarcodeLabels() {
@@ -204,24 +181,12 @@ public class Users implements Serializable {
         return this.alertlogs;
     }
 
-    public List<ConsentRecords> getConsentRecords() {
-        return this.consentrecords;
-    }
-
     public List<Tasks> getTasks() {
         return this.tasks;
     }
 
     public List<PosSignatures> getPosSignatures() {
         return this.possignatures;
-    }
-
-    public void setReports(List<Reports> reports) {
-        this.reports = new ArrayList<>(reports);
-    }
-
-    public void setPdmpQueries(List<PdmpQueries> pdmpqueries) {
-        this.pdmpqueries = new ArrayList<>(pdmpqueries);
     }
 
     public void setUserPermissions(List<UserPermissions> userpermissions) {
@@ -240,24 +205,16 @@ public class Users implements Serializable {
         this.prescriptionaudit = new ArrayList<>(prescriptionaudit);
     }
 
-    public void setWorkflows(List<Workflows> workflows) {
-        this.workflows = new ArrayList<>(workflows);
-    }
-
-    public void setEfaxIncoming(List<EfaxIncoming> efaxincoming) {
-        this.efaxincoming = new ArrayList<>(efaxincoming);
-    }
-
     public void setUserSso(List<UserSso> usersso) {
         this.usersso = new ArrayList<>(usersso);
     }
 
-    public void setAccessLogs(List<AccessLogs> accesslogs) {
-        this.accesslogs = new ArrayList<>(accesslogs);
+    public void setWorkflows(List<Workflows> workflows) {
+        this.workflows = new ArrayList<>(workflows);
     }
 
-    public void setEfaxJobs(List<EfaxJobs> efaxjobs) {
-        this.efaxjobs = new ArrayList<>(efaxjobs);
+    public void setPrescriptions(List<Prescriptions> prescriptions) {
+        this.prescriptions = new ArrayList<>(prescriptions);
     }
 
     public void setBarcodeLabels(List<BarcodeLabels> barcodelabels) {
@@ -266,10 +223,6 @@ public class Users implements Serializable {
 
     public void setAlertLogs(List<AlertLogs> alertlogs) {
         this.alertlogs = new ArrayList<>(alertlogs);
-    }
-
-    public void setConsentRecords(List<ConsentRecords> consentrecords) {
-        this.consentrecords = new ArrayList<>(consentrecords);
     }
 
     public void setTasks(List<Tasks> tasks) {

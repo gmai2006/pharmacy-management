@@ -16,7 +16,7 @@ import com.datascience9.pharmacy.entity.AuditLogs;
 import java.util.List;
 
 public interface AuditLogsService {
-    public AuditLogs find(java.lang.Long id);
+    public AuditLogs find(Long id);
 
     /**
      * Select a list of AuditLogs based on a given maximum number of returning records.

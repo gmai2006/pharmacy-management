@@ -13,21 +13,19 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "awp_reclaims")
 public class AwpReclaims implements Serializable {
-    private static final long serialVersionUID = 176284555408234458L;
+    private static final long serialVersionUID = 176294189247556359L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(name = "id")
-    private java.lang.Long id;
+    private Long id;
 
     /** Description: prescription_id. */
     @Basic
@@ -47,15 +45,15 @@ public class AwpReclaims implements Serializable {
     /** Description: notes. */
     @Basic
     @Column(name = "notes")
-    private java.lang.String notes;
+    private String notes;
 
     public AwpReclaims() {}
 
-    public java.lang.Long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(java.lang.Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -71,7 +69,7 @@ public class AwpReclaims implements Serializable {
         return this.processedAt;
     }
 
-    public java.lang.String getNotes() {
+    public String getNotes() {
         return this.notes;
     }
 
@@ -87,7 +85,7 @@ public class AwpReclaims implements Serializable {
         this.processedAt = processedAt;
     }
 
-    public void setNotes(java.lang.String notes) {
+    public void setNotes(String notes) {
         this.notes = notes;
     }
 }

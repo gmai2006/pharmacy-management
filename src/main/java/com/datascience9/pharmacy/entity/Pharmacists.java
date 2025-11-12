@@ -13,19 +13,17 @@
 package com.datascience9.pharmacy.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "pharmacists")
 public class Pharmacists implements Serializable {
-    private static final long serialVersionUID = 176284555404683013L;
+    private static final long serialVersionUID = 176294189242490930L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
-    @jakarta.persistence.Id
+    @Id
     @Column(columnDefinition = "UUID", name = "id")
     private java.util.UUID id;
 
@@ -37,17 +35,17 @@ public class Pharmacists implements Serializable {
     /** Description: license_number. */
     @Basic
     @Column(name = "license_number")
-    private java.lang.String licenseNumber;
+    private String licenseNumber;
 
     /** Description: license_state. */
     @Basic
     @Column(name = "license_state")
-    private java.lang.String licenseState;
+    private String licenseState;
 
     /** Description: active. */
     @Basic
     @Column(name = "active")
-    private java.lang.Boolean active;
+    private Boolean active;
 
     public Pharmacists() {}
 
@@ -63,15 +61,15 @@ public class Pharmacists implements Serializable {
         return this.userId;
     }
 
-    public java.lang.String getLicenseNumber() {
+    public String getLicenseNumber() {
         return this.licenseNumber;
     }
 
-    public java.lang.String getLicenseState() {
+    public String getLicenseState() {
         return this.licenseState;
     }
 
-    public java.lang.Boolean getActive() {
+    public Boolean getActive() {
         return this.active;
     }
 
@@ -79,15 +77,15 @@ public class Pharmacists implements Serializable {
         this.userId = userId;
     }
 
-    public void setLicenseNumber(java.lang.String licenseNumber) {
+    public void setLicenseNumber(String licenseNumber) {
         this.licenseNumber = licenseNumber;
     }
 
-    public void setLicenseState(java.lang.String licenseState) {
+    public void setLicenseState(String licenseState) {
         this.licenseState = licenseState;
     }
 
-    public void setActive(java.lang.Boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
 }
