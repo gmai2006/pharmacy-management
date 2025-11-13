@@ -1,49 +1,58 @@
-# Auto-generated ReadmeGenerator application from ReadmeGenerator db schema
+# Kafka
+```docker run -p 9092:9092 apache/kafka-native:4.1.0```
+# Postgres
+## Install gis extension
+1. sudo apt-get install postgresql-XX-postgis
+   e.g. sudo apt-get install postgresql-16-postgis
+2. sudo systemctl restart postgresql
+3. Go to Postgres admin
+4. ```declarative
+CREATE EXTENSION postgis;
+CREATE TABLE locations (
+id SERIAL PRIMARY KEY,
+geo GEOGRAPHY(Point, 4326),
+name VARCHAR(255)
+);
+```
 
-This application is JEE in the backend using H2 in memory data for testing. The generated code comes with a docker
-build file for generating a docker image
+# MySQL data source
+1. Download the mysql jar file from Oracle only jar file, not the bundle
+2. Create MySQL Module
+- Create the module directory structure in WildFly: 
+> $WILDFLY_HOME/modules/com/mysql/driver/main/
+- Place the MySQL JDBC JAR file in this directory and create a module.xml file:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.3" name="com.mysql.driver">
+    <resources>
+        <resource-root path="mysql-connector-java-8.0.X.jar"/>
+    </resources>
+    <dependencies>
+        <module name="javax.api"/>
+        <module name="javax.transaction.api"/>
+    </dependencies>
+</module>
+```
+**Replace mysql-connector-java-8.0.X.jar with your actual JAR filename.**
 
-## Instruction
-
-All instructions should be run in a terminal
-
-### Clone the project
-
-```git clone https://github.com/gmai2006/ReadmeGeneratortest.git```
-
-### Format the source code and build the ReadmeGeneratortest
-
-```gradle spotlessApply build copyReact buildAll```
-
-### Create a Docker image that contains Wildfly and the ReadmeGeneratortest WAR file. You must have Docker installed
-
-```sudo docker build --tag=ReadmeGeneratortest .```
-
-### Run the docker image
-
-```sudo docker run -p 8080:8080 -p 9990:9990 -it ReadmeGeneratortest```
-
-### View the generate application
-
-```http://127.0.0.1:8080/ReadmeGeneratortest/```
-
-### Load data from Excel into the DB
-
-```Initially, the database is empty.  To load the test data from Excel into DB run http://127.0.0.1:8080/ReadmeGeneratortest/rest/admin/loadata```
-
-# Development
-
-## Prerequisites
-
-- Install OpenJDK. Skip this step if you have JDK installed already
-- sudo apt update
-- sudo apt install default-jdk
-- java -version
-- Install Wildfly. Skip this step if you have Wildfly installed already
--
-WILDFLY_RELEASE=$(curl -s https://api.github.com/repos/wildfly/wildfly/releases/latest|grep tag_name|cut -d '"' -f 4) echo $
-WILDFLY_RELEASE
-- wget https://github.com/wildfly/wildfly/releases/download/${WILDFLY_RELEASE}/wildfly-${WILDFLY_RELEASE}.tar.gz
-- tar -xvf wildfly-${WILDFLY_RELEASE}.tar.gz
-- cd ./wildfly{WILDFLY_RELEASE}/bin
-- ./standalone.sh
+3. Connect to wildfly admin console
+> ./jboss-cli.sh --connect
+4. Add the driver
+>/subsystem=datasources/jdbc-driver=mysql:add(driver-name=mysql,driver-module-name=com.mysql.driver,driver-class-name=com.mysql.jdbc.Driver)
+5. Create the Datasource (CLI Method)Create the Datasource (CLI Method)
+> data-source add --name=MySQLPool --jndi-name=java:jboss/datasources/MySQLDS --driver-name=mysql --connection-url=jdbc:mysql://localhost:3306/your_database --user-name=your_user --password=your_password
+6. Test your connection
+>/subsystem=datasources/data-source=MySQLPool:test-connection-in-pool
+---
+# Postgresql
+1. Download the mysql jar file
+2. Connect to wildfly admin console
+> ./jboss-cli.sh --connect
+3. Add the PostgreSQL module
+> module add --name=org.postgres --resources=/path/to/postgresql-42.7.7.jar --dependencies=javax.api,javax.transaction.api
+4. Install JDBC drive
+> Install the JDBC driver
+5. Create a datasource
+> data-source add --jndi-name=java:jboss/datasources/PostgreSQLDS --name=PostgrePool --connection-url=jdbc:postgresql://localhost:5432/postgresdb --driver-name=postgres --user-name=postgres --password=mypassword
+6. Test connection
+> /subsystem=datasources/data-source=PostgrePool:test-connection-in-pool
