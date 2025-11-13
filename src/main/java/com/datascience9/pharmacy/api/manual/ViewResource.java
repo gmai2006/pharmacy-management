@@ -12,6 +12,8 @@
  */
 package com.datascience9.pharmacy.api.manual;
 
+import com.datascience9.pharmacy.entity.manual.ClaimProcessing;
+import com.datascience9.pharmacy.entity.manual.InventoryOverview;
 import com.datascience9.pharmacy.entity.manual.PrescriptionSummary;
 import com.datascience9.pharmacy.service.manual.ViewService;
 import jakarta.inject.Inject;
@@ -41,13 +43,49 @@ public class ViewResource {
 
     @GET
     @Path("prescriptions/{max}")
-    public List<PrescriptionSummary> findWithLimit(@PathParam("max") String max) {
+    public List<PrescriptionSummary> getPrescriptionSummary(@PathParam("max") String max) {
         int input;
         try {
             input = Integer.parseInt(max);
         } catch (NumberFormatException ex) {
             throw new WebApplicationException(Response.Status.BAD_REQUEST);
         }
-        return this.service.select(input);
+        return this.service.selectPrescriptionSummary(input);
+    }
+
+    @GET
+    @Path("inventoryview/{max}")
+    public List<InventoryOverview> getInventoryOverviews(@PathParam("max") String max) {
+        int input;
+        try {
+            input = Integer.parseInt(max);
+        } catch (NumberFormatException ex) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
+        return this.service.selectAllInventoryOverviews(input);
+    }
+
+    @GET
+    @Path("claimprocessing/{max}")
+    public List<ClaimProcessing> getClaimProcessing(@PathParam("max") String max) {
+        int input;
+        try {
+            input = Integer.parseInt(max);
+        } catch (NumberFormatException ex) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
+        return this.service.selectClaimProcessing(input);
+    }
+
+    @GET
+    @Path("inventoryneededorder/")
+    public List<InventoryOverview> reorderInventoryNeeded() {
+        return this.service.reorderInventoryNeeded();
+    }
+
+    @GET
+    @Path("inventoryexpiry/")
+    public List<InventoryOverview> expiringInventory() {
+        return this.service.expiringInventory();
     }
 }

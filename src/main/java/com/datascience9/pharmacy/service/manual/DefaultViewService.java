@@ -15,6 +15,8 @@ package com.datascience9.pharmacy.service.manual;
 import static java.util.Objects.requireNonNull;
 
 import com.datascience9.pharmacy.dao.manual.ViewDao;
+import com.datascience9.pharmacy.entity.manual.ClaimProcessing;
+import com.datascience9.pharmacy.entity.manual.InventoryOverview;
 import com.datascience9.pharmacy.entity.manual.PrescriptionSummary;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -36,11 +38,33 @@ public class DefaultViewService implements ViewService {
         this.dao = dao;
     }
 
-    public List<PrescriptionSummary> select(int max) {
-        return dao.select(max);
+    @Override
+    public List<PrescriptionSummary> selectPrescriptionSummary(int max) {
+        return dao.selectPrescriptionSummary(max);
     }
 
+    @Override
     public PrescriptionSummary findById(UUID id) {
         return dao.findById(id);
+    }
+
+    @Override
+    public List<InventoryOverview> selectAllInventoryOverviews(int max) {
+        return dao.selectAllInventoryOverviews(max);
+    }
+
+    @Override
+    public List<InventoryOverview> reorderInventoryNeeded() {
+        return dao.reorderInventoryNeeded();
+    }
+
+    @Override
+    public List<InventoryOverview> expiringInventory() {
+        return dao.expiringInventory();
+    }
+
+    @Override
+    public List<ClaimProcessing> selectClaimProcessing(int max) {
+        return dao.selectClaimProcessing(max);
     }
 }

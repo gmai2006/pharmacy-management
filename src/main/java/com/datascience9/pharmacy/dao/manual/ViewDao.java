@@ -13,6 +13,8 @@
 package com.datascience9.pharmacy.dao.manual;
 
 import com.datascience9.pharmacy.dao.core.JpaDao;
+import com.datascience9.pharmacy.entity.manual.ClaimProcessing;
+import com.datascience9.pharmacy.entity.manual.InventoryOverview;
 import com.datascience9.pharmacy.entity.manual.PrescriptionSummary;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -36,8 +38,28 @@ public class ViewDao {
 
     public ViewDao() {}
 
-    public List<PrescriptionSummary> select(int max) {
+    public List<PrescriptionSummary> selectPrescriptionSummary(int max) {
         return dao.select("SELECT p FROM PrescriptionSummary p", PrescriptionSummary.class, max);
+    }
+
+    public List<InventoryOverview> selectAllInventoryOverviews(int max) {
+        return dao.select("SELECT p FROM InventoryOverview p", InventoryOverview.class, max);
+    }
+
+    public List<ClaimProcessing> selectClaimProcessing(int max) {
+        return dao.select("SELECT p FROM ClaimProcessing p", ClaimProcessing.class, max);
+    }
+
+    public List<InventoryOverview> reorderInventoryNeeded() {
+        return dao.selectAll(
+                "SELECT p FROM InventoryOverview p where needs_reorder is true",
+                InventoryOverview.class);
+    }
+
+    public List<InventoryOverview> expiringInventory() {
+        return dao.selectAll(
+                "SELECT p FROM InventoryOverview p where daysUntilExpiry < 0",
+                InventoryOverview.class);
     }
 
     public PrescriptionSummary findById(UUID id) {
