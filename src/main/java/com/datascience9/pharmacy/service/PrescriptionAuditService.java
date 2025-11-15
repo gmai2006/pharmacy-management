@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PrescriptionAudit;
 import java.util.List;
 
 public interface PrescriptionAuditService {
-    public PrescriptionAudit find(Long id);
+    PrescriptionAudit find(Long id);
+
+    Long delete(Long id);
 
     /**
      * Select a list of PrescriptionAudit based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PrescriptionAuditService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PrescriptionAudit records.
      */
-    public List<PrescriptionAudit> select(int maxResult);
+    List<PrescriptionAudit> select(int maxResult);
 
     /**
      * Select all PrescriptionAudit.
      *
      * @return all PrescriptionAudit records.
      */
-    public List<PrescriptionAudit> selectAll();
+    List<PrescriptionAudit> selectAll();
 
     /**
      * Create PrescriptionAudit.
@@ -39,7 +41,7 @@ public interface PrescriptionAuditService {
      * @param bean The PrescriptionAudit.
      * @return The PrescriptionAudit.
      */
-    public PrescriptionAudit create(PrescriptionAudit bean);
+    PrescriptionAudit create(PrescriptionAudit bean);
 
     /**
      * Update a PrescriptionAudit.
@@ -47,5 +49,5 @@ public interface PrescriptionAuditService {
      * @param bean - The PrescriptionAudit.
      * @return PrescriptionAudit.
      */
-    public PrescriptionAudit update(PrescriptionAudit bean);
+    PrescriptionAudit update(PrescriptionAudit bean);
 }

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.UserPermissions;
 import java.util.List;
 
 public interface UserPermissionsService {
-    public UserPermissions find(Integer id);
+    UserPermissions find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of UserPermissions based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface UserPermissionsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return UserPermissions records.
      */
-    public List<UserPermissions> select(int maxResult);
+    List<UserPermissions> select(int maxResult);
 
     /**
      * Select all UserPermissions.
      *
      * @return all UserPermissions records.
      */
-    public List<UserPermissions> selectAll();
+    List<UserPermissions> selectAll();
 
     /**
      * Create UserPermissions.
@@ -39,7 +41,7 @@ public interface UserPermissionsService {
      * @param bean The UserPermissions.
      * @return The UserPermissions.
      */
-    public UserPermissions create(UserPermissions bean);
+    UserPermissions create(UserPermissions bean);
 
     /**
      * Update a UserPermissions.
@@ -47,5 +49,5 @@ public interface UserPermissionsService {
      * @param bean - The UserPermissions.
      * @return UserPermissions.
      */
-    public UserPermissions update(UserPermissions bean);
+    UserPermissions update(UserPermissions bean);
 }

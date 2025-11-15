@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.Payments;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class PaymentsDao {
      * @return The same Payments.
      */
     public Payments find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(Payments.class, id);
+        return dao.find(Payments.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An Payments id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(Payments.class, id);
+        return id;
     }
 
     /**

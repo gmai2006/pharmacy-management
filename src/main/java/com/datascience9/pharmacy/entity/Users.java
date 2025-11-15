@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,8 +21,9 @@ import java.util.List;
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "users")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Users implements Serializable {
-    private static final long serialVersionUID = 176294189240342867L;
+    private static final long serialVersionUID = 176311132686045706L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -67,15 +69,22 @@ public class Users implements Serializable {
     @Column(name = "last_login_at")
     private java.sql.Timestamp lastLoginAt;
 
+    @Transient List<Reports> reports;
+    @Transient List<PdmpQueries> pdmpqueries;
     @Transient List<UserPermissions> userpermissions;
     @Transient List<PurchaseOrders> purchaseorders;
     @Transient List<Pharmacists> pharmacists;
     @Transient List<PrescriptionAudit> prescriptionaudit;
-    @Transient List<UserSso> usersso;
     @Transient List<Workflows> workflows;
+    @Transient List<PrescriptionWorkflowLogs> prescriptionworkflowlogs;
+    @Transient List<EfaxIncoming> efaxincoming;
+    @Transient List<UserSso> usersso;
+    @Transient List<AccessLogs> accesslogs;
+    @Transient List<EfaxJobs> efaxjobs;
     @Transient List<Prescriptions> prescriptions;
     @Transient List<BarcodeLabels> barcodelabels;
     @Transient List<AlertLogs> alertlogs;
+    @Transient List<ConsentRecords> consentrecords;
     @Transient List<Tasks> tasks;
     @Transient List<PosSignatures> possignatures;
 
@@ -145,6 +154,14 @@ public class Users implements Serializable {
         this.lastLoginAt = lastLoginAt;
     }
 
+    public List<Reports> getReports() {
+        return this.reports;
+    }
+
+    public List<PdmpQueries> getPdmpQueries() {
+        return this.pdmpqueries;
+    }
+
     public List<UserPermissions> getUserPermissions() {
         return this.userpermissions;
     }
@@ -161,12 +178,28 @@ public class Users implements Serializable {
         return this.prescriptionaudit;
     }
 
+    public List<Workflows> getWorkflows() {
+        return this.workflows;
+    }
+
+    public List<PrescriptionWorkflowLogs> getPrescriptionWorkflowLogs() {
+        return this.prescriptionworkflowlogs;
+    }
+
+    public List<EfaxIncoming> getEfaxIncoming() {
+        return this.efaxincoming;
+    }
+
     public List<UserSso> getUserSso() {
         return this.usersso;
     }
 
-    public List<Workflows> getWorkflows() {
-        return this.workflows;
+    public List<AccessLogs> getAccessLogs() {
+        return this.accesslogs;
+    }
+
+    public List<EfaxJobs> getEfaxJobs() {
+        return this.efaxjobs;
     }
 
     public List<Prescriptions> getPrescriptions() {
@@ -181,12 +214,24 @@ public class Users implements Serializable {
         return this.alertlogs;
     }
 
+    public List<ConsentRecords> getConsentRecords() {
+        return this.consentrecords;
+    }
+
     public List<Tasks> getTasks() {
         return this.tasks;
     }
 
     public List<PosSignatures> getPosSignatures() {
         return this.possignatures;
+    }
+
+    public void setReports(List<Reports> reports) {
+        this.reports = new ArrayList<>(reports);
+    }
+
+    public void setPdmpQueries(List<PdmpQueries> pdmpqueries) {
+        this.pdmpqueries = new ArrayList<>(pdmpqueries);
     }
 
     public void setUserPermissions(List<UserPermissions> userpermissions) {
@@ -205,12 +250,29 @@ public class Users implements Serializable {
         this.prescriptionaudit = new ArrayList<>(prescriptionaudit);
     }
 
+    public void setWorkflows(List<Workflows> workflows) {
+        this.workflows = new ArrayList<>(workflows);
+    }
+
+    public void setPrescriptionWorkflowLogs(
+            List<PrescriptionWorkflowLogs> prescriptionworkflowlogs) {
+        this.prescriptionworkflowlogs = new ArrayList<>(prescriptionworkflowlogs);
+    }
+
+    public void setEfaxIncoming(List<EfaxIncoming> efaxincoming) {
+        this.efaxincoming = new ArrayList<>(efaxincoming);
+    }
+
     public void setUserSso(List<UserSso> usersso) {
         this.usersso = new ArrayList<>(usersso);
     }
 
-    public void setWorkflows(List<Workflows> workflows) {
-        this.workflows = new ArrayList<>(workflows);
+    public void setAccessLogs(List<AccessLogs> accesslogs) {
+        this.accesslogs = new ArrayList<>(accesslogs);
+    }
+
+    public void setEfaxJobs(List<EfaxJobs> efaxjobs) {
+        this.efaxjobs = new ArrayList<>(efaxjobs);
     }
 
     public void setPrescriptions(List<Prescriptions> prescriptions) {
@@ -223,6 +285,10 @@ public class Users implements Serializable {
 
     public void setAlertLogs(List<AlertLogs> alertlogs) {
         this.alertlogs = new ArrayList<>(alertlogs);
+    }
+
+    public void setConsentRecords(List<ConsentRecords> consentrecords) {
+        this.consentrecords = new ArrayList<>(consentrecords);
     }
 
     public void setTasks(List<Tasks> tasks) {

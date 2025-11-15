@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Map;
@@ -21,8 +22,9 @@ import org.hibernate.type.SqlTypes;
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "user_sso")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserSso implements Serializable {
-    private static final long serialVersionUID = 176294189240986533L;
+    private static final long serialVersionUID = 176311132686470397L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

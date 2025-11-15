@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,8 +21,9 @@ import java.util.List;
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "inventory_batches")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class InventoryBatches implements Serializable {
-    private static final long serialVersionUID = 176294189243195171L;
+    private static final long serialVersionUID = 176311132687957900L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -65,6 +67,11 @@ public class InventoryBatches implements Serializable {
     @Column(name = "created_at")
     private java.sql.Timestamp createdAt;
 
+    /** Description: last_order. */
+    @Basic
+    @Column(name = "last_order")
+    private java.sql.Timestamp lastOrder;
+
     @Transient List<DscsaSerials> dscsaserials;
 
     public InventoryBatches() {}
@@ -105,6 +112,10 @@ public class InventoryBatches implements Serializable {
         return this.createdAt;
     }
 
+    public java.sql.Timestamp getLastOrder() {
+        return this.lastOrder;
+    }
+
     public void setInventoryItemId(java.util.UUID inventoryItemId) {
         this.inventoryItemId = inventoryItemId;
     }
@@ -131,6 +142,10 @@ public class InventoryBatches implements Serializable {
 
     public void setCreatedAt(java.sql.Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public void setLastOrder(java.sql.Timestamp lastOrder) {
+        this.lastOrder = lastOrder;
     }
 
     public List<DscsaSerials> getDscsaSerials() {

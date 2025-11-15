@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.PrescriptionAudit;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class PrescriptionAuditDao {
      * @return The same PrescriptionAudit.
      */
     public PrescriptionAudit find(Long id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(PrescriptionAudit.class, id);
+        return dao.find(PrescriptionAudit.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An PrescriptionAudit id.
+     * @return The Id.
+     */
+    public Long delete(Long id) {
+        dao.delete(PrescriptionAudit.class, id);
+        return id;
     }
 
     /**

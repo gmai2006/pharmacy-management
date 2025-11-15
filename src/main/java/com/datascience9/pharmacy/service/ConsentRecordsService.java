@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.ConsentRecords;
 import java.util.List;
 
 public interface ConsentRecordsService {
-    public ConsentRecords find(java.util.UUID id);
+    ConsentRecords find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of ConsentRecords based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface ConsentRecordsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return ConsentRecords records.
      */
-    public List<ConsentRecords> select(int maxResult);
+    List<ConsentRecords> select(int maxResult);
 
     /**
      * Select all ConsentRecords.
      *
      * @return all ConsentRecords records.
      */
-    public List<ConsentRecords> selectAll();
+    List<ConsentRecords> selectAll();
 
     /**
      * Create ConsentRecords.
@@ -39,7 +41,7 @@ public interface ConsentRecordsService {
      * @param bean The ConsentRecords.
      * @return The ConsentRecords.
      */
-    public ConsentRecords create(ConsentRecords bean);
+    ConsentRecords create(ConsentRecords bean);
 
     /**
      * Update a ConsentRecords.
@@ -47,5 +49,5 @@ public interface ConsentRecordsService {
      * @param bean - The ConsentRecords.
      * @return ConsentRecords.
      */
-    public ConsentRecords update(ConsentRecords bean);
+    ConsentRecords update(ConsentRecords bean);
 }

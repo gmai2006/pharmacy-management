@@ -46,6 +46,12 @@ public class DefaultPdmpQueriesService implements PdmpQueriesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<PdmpQueries> select(int maxResult) {
         final List<PdmpQueries> result = dao.select(maxResult);
         logger.info("select(PdmpQueries) - exited - return value={} result ");

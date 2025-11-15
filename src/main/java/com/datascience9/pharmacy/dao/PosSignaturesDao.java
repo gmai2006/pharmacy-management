@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.PosSignatures;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class PosSignaturesDao {
      * @return The same PosSignatures.
      */
     public PosSignatures find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(PosSignatures.class, id);
+        return dao.find(PosSignatures.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An PosSignatures id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(PosSignatures.class, id);
+        return id;
     }
 
     /**

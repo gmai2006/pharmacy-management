@@ -46,6 +46,12 @@ public class DefaultEfaxIncomingService implements EfaxIncomingService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<EfaxIncoming> select(int maxResult) {
         final List<EfaxIncoming> result = dao.select(maxResult);
         logger.info("select(EfaxIncoming) - exited - return value={} result ");

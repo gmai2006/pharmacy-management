@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Workflows;
 import java.util.List;
 
 public interface WorkflowsService {
-    public Workflows find(Integer id);
+    Workflows find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of Workflows based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface WorkflowsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Workflows records.
      */
-    public List<Workflows> select(int maxResult);
+    List<Workflows> select(int maxResult);
 
     /**
      * Select all Workflows.
      *
      * @return all Workflows records.
      */
-    public List<Workflows> selectAll();
+    List<Workflows> selectAll();
 
     /**
      * Create Workflows.
@@ -39,7 +41,7 @@ public interface WorkflowsService {
      * @param bean The Workflows.
      * @return The Workflows.
      */
-    public Workflows create(Workflows bean);
+    Workflows create(Workflows bean);
 
     /**
      * Update a Workflows.
@@ -47,5 +49,5 @@ public interface WorkflowsService {
      * @param bean - The Workflows.
      * @return Workflows.
      */
-    public Workflows update(Workflows bean);
+    Workflows update(Workflows bean);
 }

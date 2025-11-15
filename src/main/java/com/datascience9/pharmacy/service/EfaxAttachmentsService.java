@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.EfaxAttachments;
 import java.util.List;
 
 public interface EfaxAttachmentsService {
-    public EfaxAttachments find(java.util.UUID id);
+    EfaxAttachments find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of EfaxAttachments based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface EfaxAttachmentsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return EfaxAttachments records.
      */
-    public List<EfaxAttachments> select(int maxResult);
+    List<EfaxAttachments> select(int maxResult);
 
     /**
      * Select all EfaxAttachments.
      *
      * @return all EfaxAttachments records.
      */
-    public List<EfaxAttachments> selectAll();
+    List<EfaxAttachments> selectAll();
 
     /**
      * Create EfaxAttachments.
@@ -39,7 +41,7 @@ public interface EfaxAttachmentsService {
      * @param bean The EfaxAttachments.
      * @return The EfaxAttachments.
      */
-    public EfaxAttachments create(EfaxAttachments bean);
+    EfaxAttachments create(EfaxAttachments bean);
 
     /**
      * Update a EfaxAttachments.
@@ -47,5 +49,5 @@ public interface EfaxAttachmentsService {
      * @param bean - The EfaxAttachments.
      * @return EfaxAttachments.
      */
-    public EfaxAttachments update(EfaxAttachments bean);
+    EfaxAttachments update(EfaxAttachments bean);
 }

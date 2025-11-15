@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.PrescriptionClaims;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class PrescriptionClaimsDao {
      * @return The same PrescriptionClaims.
      */
     public PrescriptionClaims find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(PrescriptionClaims.class, id);
+        return dao.find(PrescriptionClaims.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An PrescriptionClaims id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(PrescriptionClaims.class, id);
+        return id;
     }
 
     /**

@@ -46,6 +46,12 @@ public class DefaultInventoryItemsService implements InventoryItemsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<InventoryItems> select(int maxResult) {
         final List<InventoryItems> result = dao.select(maxResult);
         logger.info("select(InventoryItems) - exited - return value={} result ");

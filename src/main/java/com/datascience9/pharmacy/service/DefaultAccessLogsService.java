@@ -46,6 +46,12 @@ public class DefaultAccessLogsService implements AccessLogsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Long delete(Long id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<AccessLogs> select(int maxResult) {
         final List<AccessLogs> result = dao.select(maxResult);
         logger.info("select(AccessLogs) - exited - return value={} result ");

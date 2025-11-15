@@ -46,6 +46,12 @@ public class DefaultAwpReclaimsService implements AwpReclaimsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Long delete(Long id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<AwpReclaims> select(int maxResult) {
         final List<AwpReclaims> result = dao.select(maxResult);
         logger.info("select(AwpReclaims) - exited - return value={} result ");

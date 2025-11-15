@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Roles;
 import java.util.List;
 
 public interface RolesService {
-    public Roles find(Integer id);
+    Roles find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of Roles based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface RolesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Roles records.
      */
-    public List<Roles> select(int maxResult);
+    List<Roles> select(int maxResult);
 
     /**
      * Select all Roles.
      *
      * @return all Roles records.
      */
-    public List<Roles> selectAll();
+    List<Roles> selectAll();
 
     /**
      * Create Roles.
@@ -39,7 +41,7 @@ public interface RolesService {
      * @param bean The Roles.
      * @return The Roles.
      */
-    public Roles create(Roles bean);
+    Roles create(Roles bean);
 
     /**
      * Update a Roles.
@@ -47,5 +49,5 @@ public interface RolesService {
      * @param bean - The Roles.
      * @return Roles.
      */
-    public Roles update(Roles bean);
+    Roles update(Roles bean);
 }

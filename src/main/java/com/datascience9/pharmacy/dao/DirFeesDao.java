@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.DirFees;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class DirFeesDao {
      * @return The same DirFees.
      */
     public DirFees find(Long id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(DirFees.class, id);
+        return dao.find(DirFees.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An DirFees id.
+     * @return The Id.
+     */
+    public Long delete(Long id) {
+        dao.delete(DirFees.class, id);
+        return id;
     }
 
     /**

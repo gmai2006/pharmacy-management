@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PatientAliases;
 import java.util.List;
 
 public interface PatientAliasesService {
-    public PatientAliases find(Integer id);
+    PatientAliases find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of PatientAliases based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PatientAliasesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PatientAliases records.
      */
-    public List<PatientAliases> select(int maxResult);
+    List<PatientAliases> select(int maxResult);
 
     /**
      * Select all PatientAliases.
      *
      * @return all PatientAliases records.
      */
-    public List<PatientAliases> selectAll();
+    List<PatientAliases> selectAll();
 
     /**
      * Create PatientAliases.
@@ -39,7 +41,7 @@ public interface PatientAliasesService {
      * @param bean The PatientAliases.
      * @return The PatientAliases.
      */
-    public PatientAliases create(PatientAliases bean);
+    PatientAliases create(PatientAliases bean);
 
     /**
      * Update a PatientAliases.
@@ -47,5 +49,5 @@ public interface PatientAliasesService {
      * @param bean - The PatientAliases.
      * @return PatientAliases.
      */
-    public PatientAliases update(PatientAliases bean);
+    PatientAliases update(PatientAliases bean);
 }

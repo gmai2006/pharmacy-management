@@ -46,6 +46,12 @@ public class DefaultPrescriptionsService implements PrescriptionsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Prescriptions> select(int maxResult) {
         final List<Prescriptions> result = dao.select(maxResult);
         logger.info("select(Prescriptions) - exited - return value={} result ");

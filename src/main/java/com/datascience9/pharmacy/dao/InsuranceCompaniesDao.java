@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.InsuranceCompanies;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class InsuranceCompaniesDao {
      * @return The same InsuranceCompanies.
      */
     public InsuranceCompanies find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(InsuranceCompanies.class, id);
+        return dao.find(InsuranceCompanies.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An InsuranceCompanies id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(InsuranceCompanies.class, id);
+        return id;
     }
 
     /**

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Payments;
 import java.util.List;
 
 public interface PaymentsService {
-    public Payments find(java.util.UUID id);
+    Payments find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of Payments based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PaymentsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Payments records.
      */
-    public List<Payments> select(int maxResult);
+    List<Payments> select(int maxResult);
 
     /**
      * Select all Payments.
      *
      * @return all Payments records.
      */
-    public List<Payments> selectAll();
+    List<Payments> selectAll();
 
     /**
      * Create Payments.
@@ -39,7 +41,7 @@ public interface PaymentsService {
      * @param bean The Payments.
      * @return The Payments.
      */
-    public Payments create(Payments bean);
+    Payments create(Payments bean);
 
     /**
      * Update a Payments.
@@ -47,5 +49,5 @@ public interface PaymentsService {
      * @param bean - The Payments.
      * @return Payments.
      */
-    public Payments update(Payments bean);
+    Payments update(Payments bean);
 }

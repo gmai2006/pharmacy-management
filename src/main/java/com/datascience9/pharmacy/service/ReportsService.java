@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Reports;
 import java.util.List;
 
 public interface ReportsService {
-    public Reports find(java.util.UUID id);
+    Reports find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of Reports based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface ReportsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Reports records.
      */
-    public List<Reports> select(int maxResult);
+    List<Reports> select(int maxResult);
 
     /**
      * Select all Reports.
      *
      * @return all Reports records.
      */
-    public List<Reports> selectAll();
+    List<Reports> selectAll();
 
     /**
      * Create Reports.
@@ -39,7 +41,7 @@ public interface ReportsService {
      * @param bean The Reports.
      * @return The Reports.
      */
-    public Reports create(Reports bean);
+    Reports create(Reports bean);
 
     /**
      * Update a Reports.
@@ -47,5 +49,5 @@ public interface ReportsService {
      * @param bean - The Reports.
      * @return Reports.
      */
-    public Reports update(Reports bean);
+    Reports update(Reports bean);
 }

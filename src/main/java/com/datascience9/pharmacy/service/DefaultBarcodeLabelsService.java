@@ -46,6 +46,12 @@ public class DefaultBarcodeLabelsService implements BarcodeLabelsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<BarcodeLabels> select(int maxResult) {
         final List<BarcodeLabels> result = dao.select(maxResult);
         logger.info("select(BarcodeLabels) - exited - return value={} result ");

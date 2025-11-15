@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.InventoryItems;
 import java.util.List;
 
 public interface InventoryItemsService {
-    public InventoryItems find(java.util.UUID id);
+    InventoryItems find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of InventoryItems based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface InventoryItemsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return InventoryItems records.
      */
-    public List<InventoryItems> select(int maxResult);
+    List<InventoryItems> select(int maxResult);
 
     /**
      * Select all InventoryItems.
      *
      * @return all InventoryItems records.
      */
-    public List<InventoryItems> selectAll();
+    List<InventoryItems> selectAll();
 
     /**
      * Create InventoryItems.
@@ -39,7 +41,7 @@ public interface InventoryItemsService {
      * @param bean The InventoryItems.
      * @return The InventoryItems.
      */
-    public InventoryItems create(InventoryItems bean);
+    InventoryItems create(InventoryItems bean);
 
     /**
      * Update a InventoryItems.
@@ -47,5 +49,5 @@ public interface InventoryItemsService {
      * @param bean - The InventoryItems.
      * @return InventoryItems.
      */
-    public InventoryItems update(InventoryItems bean);
+    InventoryItems update(InventoryItems bean);
 }

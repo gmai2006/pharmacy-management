@@ -46,6 +46,12 @@ public class DefaultReportsService implements ReportsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Reports> select(int maxResult) {
         final List<Reports> result = dao.select(maxResult);
         logger.info("select(Reports) - exited - return value={} result ");

@@ -56,3 +56,7 @@ name VARCHAR(255)
 > data-source add --jndi-name=java:jboss/datasources/PostgreSQLDS --name=PostgrePool --connection-url=jdbc:postgresql://localhost:5432/postgresdb --driver-name=postgres --user-name=postgres --password=mypassword
 6. Test connection
 > /subsystem=datasources/data-source=PostgrePool:test-connection-in-pool
+> 
+# Back up and restore the DB
+```pg_dump -U username -W -h localhost database_name > backup.sql```
+```pg_restore -U username -d database_name backup.dump```

@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.EfaxStatusLogs;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class EfaxStatusLogsDao {
      * @return The same EfaxStatusLogs.
      */
     public EfaxStatusLogs find(Long id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(EfaxStatusLogs.class, id);
+        return dao.find(EfaxStatusLogs.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An EfaxStatusLogs id.
+     * @return The Id.
+     */
+    public Long delete(Long id) {
+        dao.delete(EfaxStatusLogs.class, id);
+        return id;
     }
 
     /**

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PrescriptionTransfers;
 import java.util.List;
 
 public interface PrescriptionTransfersService {
-    public PrescriptionTransfers find(java.util.UUID id);
+    PrescriptionTransfers find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of PrescriptionTransfers based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PrescriptionTransfersService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PrescriptionTransfers records.
      */
-    public List<PrescriptionTransfers> select(int maxResult);
+    List<PrescriptionTransfers> select(int maxResult);
 
     /**
      * Select all PrescriptionTransfers.
      *
      * @return all PrescriptionTransfers records.
      */
-    public List<PrescriptionTransfers> selectAll();
+    List<PrescriptionTransfers> selectAll();
 
     /**
      * Create PrescriptionTransfers.
@@ -39,7 +41,7 @@ public interface PrescriptionTransfersService {
      * @param bean The PrescriptionTransfers.
      * @return The PrescriptionTransfers.
      */
-    public PrescriptionTransfers create(PrescriptionTransfers bean);
+    PrescriptionTransfers create(PrescriptionTransfers bean);
 
     /**
      * Update a PrescriptionTransfers.
@@ -47,5 +49,5 @@ public interface PrescriptionTransfersService {
      * @param bean - The PrescriptionTransfers.
      * @return PrescriptionTransfers.
      */
-    public PrescriptionTransfers update(PrescriptionTransfers bean);
+    PrescriptionTransfers update(PrescriptionTransfers bean);
 }

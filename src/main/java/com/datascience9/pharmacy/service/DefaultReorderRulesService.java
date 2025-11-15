@@ -46,6 +46,12 @@ public class DefaultReorderRulesService implements ReorderRulesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<ReorderRules> select(int maxResult) {
         final List<ReorderRules> result = dao.select(maxResult);
         logger.info("select(ReorderRules) - exited - return value={} result ");

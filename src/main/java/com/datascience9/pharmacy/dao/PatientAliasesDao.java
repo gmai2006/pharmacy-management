@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.PatientAliases;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class PatientAliasesDao {
      * @return The same PatientAliases.
      */
     public PatientAliases find(Integer id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(PatientAliases.class, id);
+        return dao.find(PatientAliases.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An PatientAliases id.
+     * @return The Id.
+     */
+    public Integer delete(Integer id) {
+        dao.delete(PatientAliases.class, id);
+        return id;
     }
 
     /**

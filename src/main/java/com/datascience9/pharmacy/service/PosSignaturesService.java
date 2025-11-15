@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PosSignatures;
 import java.util.List;
 
 public interface PosSignaturesService {
-    public PosSignatures find(java.util.UUID id);
+    PosSignatures find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of PosSignatures based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PosSignaturesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PosSignatures records.
      */
-    public List<PosSignatures> select(int maxResult);
+    List<PosSignatures> select(int maxResult);
 
     /**
      * Select all PosSignatures.
      *
      * @return all PosSignatures records.
      */
-    public List<PosSignatures> selectAll();
+    List<PosSignatures> selectAll();
 
     /**
      * Create PosSignatures.
@@ -39,7 +41,7 @@ public interface PosSignaturesService {
      * @param bean The PosSignatures.
      * @return The PosSignatures.
      */
-    public PosSignatures create(PosSignatures bean);
+    PosSignatures create(PosSignatures bean);
 
     /**
      * Update a PosSignatures.
@@ -47,5 +49,5 @@ public interface PosSignaturesService {
      * @param bean - The PosSignatures.
      * @return PosSignatures.
      */
-    public PosSignatures update(PosSignatures bean);
+    PosSignatures update(PosSignatures bean);
 }

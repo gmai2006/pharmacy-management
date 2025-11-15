@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.EfaxIncoming;
 import java.util.List;
 
 public interface EfaxIncomingService {
-    public EfaxIncoming find(java.util.UUID id);
+    EfaxIncoming find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of EfaxIncoming based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface EfaxIncomingService {
      * @param maxResult : a specified maximum number of returned records.
      * @return EfaxIncoming records.
      */
-    public List<EfaxIncoming> select(int maxResult);
+    List<EfaxIncoming> select(int maxResult);
 
     /**
      * Select all EfaxIncoming.
      *
      * @return all EfaxIncoming records.
      */
-    public List<EfaxIncoming> selectAll();
+    List<EfaxIncoming> selectAll();
 
     /**
      * Create EfaxIncoming.
@@ -39,7 +41,7 @@ public interface EfaxIncomingService {
      * @param bean The EfaxIncoming.
      * @return The EfaxIncoming.
      */
-    public EfaxIncoming create(EfaxIncoming bean);
+    EfaxIncoming create(EfaxIncoming bean);
 
     /**
      * Update a EfaxIncoming.
@@ -47,5 +49,5 @@ public interface EfaxIncomingService {
      * @param bean - The EfaxIncoming.
      * @return EfaxIncoming.
      */
-    public EfaxIncoming update(EfaxIncoming bean);
+    EfaxIncoming update(EfaxIncoming bean);
 }

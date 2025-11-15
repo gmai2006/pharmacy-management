@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.IntegrationEvents;
 import java.util.List;
 
 public interface IntegrationEventsService {
-    public IntegrationEvents find(java.util.UUID id);
+    IntegrationEvents find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of IntegrationEvents based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface IntegrationEventsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return IntegrationEvents records.
      */
-    public List<IntegrationEvents> select(int maxResult);
+    List<IntegrationEvents> select(int maxResult);
 
     /**
      * Select all IntegrationEvents.
      *
      * @return all IntegrationEvents records.
      */
-    public List<IntegrationEvents> selectAll();
+    List<IntegrationEvents> selectAll();
 
     /**
      * Create IntegrationEvents.
@@ -39,7 +41,7 @@ public interface IntegrationEventsService {
      * @param bean The IntegrationEvents.
      * @return The IntegrationEvents.
      */
-    public IntegrationEvents create(IntegrationEvents bean);
+    IntegrationEvents create(IntegrationEvents bean);
 
     /**
      * Update a IntegrationEvents.
@@ -47,5 +49,5 @@ public interface IntegrationEventsService {
      * @param bean - The IntegrationEvents.
      * @return IntegrationEvents.
      */
-    public IntegrationEvents update(IntegrationEvents bean);
+    IntegrationEvents update(IntegrationEvents bean);
 }

@@ -43,7 +43,12 @@ public class ViewDao {
     }
 
     public List<InventoryOverview> selectAllInventoryOverviews(int max) {
-        return dao.select("SELECT p FROM InventoryOverview p", InventoryOverview.class, max);
+        List<InventoryOverview> result =
+                dao.select(
+                        "SELECT p FROM InventoryOverview p order by lotNumber",
+                        InventoryOverview.class,
+                        max);
+        return result;
     }
 
     public List<ClaimProcessing> selectClaimProcessing(int max) {

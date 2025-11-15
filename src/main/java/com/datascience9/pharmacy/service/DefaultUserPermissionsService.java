@@ -46,6 +46,12 @@ public class DefaultUserPermissionsService implements UserPermissionsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<UserPermissions> select(int maxResult) {
         final List<UserPermissions> result = dao.select(maxResult);
         logger.info("select(UserPermissions) - exited - return value={} result ");

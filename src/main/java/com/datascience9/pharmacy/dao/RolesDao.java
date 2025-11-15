@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.Roles;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class RolesDao {
      * @return The same Roles.
      */
     public Roles find(Integer id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(Roles.class, id);
+        return dao.find(Roles.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An Roles id.
+     * @return The Id.
+     */
+    public Integer delete(Integer id) {
+        dao.delete(Roles.class, id);
+        return id;
     }
 
     /**

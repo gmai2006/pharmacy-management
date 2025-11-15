@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.InsuranceCompanies;
 import java.util.List;
 
 public interface InsuranceCompaniesService {
-    public InsuranceCompanies find(java.util.UUID id);
+    InsuranceCompanies find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of InsuranceCompanies based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface InsuranceCompaniesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return InsuranceCompanies records.
      */
-    public List<InsuranceCompanies> select(int maxResult);
+    List<InsuranceCompanies> select(int maxResult);
 
     /**
      * Select all InsuranceCompanies.
      *
      * @return all InsuranceCompanies records.
      */
-    public List<InsuranceCompanies> selectAll();
+    List<InsuranceCompanies> selectAll();
 
     /**
      * Create InsuranceCompanies.
@@ -39,7 +41,7 @@ public interface InsuranceCompaniesService {
      * @param bean The InsuranceCompanies.
      * @return The InsuranceCompanies.
      */
-    public InsuranceCompanies create(InsuranceCompanies bean);
+    InsuranceCompanies create(InsuranceCompanies bean);
 
     /**
      * Update a InsuranceCompanies.
@@ -47,5 +49,5 @@ public interface InsuranceCompaniesService {
      * @param bean - The InsuranceCompanies.
      * @return InsuranceCompanies.
      */
-    public InsuranceCompanies update(InsuranceCompanies bean);
+    InsuranceCompanies update(InsuranceCompanies bean);
 }

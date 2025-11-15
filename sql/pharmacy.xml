@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemas>
+    <schema>
+      <table name="roles">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="description" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+
+      	<children name="users" />
+      </table>
+      <table name="users">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="username" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="display_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="email" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="role_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="is_active" type="BOOLEAN" type-name="BOOLEAN" not-null="true" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="last_login_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="reports,pdmp_queries,user_permissions,purchase_orders,pharmacists,prescription_audit,workflows,prescription_workflow_logs,efax_incoming,user_sso,access_logs,efax_jobs,prescriptions,barcode_labels,alert_logs,consent_records,tasks,pos_signatures" />
+      </table>
+      <table name="user_sso">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="user_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="provider" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="external_id" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+      <table name="user_permissions">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="user_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="permission_key" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="granted" type="BOOLEAN" type-name="BOOLEAN" not-null="true" size=""/> 
+      	<column name="granted_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="patients">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="mrn" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="first_name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="last_name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="dob" type="DATE" type-name="DATE" not-null="false" size=""/> 
+      	<column name="gender" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="contact" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="sensitive_data" type="BINARY" type-name="BINARY" not-null="false" size=""/> 
+      	<column name="is_student_record" type="BOOLEAN" type-name="BOOLEAN" not-null="false" size=""/> 
+      	<column name="preferred_language" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="accessibility_preferences" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="pdmp_queries,prescription_copays,efax_incoming,patient_aliases,patient_insurances,access_logs,efax_jobs,prescriptions,alert_logs,consent_records,pos_transactions" />
+      </table>
+      <table name="patient_aliases">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="alias_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="alias_value" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="pharmacists">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="user_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="license_number" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="license_state" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="active" type="BOOLEAN" type-name="BOOLEAN" not-null="false" size=""/> 
+
+      </table>
+      <table name="wholesalers">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="contact" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="trading_partner_id" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+
+      	<children name="purchase_orders,inventory_batches" />
+      </table>
+      <table name="inventory_items">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="ndc" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="sku" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="strength" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="form" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="pack_size" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="reorder_rule_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="attributes" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="prescription_items,reorder_rules,inventory_batches" />
+      </table>
+      <table name="inventory_batches">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="inventory_item_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="lot_number" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="expiry_date" type="DATE" type-name="DATE" not-null="false" size=""/> 
+      	<column name="quantity_on_hand" type="INTEGER" type-name="INTEGER" not-null="true" size=""/> 
+      	<column name="location" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="wholesaler_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="last_order" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="dscsa_serials" />
+      </table>
+      <table name="dscsa_serials">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="batch_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="serial_number" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="trace_metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="last_updated" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="reorder_rules">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="inventory_item_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="min_level" type="INTEGER" type-name="INTEGER" not-null="true" size=""/> 
+      	<column name="max_level" type="INTEGER" type-name="INTEGER" not-null="true" size=""/> 
+      	<column name="preferred_wholesalers" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+
+      </table>
+      <table name="purchase_orders">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="wholesaler_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="created_by" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="ordered_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="expected_arrival" type="DATE" type-name="DATE" not-null="false" size=""/> 
+      	<column name="payload" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+      <table name="prescriptions">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescriber_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="prescriber_dea" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="issue_date" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="workflow_step_id" type="INTEGER" type-name="INTEGER" not-null="true" size=""/> 
+      	<column name="priority" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="notes" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="queue_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="assigned_to" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="last_status_update" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="estimated_ready_time" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="pickup_time" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="completion_time" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="pdmp_queries,prescription_copays,prescription_audit,pos_transactions,prescription_workflow_logs,prescription_transfers,prescription_claims,efax_incoming,claims,prescription_items,efax_jobs,alert_logs,awp_reclaims" />
+      </table>
+      <table name="prescription_items">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="inventory_item_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="quantity" type="INTEGER" type-name="INTEGER" not-null="true" size=""/> 
+      	<column name="days_supply" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="sig" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="refills_allowed" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="is_controlled" type="BOOLEAN" type-name="BOOLEAN" not-null="false" size=""/> 
+      	<column name="label_options" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="barcode_labels" />
+      </table>
+      <table name="prescription_transfers">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="transfer_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="provider" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="external_id" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="payload" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="transmitted_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="signed" type="BOOLEAN" type-name="BOOLEAN" not-null="false" size=""/> 
+
+      </table>
+      <table name="prescription_audit">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="user_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="action" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="diff" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="reason" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="workflows">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="description" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="config" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="created_by" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="workflow_steps,tasks" />
+      </table>
+      <table name="workflow_steps">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="workflow_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="step_key" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="display_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="config" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      	<children name="prescriptions,tasks" />
+      </table>
+      <table name="queues">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="description" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="config" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      	<children name="task_routing,tasks" />
+      </table>
+      <table name="tasks">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="object_type" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="object_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="workflow_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="step_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="queue_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="assignee" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="payload" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="priority" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="due_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="task_routing">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="queue_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="rule_order" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="rule" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+      <table name="barcode_labels">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescription_item_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="barcode" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="label_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="generated_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="printed_by" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="print_payload" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+      <table name="pos_transactions">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="station_id" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="total_amount" type="NUMERIC" type-name="NUMERIC" not-null="true" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      	<children name="payments,pos_signatures" />
+      </table>
+      <table name="pos_signatures">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="pos_transaction_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="station_id" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="signature_data" type="BINARY" type-name="BINARY" not-null="false" size=""/> 
+      	<column name="signed_by" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="signed_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="payments">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="pos_transaction_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="payment_method" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="amount" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="payment_meta" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+      <table name="claims">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="payer_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="claim_status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="submitted_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="response" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="fiscal_fields" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      	<children name="dir_fees" />
+      </table>
+      <table name="dir_fees">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="claim_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="amount" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="reason" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="recorded_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="awp_reclaims">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="amount" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="processed_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="notes" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+
+      </table>
+      <table name="profit_audit_warnings">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="related_object_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="related_object_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="warning_code" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="description" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="alert_rules">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="description" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="rule_json" type="JSONB" type-name="JSONB" not-null="true" size=""/> 
+      	<column name="severity" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="active" type="BOOLEAN" type-name="BOOLEAN" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="alert_logs" />
+      </table>
+      <table name="alert_logs">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="alert_rule_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="triggered_by" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="context" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="action_taken" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="override_reason" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="insurance_companies">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="payer_id" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="contact_number" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="fax_number" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="email" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="address" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="city" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="state" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="zip" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="website" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="updated_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="prescription_copays,patient_insurances" />
+      </table>
+      <table name="patient_insurances">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="insurance_company_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="member_id" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="group_number" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="plan_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="effective_date" type="DATE" type-name="DATE" not-null="false" size=""/> 
+      	<column name="expiration_date" type="DATE" type-name="DATE" not-null="false" size=""/> 
+      	<column name="coverage_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="copay_fixed" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="copay_percent" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="deductible" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="out_of_pocket_max" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="updated_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="prescription_claims" />
+      </table>
+      <table name="prescription_claims">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="patient_insurance_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="claim_number" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="claim_status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="claim_date" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="billed_amount" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="reimbursed_amount" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="patient_responsibility" type="NUMERIC" type-name="NUMERIC" not-null="false" size=""/> 
+      	<column name="rejection_code" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="rejection_reason" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="prior_authorization_number" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="adjudication_data" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="updated_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="prescription_copays" />
+      </table>
+      <table name="prescription_copays">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="insurance_company_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="claim_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="copay_amount" type="NUMERIC" type-name="NUMERIC" not-null="true" size=""/> 
+      	<column name="copay_status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="payment_method" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="payment_reference" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="paid_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="prescription_workflow_logs">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="from_status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="to_status" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="queue_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="changed_by" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="change_reason" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="changed_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+      <table name="integrations">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="config" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="integration_events" />
+      </table>
+      <table name="integration_events">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="integration_id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="event_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="external_id" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="payload" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="processed_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+
+      </table>
+      <table name="reports">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="owner_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="description" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="filters" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="schedule" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="last_run" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="audit_logs">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="entity_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="entity_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="user_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="action" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="payload" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="ip_address" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="user_agent" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="consent_records">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="consent_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="granted" type="BOOLEAN" type-name="BOOLEAN" not-null="false" size=""/> 
+      	<column name="source" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="recorded_by" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="recorded_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+      <table name="encryption_keys_meta">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="key_id" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="purpose" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="rotated_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+      <table name="pdmp_queries">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="user_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="state" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="query_reason" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="response_code" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="response_payload" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="transmitted_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="completed_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="error_message" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="access_logs">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="user_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="entity_type" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="entity_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="action" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="access_reason" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="access_context" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+      	<column name="ip_address" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="user_agent" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="accessed_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="efax_recipients">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="organization" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="fax_number" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="email" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="contact_type" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="is_verified" type="BOOLEAN" type-name="BOOLEAN" not-null="false" size=""/> 
+      	<column name="last_verified_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      	<children name="efax_jobs" />
+      </table>
+      <table name="efax_jobs">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="patient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="user_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="recipient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="direction" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="subject" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="fax_number" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="provider_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="total_pages" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="priority" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="sent_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="completed_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="error_message" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="retry_count" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      	<children name="efax_status_logs,efax_attachments" />
+      </table>
+      <table name="efax_attachments">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="efax_job_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="file_name" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="file_type" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="file_size_bytes" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="encrypted_path" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="checksum" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="page_number" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="efax_status_logs">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="BIGINT" type-name="BIGINT" not-null="false" size=""/> 
+      	<column name="efax_job_id" type="UUID" type-name="UUID" not-null="true" size=""/> 
+      	<column name="status" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="message" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="provider_code" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="created_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+
+      </table>
+      <table name="efax_incoming">
+      	<pk name="PRIMARY">
+      	    <on column="id"/>
+      	     
+      	</pk>
+      	<column name="id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="from_fax_number" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="from_name" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="received_at" type="TIMESTAMP" type-name="TIMESTAMP" not-null="false" size=""/> 
+      	<column name="total_pages" type="INTEGER" type-name="INTEGER" not-null="false" size=""/> 
+      	<column name="file_path" type="VARCHAR" type-name="VARCHAR" not-null="true" size=""/> 
+      	<column name="checksum" type="VARCHAR" type-name="VARCHAR" not-null="false" size=""/> 
+      	<column name="linked_patient_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="linked_prescription_id" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="processed_by" type="UUID" type-name="UUID" not-null="false" size=""/> 
+      	<column name="metadata" type="JSONB" type-name="JSONB" not-null="false" size=""/> 
+
+      </table>
+    </schema>
+</schemas>

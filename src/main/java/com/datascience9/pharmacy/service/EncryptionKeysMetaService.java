@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.EncryptionKeysMeta;
 import java.util.List;
 
 public interface EncryptionKeysMetaService {
-    public EncryptionKeysMeta find(Integer id);
+    EncryptionKeysMeta find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of EncryptionKeysMeta based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface EncryptionKeysMetaService {
      * @param maxResult : a specified maximum number of returned records.
      * @return EncryptionKeysMeta records.
      */
-    public List<EncryptionKeysMeta> select(int maxResult);
+    List<EncryptionKeysMeta> select(int maxResult);
 
     /**
      * Select all EncryptionKeysMeta.
      *
      * @return all EncryptionKeysMeta records.
      */
-    public List<EncryptionKeysMeta> selectAll();
+    List<EncryptionKeysMeta> selectAll();
 
     /**
      * Create EncryptionKeysMeta.
@@ -39,7 +41,7 @@ public interface EncryptionKeysMetaService {
      * @param bean The EncryptionKeysMeta.
      * @return The EncryptionKeysMeta.
      */
-    public EncryptionKeysMeta create(EncryptionKeysMeta bean);
+    EncryptionKeysMeta create(EncryptionKeysMeta bean);
 
     /**
      * Update a EncryptionKeysMeta.
@@ -47,5 +49,5 @@ public interface EncryptionKeysMetaService {
      * @param bean - The EncryptionKeysMeta.
      * @return EncryptionKeysMeta.
      */
-    public EncryptionKeysMeta update(EncryptionKeysMeta bean);
+    EncryptionKeysMeta update(EncryptionKeysMeta bean);
 }

@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,8 +24,9 @@ import org.hibernate.type.SqlTypes;
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "patients")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Patients implements Serializable {
-    private static final long serialVersionUID = 176294189241520997L;
+    private static final long serialVersionUID = 17631113268686410L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -91,11 +93,16 @@ public class Patients implements Serializable {
     @Column(name = "created_at")
     private java.sql.Timestamp createdAt;
 
+    @Transient List<PdmpQueries> pdmpqueries;
     @Transient List<PrescriptionCopays> prescriptioncopays;
+    @Transient List<EfaxIncoming> efaxincoming;
     @Transient List<PatientAliases> patientaliases;
     @Transient List<PatientInsurances> patientinsurances;
+    @Transient List<AccessLogs> accesslogs;
+    @Transient List<EfaxJobs> efaxjobs;
     @Transient List<Prescriptions> prescriptions;
     @Transient List<AlertLogs> alertlogs;
+    @Transient List<ConsentRecords> consentrecords;
     @Transient List<PosTransactions> postransactions;
 
     public Patients() {}
@@ -196,8 +203,16 @@ public class Patients implements Serializable {
         this.createdAt = createdAt;
     }
 
+    public List<PdmpQueries> getPdmpQueries() {
+        return this.pdmpqueries;
+    }
+
     public List<PrescriptionCopays> getPrescriptionCopays() {
         return this.prescriptioncopays;
+    }
+
+    public List<EfaxIncoming> getEfaxIncoming() {
+        return this.efaxincoming;
     }
 
     public List<PatientAliases> getPatientAliases() {
@@ -208,6 +223,14 @@ public class Patients implements Serializable {
         return this.patientinsurances;
     }
 
+    public List<AccessLogs> getAccessLogs() {
+        return this.accesslogs;
+    }
+
+    public List<EfaxJobs> getEfaxJobs() {
+        return this.efaxjobs;
+    }
+
     public List<Prescriptions> getPrescriptions() {
         return this.prescriptions;
     }
@@ -216,12 +239,24 @@ public class Patients implements Serializable {
         return this.alertlogs;
     }
 
+    public List<ConsentRecords> getConsentRecords() {
+        return this.consentrecords;
+    }
+
     public List<PosTransactions> getPosTransactions() {
         return this.postransactions;
     }
 
+    public void setPdmpQueries(List<PdmpQueries> pdmpqueries) {
+        this.pdmpqueries = new ArrayList<>(pdmpqueries);
+    }
+
     public void setPrescriptionCopays(List<PrescriptionCopays> prescriptioncopays) {
         this.prescriptioncopays = new ArrayList<>(prescriptioncopays);
+    }
+
+    public void setEfaxIncoming(List<EfaxIncoming> efaxincoming) {
+        this.efaxincoming = new ArrayList<>(efaxincoming);
     }
 
     public void setPatientAliases(List<PatientAliases> patientaliases) {
@@ -232,12 +267,24 @@ public class Patients implements Serializable {
         this.patientinsurances = new ArrayList<>(patientinsurances);
     }
 
+    public void setAccessLogs(List<AccessLogs> accesslogs) {
+        this.accesslogs = new ArrayList<>(accesslogs);
+    }
+
+    public void setEfaxJobs(List<EfaxJobs> efaxjobs) {
+        this.efaxjobs = new ArrayList<>(efaxjobs);
+    }
+
     public void setPrescriptions(List<Prescriptions> prescriptions) {
         this.prescriptions = new ArrayList<>(prescriptions);
     }
 
     public void setAlertLogs(List<AlertLogs> alertlogs) {
         this.alertlogs = new ArrayList<>(alertlogs);
+    }
+
+    public void setConsentRecords(List<ConsentRecords> consentrecords) {
+        this.consentrecords = new ArrayList<>(consentrecords);
     }
 
     public void setPosTransactions(List<PosTransactions> postransactions) {

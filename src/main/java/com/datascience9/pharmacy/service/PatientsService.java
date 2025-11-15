@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Patients;
 import java.util.List;
 
 public interface PatientsService {
-    public Patients find(java.util.UUID id);
+    Patients find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of Patients based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PatientsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Patients records.
      */
-    public List<Patients> select(int maxResult);
+    List<Patients> select(int maxResult);
 
     /**
      * Select all Patients.
      *
      * @return all Patients records.
      */
-    public List<Patients> selectAll();
+    List<Patients> selectAll();
 
     /**
      * Create Patients.
@@ -39,7 +41,7 @@ public interface PatientsService {
      * @param bean The Patients.
      * @return The Patients.
      */
-    public Patients create(Patients bean);
+    Patients create(Patients bean);
 
     /**
      * Update a Patients.
@@ -47,5 +49,5 @@ public interface PatientsService {
      * @param bean - The Patients.
      * @return Patients.
      */
-    public Patients update(Patients bean);
+    Patients update(Patients bean);
 }

@@ -46,6 +46,12 @@ public class DefaultPurchaseOrdersService implements PurchaseOrdersService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<PurchaseOrders> select(int maxResult) {
         final List<PurchaseOrders> result = dao.select(maxResult);
         logger.info("select(PurchaseOrders) - exited - return value={} result ");

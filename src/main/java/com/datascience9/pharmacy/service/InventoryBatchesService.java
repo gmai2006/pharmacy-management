@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.InventoryBatches;
 import java.util.List;
 
 public interface InventoryBatchesService {
-    public InventoryBatches find(java.util.UUID id);
+    InventoryBatches find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of InventoryBatches based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface InventoryBatchesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return InventoryBatches records.
      */
-    public List<InventoryBatches> select(int maxResult);
+    List<InventoryBatches> select(int maxResult);
 
     /**
      * Select all InventoryBatches.
      *
      * @return all InventoryBatches records.
      */
-    public List<InventoryBatches> selectAll();
+    List<InventoryBatches> selectAll();
 
     /**
      * Create InventoryBatches.
@@ -39,7 +41,7 @@ public interface InventoryBatchesService {
      * @param bean The InventoryBatches.
      * @return The InventoryBatches.
      */
-    public InventoryBatches create(InventoryBatches bean);
+    InventoryBatches create(InventoryBatches bean);
 
     /**
      * Update a InventoryBatches.
@@ -47,5 +49,5 @@ public interface InventoryBatchesService {
      * @param bean - The InventoryBatches.
      * @return InventoryBatches.
      */
-    public InventoryBatches update(InventoryBatches bean);
+    InventoryBatches update(InventoryBatches bean);
 }

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Integrations;
 import java.util.List;
 
 public interface IntegrationsService {
-    public Integrations find(Integer id);
+    Integrations find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of Integrations based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface IntegrationsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Integrations records.
      */
-    public List<Integrations> select(int maxResult);
+    List<Integrations> select(int maxResult);
 
     /**
      * Select all Integrations.
      *
      * @return all Integrations records.
      */
-    public List<Integrations> selectAll();
+    List<Integrations> selectAll();
 
     /**
      * Create Integrations.
@@ -39,7 +41,7 @@ public interface IntegrationsService {
      * @param bean The Integrations.
      * @return The Integrations.
      */
-    public Integrations create(Integrations bean);
+    Integrations create(Integrations bean);
 
     /**
      * Update a Integrations.
@@ -47,5 +49,5 @@ public interface IntegrationsService {
      * @param bean - The Integrations.
      * @return Integrations.
      */
-    public Integrations update(Integrations bean);
+    Integrations update(Integrations bean);
 }

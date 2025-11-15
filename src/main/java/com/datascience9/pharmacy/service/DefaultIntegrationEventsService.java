@@ -46,6 +46,12 @@ public class DefaultIntegrationEventsService implements IntegrationEventsService
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<IntegrationEvents> select(int maxResult) {
         final List<IntegrationEvents> result = dao.select(maxResult);
         logger.info("select(IntegrationEvents) - exited - return value={} result ");

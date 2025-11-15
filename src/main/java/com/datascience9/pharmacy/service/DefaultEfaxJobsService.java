@@ -46,6 +46,12 @@ public class DefaultEfaxJobsService implements EfaxJobsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<EfaxJobs> select(int maxResult) {
         final List<EfaxJobs> result = dao.select(maxResult);
         logger.info("select(EfaxJobs) - exited - return value={} result ");

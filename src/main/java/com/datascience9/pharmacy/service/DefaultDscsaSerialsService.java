@@ -46,6 +46,12 @@ public class DefaultDscsaSerialsService implements DscsaSerialsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<DscsaSerials> select(int maxResult) {
         final List<DscsaSerials> result = dao.select(maxResult);
         logger.info("select(DscsaSerials) - exited - return value={} result ");

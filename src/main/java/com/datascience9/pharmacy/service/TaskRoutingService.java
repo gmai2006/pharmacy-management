@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.TaskRouting;
 import java.util.List;
 
 public interface TaskRoutingService {
-    public TaskRouting find(Integer id);
+    TaskRouting find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of TaskRouting based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface TaskRoutingService {
      * @param maxResult : a specified maximum number of returned records.
      * @return TaskRouting records.
      */
-    public List<TaskRouting> select(int maxResult);
+    List<TaskRouting> select(int maxResult);
 
     /**
      * Select all TaskRouting.
      *
      * @return all TaskRouting records.
      */
-    public List<TaskRouting> selectAll();
+    List<TaskRouting> selectAll();
 
     /**
      * Create TaskRouting.
@@ -39,7 +41,7 @@ public interface TaskRoutingService {
      * @param bean The TaskRouting.
      * @return The TaskRouting.
      */
-    public TaskRouting create(TaskRouting bean);
+    TaskRouting create(TaskRouting bean);
 
     /**
      * Update a TaskRouting.
@@ -47,5 +49,5 @@ public interface TaskRoutingService {
      * @param bean - The TaskRouting.
      * @return TaskRouting.
      */
-    public TaskRouting update(TaskRouting bean);
+    TaskRouting update(TaskRouting bean);
 }

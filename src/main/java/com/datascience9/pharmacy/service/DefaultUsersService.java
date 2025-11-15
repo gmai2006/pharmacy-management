@@ -19,7 +19,10 @@ import com.datascience9.pharmacy.entity.Users;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 /** Auto generated from a schema generated on $date$ */
@@ -39,10 +42,15 @@ public class DefaultUsersService implements UsersService {
     /** {@inheritDoc} */
     @Override
     public Users find(java.util.UUID id) {
-
         final Users result = dao.find(id);
         logger.info("find(Users) - exited - return value={} result ");
         return result;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
     }
 
     /** {@inheritDoc} */
@@ -64,11 +72,9 @@ public class DefaultUsersService implements UsersService {
     @Override
     public Users create(Users bean) {
         requireNonNull(bean);
-        logger.info("create(Users={}) - entered bean ");
-
+        bean.setId(UUID.randomUUID());
+        bean.setCreatedAt(new Timestamp(new Date().getTime()));
         final Users result = dao.create(bean);
-
-        logger.info("create(Users) - exited - return value={} result ");
         return result;
     }
 
@@ -76,11 +82,7 @@ public class DefaultUsersService implements UsersService {
     @Override
     public Users update(Users bean) {
         requireNonNull(bean);
-        logger.info("update(Users={}) - entered bean ");
-
         final Users result = dao.update(bean);
-
-        logger.info("update(Users) - exited - return value={} result ");
         return result;
     }
 }

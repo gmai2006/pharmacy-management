@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.AlertRules;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class AlertRulesDao {
      * @return The same AlertRules.
      */
     public AlertRules find(Integer id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(AlertRules.class, id);
+        return dao.find(AlertRules.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An AlertRules id.
+     * @return The Id.
+     */
+    public Integer delete(Integer id) {
+        dao.delete(AlertRules.class, id);
+        return id;
     }
 
     /**

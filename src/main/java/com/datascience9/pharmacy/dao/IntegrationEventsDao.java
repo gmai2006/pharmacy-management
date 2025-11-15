@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.IntegrationEvents;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class IntegrationEventsDao {
      * @return The same IntegrationEvents.
      */
     public IntegrationEvents find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(IntegrationEvents.class, id);
+        return dao.find(IntegrationEvents.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An IntegrationEvents id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(IntegrationEvents.class, id);
+        return id;
     }
 
     /**

@@ -46,6 +46,12 @@ public class DefaultPatientInsurancesService implements PatientInsurancesService
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<PatientInsurances> select(int maxResult) {
         final List<PatientInsurances> result = dao.select(maxResult);
         logger.info("select(PatientInsurances) - exited - return value={} result ");

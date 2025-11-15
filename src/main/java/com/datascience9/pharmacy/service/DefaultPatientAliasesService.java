@@ -46,6 +46,12 @@ public class DefaultPatientAliasesService implements PatientAliasesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<PatientAliases> select(int maxResult) {
         final List<PatientAliases> result = dao.select(maxResult);
         logger.info("select(PatientAliases) - exited - return value={} result ");

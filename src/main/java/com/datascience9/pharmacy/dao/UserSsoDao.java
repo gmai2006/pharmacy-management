@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.UserSso;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class UserSsoDao {
      * @return The same UserSso.
      */
     public UserSso find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(UserSso.class, id);
+        return dao.find(UserSso.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An UserSso id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(UserSso.class, id);
+        return id;
     }
 
     /**

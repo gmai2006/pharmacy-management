@@ -46,6 +46,12 @@ public class DefaultAuditLogsService implements AuditLogsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Long delete(Long id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<AuditLogs> select(int maxResult) {
         final List<AuditLogs> result = dao.select(maxResult);
         logger.info("select(AuditLogs) - exited - return value={} result ");

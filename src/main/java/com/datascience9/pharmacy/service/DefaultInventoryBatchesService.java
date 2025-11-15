@@ -46,6 +46,12 @@ public class DefaultInventoryBatchesService implements InventoryBatchesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<InventoryBatches> select(int maxResult) {
         final List<InventoryBatches> result = dao.select(maxResult);
         logger.info("select(InventoryBatches) - exited - return value={} result ");

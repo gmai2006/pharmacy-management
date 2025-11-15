@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.Workflows;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class WorkflowsDao {
      * @return The same Workflows.
      */
     public Workflows find(Integer id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(Workflows.class, id);
+        return dao.find(Workflows.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An Workflows id.
+     * @return The Id.
+     */
+    public Integer delete(Integer id) {
+        dao.delete(Workflows.class, id);
+        return id;
     }
 
     /**

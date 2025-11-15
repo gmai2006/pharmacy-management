@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.EfaxStatusLogs;
 import java.util.List;
 
 public interface EfaxStatusLogsService {
-    public EfaxStatusLogs find(Long id);
+    EfaxStatusLogs find(Long id);
+
+    Long delete(Long id);
 
     /**
      * Select a list of EfaxStatusLogs based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface EfaxStatusLogsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return EfaxStatusLogs records.
      */
-    public List<EfaxStatusLogs> select(int maxResult);
+    List<EfaxStatusLogs> select(int maxResult);
 
     /**
      * Select all EfaxStatusLogs.
      *
      * @return all EfaxStatusLogs records.
      */
-    public List<EfaxStatusLogs> selectAll();
+    List<EfaxStatusLogs> selectAll();
 
     /**
      * Create EfaxStatusLogs.
@@ -39,7 +41,7 @@ public interface EfaxStatusLogsService {
      * @param bean The EfaxStatusLogs.
      * @return The EfaxStatusLogs.
      */
-    public EfaxStatusLogs create(EfaxStatusLogs bean);
+    EfaxStatusLogs create(EfaxStatusLogs bean);
 
     /**
      * Update a EfaxStatusLogs.
@@ -47,5 +49,5 @@ public interface EfaxStatusLogsService {
      * @param bean - The EfaxStatusLogs.
      * @return EfaxStatusLogs.
      */
-    public EfaxStatusLogs update(EfaxStatusLogs bean);
+    EfaxStatusLogs update(EfaxStatusLogs bean);
 }

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.EfaxJobs;
 import java.util.List;
 
 public interface EfaxJobsService {
-    public EfaxJobs find(java.util.UUID id);
+    EfaxJobs find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of EfaxJobs based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface EfaxJobsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return EfaxJobs records.
      */
-    public List<EfaxJobs> select(int maxResult);
+    List<EfaxJobs> select(int maxResult);
 
     /**
      * Select all EfaxJobs.
      *
      * @return all EfaxJobs records.
      */
-    public List<EfaxJobs> selectAll();
+    List<EfaxJobs> selectAll();
 
     /**
      * Create EfaxJobs.
@@ -39,7 +41,7 @@ public interface EfaxJobsService {
      * @param bean The EfaxJobs.
      * @return The EfaxJobs.
      */
-    public EfaxJobs create(EfaxJobs bean);
+    EfaxJobs create(EfaxJobs bean);
 
     /**
      * Update a EfaxJobs.
@@ -47,5 +49,5 @@ public interface EfaxJobsService {
      * @param bean - The EfaxJobs.
      * @return EfaxJobs.
      */
-    public EfaxJobs update(EfaxJobs bean);
+    EfaxJobs update(EfaxJobs bean);
 }

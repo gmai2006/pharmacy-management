@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PosTransactions;
 import java.util.List;
 
 public interface PosTransactionsService {
-    public PosTransactions find(java.util.UUID id);
+    PosTransactions find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of PosTransactions based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PosTransactionsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PosTransactions records.
      */
-    public List<PosTransactions> select(int maxResult);
+    List<PosTransactions> select(int maxResult);
 
     /**
      * Select all PosTransactions.
      *
      * @return all PosTransactions records.
      */
-    public List<PosTransactions> selectAll();
+    List<PosTransactions> selectAll();
 
     /**
      * Create PosTransactions.
@@ -39,7 +41,7 @@ public interface PosTransactionsService {
      * @param bean The PosTransactions.
      * @return The PosTransactions.
      */
-    public PosTransactions create(PosTransactions bean);
+    PosTransactions create(PosTransactions bean);
 
     /**
      * Update a PosTransactions.
@@ -47,5 +49,5 @@ public interface PosTransactionsService {
      * @param bean - The PosTransactions.
      * @return PosTransactions.
      */
-    public PosTransactions update(PosTransactions bean);
+    PosTransactions update(PosTransactions bean);
 }

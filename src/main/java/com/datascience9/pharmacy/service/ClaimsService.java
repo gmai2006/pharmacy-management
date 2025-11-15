@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Claims;
 import java.util.List;
 
 public interface ClaimsService {
-    public Claims find(java.util.UUID id);
+    Claims find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of Claims based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface ClaimsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Claims records.
      */
-    public List<Claims> select(int maxResult);
+    List<Claims> select(int maxResult);
 
     /**
      * Select all Claims.
      *
      * @return all Claims records.
      */
-    public List<Claims> selectAll();
+    List<Claims> selectAll();
 
     /**
      * Create Claims.
@@ -39,7 +41,7 @@ public interface ClaimsService {
      * @param bean The Claims.
      * @return The Claims.
      */
-    public Claims create(Claims bean);
+    Claims create(Claims bean);
 
     /**
      * Update a Claims.
@@ -47,5 +49,5 @@ public interface ClaimsService {
      * @param bean - The Claims.
      * @return Claims.
      */
-    public Claims update(Claims bean);
+    Claims update(Claims bean);
 }

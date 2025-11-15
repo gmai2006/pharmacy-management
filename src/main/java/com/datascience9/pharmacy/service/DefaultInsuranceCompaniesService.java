@@ -46,6 +46,12 @@ public class DefaultInsuranceCompaniesService implements InsuranceCompaniesServi
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<InsuranceCompanies> select(int maxResult) {
         final List<InsuranceCompanies> result = dao.select(maxResult);
         logger.info("select(InsuranceCompanies) - exited - return value={} result ");

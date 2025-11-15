@@ -46,6 +46,12 @@ public class DefaultAlertLogsService implements AlertLogsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Long delete(Long id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<AlertLogs> select(int maxResult) {
         final List<AlertLogs> result = dao.select(maxResult);
         logger.info("select(AlertLogs) - exited - return value={} result ");

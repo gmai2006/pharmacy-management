@@ -46,6 +46,12 @@ public class DefaultWholesalersService implements WholesalersService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Wholesalers> select(int maxResult) {
         final List<Wholesalers> result = dao.select(maxResult);
         logger.info("select(Wholesalers) - exited - return value={} result ");

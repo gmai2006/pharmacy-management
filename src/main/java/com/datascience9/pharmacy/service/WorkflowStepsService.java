@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.WorkflowSteps;
 import java.util.List;
 
 public interface WorkflowStepsService {
-    public WorkflowSteps find(Integer id);
+    WorkflowSteps find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of WorkflowSteps based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface WorkflowStepsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return WorkflowSteps records.
      */
-    public List<WorkflowSteps> select(int maxResult);
+    List<WorkflowSteps> select(int maxResult);
 
     /**
      * Select all WorkflowSteps.
      *
      * @return all WorkflowSteps records.
      */
-    public List<WorkflowSteps> selectAll();
+    List<WorkflowSteps> selectAll();
 
     /**
      * Create WorkflowSteps.
@@ -39,7 +41,7 @@ public interface WorkflowStepsService {
      * @param bean The WorkflowSteps.
      * @return The WorkflowSteps.
      */
-    public WorkflowSteps create(WorkflowSteps bean);
+    WorkflowSteps create(WorkflowSteps bean);
 
     /**
      * Update a WorkflowSteps.
@@ -47,5 +49,5 @@ public interface WorkflowStepsService {
      * @param bean - The WorkflowSteps.
      * @return WorkflowSteps.
      */
-    public WorkflowSteps update(WorkflowSteps bean);
+    WorkflowSteps update(WorkflowSteps bean);
 }

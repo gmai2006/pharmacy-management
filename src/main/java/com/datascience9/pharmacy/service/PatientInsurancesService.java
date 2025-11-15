@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PatientInsurances;
 import java.util.List;
 
 public interface PatientInsurancesService {
-    public PatientInsurances find(java.util.UUID id);
+    PatientInsurances find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of PatientInsurances based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PatientInsurancesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PatientInsurances records.
      */
-    public List<PatientInsurances> select(int maxResult);
+    List<PatientInsurances> select(int maxResult);
 
     /**
      * Select all PatientInsurances.
      *
      * @return all PatientInsurances records.
      */
-    public List<PatientInsurances> selectAll();
+    List<PatientInsurances> selectAll();
 
     /**
      * Create PatientInsurances.
@@ -39,7 +41,7 @@ public interface PatientInsurancesService {
      * @param bean The PatientInsurances.
      * @return The PatientInsurances.
      */
-    public PatientInsurances create(PatientInsurances bean);
+    PatientInsurances create(PatientInsurances bean);
 
     /**
      * Update a PatientInsurances.
@@ -47,5 +49,5 @@ public interface PatientInsurancesService {
      * @param bean - The PatientInsurances.
      * @return PatientInsurances.
      */
-    public PatientInsurances update(PatientInsurances bean);
+    PatientInsurances update(PatientInsurances bean);
 }

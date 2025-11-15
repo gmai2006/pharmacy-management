@@ -46,6 +46,12 @@ public class DefaultPosSignaturesService implements PosSignaturesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<PosSignatures> select(int maxResult) {
         final List<PosSignatures> result = dao.select(maxResult);
         logger.info("select(PosSignatures) - exited - return value={} result ");

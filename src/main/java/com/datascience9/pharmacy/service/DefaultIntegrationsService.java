@@ -46,6 +46,12 @@ public class DefaultIntegrationsService implements IntegrationsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Integrations> select(int maxResult) {
         final List<Integrations> result = dao.select(maxResult);
         logger.info("select(Integrations) - exited - return value={} result ");

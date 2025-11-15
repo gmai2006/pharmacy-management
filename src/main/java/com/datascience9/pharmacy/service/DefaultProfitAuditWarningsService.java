@@ -46,6 +46,12 @@ public class DefaultProfitAuditWarningsService implements ProfitAuditWarningsSer
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Long delete(Long id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<ProfitAuditWarnings> select(int maxResult) {
         final List<ProfitAuditWarnings> result = dao.select(maxResult);
         logger.info("select(ProfitAuditWarnings) - exited - return value={} result ");

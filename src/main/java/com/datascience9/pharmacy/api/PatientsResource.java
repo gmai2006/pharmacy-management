@@ -21,6 +21,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
+import java.util.UUID;
 
 @Path("/patients")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -79,6 +80,12 @@ public class PatientsResource {
      * @param id instance of Patients.
      * @return Patients.
      */
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    @DELETE
+    public Object delete(@PathParam("id") String id) {
+        return this.service.delete(UUID.fromString(id));
+    }
 
     /**
      * Select all Patients with limit of returned records.

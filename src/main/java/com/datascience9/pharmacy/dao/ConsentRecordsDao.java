@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.ConsentRecords;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class ConsentRecordsDao {
      * @return The same ConsentRecords.
      */
     public ConsentRecords find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(ConsentRecords.class, id);
+        return dao.find(ConsentRecords.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An ConsentRecords id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(ConsentRecords.class, id);
+        return id;
     }
 
     /**

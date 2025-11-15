@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.Integrations;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class IntegrationsDao {
      * @return The same Integrations.
      */
     public Integrations find(Integer id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(Integrations.class, id);
+        return dao.find(Integrations.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An Integrations id.
+     * @return The Id.
+     */
+    public Integer delete(Integer id) {
+        dao.delete(Integrations.class, id);
+        return id;
     }
 
     /**

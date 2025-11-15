@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.AuditLogs;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class AuditLogsDao {
      * @return The same AuditLogs.
      */
     public AuditLogs find(Long id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(AuditLogs.class, id);
+        return dao.find(AuditLogs.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An AuditLogs id.
+     * @return The Id.
+     */
+    public Long delete(Long id) {
+        dao.delete(AuditLogs.class, id);
+        return id;
     }
 
     /**

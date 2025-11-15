@@ -46,6 +46,12 @@ public class DefaultDirFeesService implements DirFeesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Long delete(Long id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<DirFees> select(int maxResult) {
         final List<DirFees> result = dao.select(maxResult);
         logger.info("select(DirFees) - exited - return value={} result ");

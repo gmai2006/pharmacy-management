@@ -46,6 +46,12 @@ public class DefaultConsentRecordsService implements ConsentRecordsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<ConsentRecords> select(int maxResult) {
         final List<ConsentRecords> result = dao.select(maxResult);
         logger.info("select(ConsentRecords) - exited - return value={} result ");

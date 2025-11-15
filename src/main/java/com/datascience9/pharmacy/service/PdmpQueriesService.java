@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PdmpQueries;
 import java.util.List;
 
 public interface PdmpQueriesService {
-    public PdmpQueries find(java.util.UUID id);
+    PdmpQueries find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of PdmpQueries based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PdmpQueriesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PdmpQueries records.
      */
-    public List<PdmpQueries> select(int maxResult);
+    List<PdmpQueries> select(int maxResult);
 
     /**
      * Select all PdmpQueries.
      *
      * @return all PdmpQueries records.
      */
-    public List<PdmpQueries> selectAll();
+    List<PdmpQueries> selectAll();
 
     /**
      * Create PdmpQueries.
@@ -39,7 +41,7 @@ public interface PdmpQueriesService {
      * @param bean The PdmpQueries.
      * @return The PdmpQueries.
      */
-    public PdmpQueries create(PdmpQueries bean);
+    PdmpQueries create(PdmpQueries bean);
 
     /**
      * Update a PdmpQueries.
@@ -47,5 +49,5 @@ public interface PdmpQueriesService {
      * @param bean - The PdmpQueries.
      * @return PdmpQueries.
      */
-    public PdmpQueries update(PdmpQueries bean);
+    PdmpQueries update(PdmpQueries bean);
 }

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.DirFees;
 import java.util.List;
 
 public interface DirFeesService {
-    public DirFees find(Long id);
+    DirFees find(Long id);
+
+    Long delete(Long id);
 
     /**
      * Select a list of DirFees based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface DirFeesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return DirFees records.
      */
-    public List<DirFees> select(int maxResult);
+    List<DirFees> select(int maxResult);
 
     /**
      * Select all DirFees.
      *
      * @return all DirFees records.
      */
-    public List<DirFees> selectAll();
+    List<DirFees> selectAll();
 
     /**
      * Create DirFees.
@@ -39,7 +41,7 @@ public interface DirFeesService {
      * @param bean The DirFees.
      * @return The DirFees.
      */
-    public DirFees create(DirFees bean);
+    DirFees create(DirFees bean);
 
     /**
      * Update a DirFees.
@@ -47,5 +49,5 @@ public interface DirFeesService {
      * @param bean - The DirFees.
      * @return DirFees.
      */
-    public DirFees update(DirFees bean);
+    DirFees update(DirFees bean);
 }

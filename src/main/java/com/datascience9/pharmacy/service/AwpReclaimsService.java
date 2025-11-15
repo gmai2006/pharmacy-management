@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.AwpReclaims;
 import java.util.List;
 
 public interface AwpReclaimsService {
-    public AwpReclaims find(Long id);
+    AwpReclaims find(Long id);
+
+    Long delete(Long id);
 
     /**
      * Select a list of AwpReclaims based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface AwpReclaimsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return AwpReclaims records.
      */
-    public List<AwpReclaims> select(int maxResult);
+    List<AwpReclaims> select(int maxResult);
 
     /**
      * Select all AwpReclaims.
      *
      * @return all AwpReclaims records.
      */
-    public List<AwpReclaims> selectAll();
+    List<AwpReclaims> selectAll();
 
     /**
      * Create AwpReclaims.
@@ -39,7 +41,7 @@ public interface AwpReclaimsService {
      * @param bean The AwpReclaims.
      * @return The AwpReclaims.
      */
-    public AwpReclaims create(AwpReclaims bean);
+    AwpReclaims create(AwpReclaims bean);
 
     /**
      * Update a AwpReclaims.
@@ -47,5 +49,5 @@ public interface AwpReclaimsService {
      * @param bean - The AwpReclaims.
      * @return AwpReclaims.
      */
-    public AwpReclaims update(AwpReclaims bean);
+    AwpReclaims update(AwpReclaims bean);
 }

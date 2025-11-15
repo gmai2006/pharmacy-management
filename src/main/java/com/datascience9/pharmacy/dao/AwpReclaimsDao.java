@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.AwpReclaims;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class AwpReclaimsDao {
      * @return The same AwpReclaims.
      */
     public AwpReclaims find(Long id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(AwpReclaims.class, id);
+        return dao.find(AwpReclaims.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An AwpReclaims id.
+     * @return The Id.
+     */
+    public Long delete(Long id) {
+        dao.delete(AwpReclaims.class, id);
+        return id;
     }
 
     /**

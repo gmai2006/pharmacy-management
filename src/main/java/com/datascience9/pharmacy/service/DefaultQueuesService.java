@@ -46,6 +46,12 @@ public class DefaultQueuesService implements QueuesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Queues> select(int maxResult) {
         final List<Queues> result = dao.select(maxResult);
         logger.info("select(Queues) - exited - return value={} result ");

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Wholesalers;
 import java.util.List;
 
 public interface WholesalersService {
-    public Wholesalers find(Integer id);
+    Wholesalers find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of Wholesalers based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface WholesalersService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Wholesalers records.
      */
-    public List<Wholesalers> select(int maxResult);
+    List<Wholesalers> select(int maxResult);
 
     /**
      * Select all Wholesalers.
      *
      * @return all Wholesalers records.
      */
-    public List<Wholesalers> selectAll();
+    List<Wholesalers> selectAll();
 
     /**
      * Create Wholesalers.
@@ -39,7 +41,7 @@ public interface WholesalersService {
      * @param bean The Wholesalers.
      * @return The Wholesalers.
      */
-    public Wholesalers create(Wholesalers bean);
+    Wholesalers create(Wholesalers bean);
 
     /**
      * Update a Wholesalers.
@@ -47,5 +49,5 @@ public interface WholesalersService {
      * @param bean - The Wholesalers.
      * @return Wholesalers.
      */
-    public Wholesalers update(Wholesalers bean);
+    Wholesalers update(Wholesalers bean);
 }

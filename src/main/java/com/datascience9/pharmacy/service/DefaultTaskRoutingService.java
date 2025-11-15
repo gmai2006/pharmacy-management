@@ -46,6 +46,12 @@ public class DefaultTaskRoutingService implements TaskRoutingService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<TaskRouting> select(int maxResult) {
         final List<TaskRouting> result = dao.select(maxResult);
         logger.info("select(TaskRouting) - exited - return value={} result ");

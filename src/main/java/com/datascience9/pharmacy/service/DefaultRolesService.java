@@ -46,6 +46,12 @@ public class DefaultRolesService implements RolesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Roles> select(int maxResult) {
         final List<Roles> result = dao.select(maxResult);
         logger.info("select(Roles) - exited - return value={} result ");

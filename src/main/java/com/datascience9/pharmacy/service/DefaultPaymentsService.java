@@ -46,6 +46,12 @@ public class DefaultPaymentsService implements PaymentsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Payments> select(int maxResult) {
         final List<Payments> result = dao.select(maxResult);
         logger.info("select(Payments) - exited - return value={} result ");

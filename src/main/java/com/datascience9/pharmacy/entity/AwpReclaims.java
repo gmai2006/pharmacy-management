@@ -12,14 +12,16 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "awp_reclaims")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AwpReclaims implements Serializable {
-    private static final long serialVersionUID = 176294189247556359L;
+    private static final long serialVersionUID = 17631113269101657L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

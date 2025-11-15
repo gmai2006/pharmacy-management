@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Queues;
 import java.util.List;
 
 public interface QueuesService {
-    public Queues find(Integer id);
+    Queues find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of Queues based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface QueuesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Queues records.
      */
-    public List<Queues> select(int maxResult);
+    List<Queues> select(int maxResult);
 
     /**
      * Select all Queues.
      *
      * @return all Queues records.
      */
-    public List<Queues> selectAll();
+    List<Queues> selectAll();
 
     /**
      * Create Queues.
@@ -39,7 +41,7 @@ public interface QueuesService {
      * @param bean The Queues.
      * @return The Queues.
      */
-    public Queues create(Queues bean);
+    Queues create(Queues bean);
 
     /**
      * Update a Queues.
@@ -47,5 +49,5 @@ public interface QueuesService {
      * @param bean - The Queues.
      * @return Queues.
      */
-    public Queues update(Queues bean);
+    Queues update(Queues bean);
 }

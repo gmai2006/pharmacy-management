@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.BarcodeLabels;
 import java.util.List;
 
 public interface BarcodeLabelsService {
-    public BarcodeLabels find(java.util.UUID id);
+    BarcodeLabels find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of BarcodeLabels based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface BarcodeLabelsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return BarcodeLabels records.
      */
-    public List<BarcodeLabels> select(int maxResult);
+    List<BarcodeLabels> select(int maxResult);
 
     /**
      * Select all BarcodeLabels.
      *
      * @return all BarcodeLabels records.
      */
-    public List<BarcodeLabels> selectAll();
+    List<BarcodeLabels> selectAll();
 
     /**
      * Create BarcodeLabels.
@@ -39,7 +41,7 @@ public interface BarcodeLabelsService {
      * @param bean The BarcodeLabels.
      * @return The BarcodeLabels.
      */
-    public BarcodeLabels create(BarcodeLabels bean);
+    BarcodeLabels create(BarcodeLabels bean);
 
     /**
      * Update a BarcodeLabels.
@@ -47,5 +49,5 @@ public interface BarcodeLabelsService {
      * @param bean - The BarcodeLabels.
      * @return BarcodeLabels.
      */
-    public BarcodeLabels update(BarcodeLabels bean);
+    BarcodeLabels update(BarcodeLabels bean);
 }

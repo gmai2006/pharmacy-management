@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.AlertLogs;
 import java.util.List;
 
 public interface AlertLogsService {
-    public AlertLogs find(Long id);
+    AlertLogs find(Long id);
+
+    Long delete(Long id);
 
     /**
      * Select a list of AlertLogs based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface AlertLogsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return AlertLogs records.
      */
-    public List<AlertLogs> select(int maxResult);
+    List<AlertLogs> select(int maxResult);
 
     /**
      * Select all AlertLogs.
      *
      * @return all AlertLogs records.
      */
-    public List<AlertLogs> selectAll();
+    List<AlertLogs> selectAll();
 
     /**
      * Create AlertLogs.
@@ -39,7 +41,7 @@ public interface AlertLogsService {
      * @param bean The AlertLogs.
      * @return The AlertLogs.
      */
-    public AlertLogs create(AlertLogs bean);
+    AlertLogs create(AlertLogs bean);
 
     /**
      * Update a AlertLogs.
@@ -47,5 +49,5 @@ public interface AlertLogsService {
      * @param bean - The AlertLogs.
      * @return AlertLogs.
      */
-    public AlertLogs update(AlertLogs bean);
+    AlertLogs update(AlertLogs bean);
 }

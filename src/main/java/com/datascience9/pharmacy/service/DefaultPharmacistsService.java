@@ -46,6 +46,12 @@ public class DefaultPharmacistsService implements PharmacistsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Pharmacists> select(int maxResult) {
         final List<Pharmacists> result = dao.select(maxResult);
         logger.info("select(Pharmacists) - exited - return value={} result ");

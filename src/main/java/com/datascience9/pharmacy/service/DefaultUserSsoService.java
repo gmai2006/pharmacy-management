@@ -46,6 +46,12 @@ public class DefaultUserSsoService implements UserSsoService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<UserSso> select(int maxResult) {
         final List<UserSso> result = dao.select(maxResult);
         logger.info("select(UserSso) - exited - return value={} result ");

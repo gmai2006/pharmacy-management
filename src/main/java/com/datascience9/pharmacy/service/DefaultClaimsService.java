@@ -46,6 +46,12 @@ public class DefaultClaimsService implements ClaimsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Claims> select(int maxResult) {
         final List<Claims> result = dao.select(maxResult);
         logger.info("select(Claims) - exited - return value={} result ");

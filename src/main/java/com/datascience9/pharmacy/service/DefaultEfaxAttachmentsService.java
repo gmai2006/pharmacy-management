@@ -46,6 +46,12 @@ public class DefaultEfaxAttachmentsService implements EfaxAttachmentsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<EfaxAttachments> select(int maxResult) {
         final List<EfaxAttachments> result = dao.select(maxResult);
         logger.info("select(EfaxAttachments) - exited - return value={} result ");

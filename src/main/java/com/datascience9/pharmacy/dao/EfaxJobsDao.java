@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.EfaxJobs;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class EfaxJobsDao {
      * @return The same EfaxJobs.
      */
     public EfaxJobs find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(EfaxJobs.class, id);
+        return dao.find(EfaxJobs.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An EfaxJobs id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(EfaxJobs.class, id);
+        return id;
     }
 
     /**

@@ -12,14 +12,16 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "prescription_copays")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PrescriptionCopays implements Serializable {
-    private static final long serialVersionUID = 176294189249270668L;
+    private static final long serialVersionUID = 176311132692819762L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

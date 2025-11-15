@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.ProfitAuditWarnings;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class ProfitAuditWarningsDao {
      * @return The same ProfitAuditWarnings.
      */
     public ProfitAuditWarnings find(Long id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(ProfitAuditWarnings.class, id);
+        return dao.find(ProfitAuditWarnings.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An ProfitAuditWarnings id.
+     * @return The Id.
+     */
+    public Long delete(Long id) {
+        dao.delete(ProfitAuditWarnings.class, id);
+        return id;
     }
 
     /**

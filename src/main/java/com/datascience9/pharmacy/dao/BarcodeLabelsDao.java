@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.BarcodeLabels;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class BarcodeLabelsDao {
      * @return The same BarcodeLabels.
      */
     public BarcodeLabels find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(BarcodeLabels.class, id);
+        return dao.find(BarcodeLabels.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An BarcodeLabels id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(BarcodeLabels.class, id);
+        return id;
     }
 
     /**

@@ -46,6 +46,12 @@ public class DefaultTasksService implements TasksService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<Tasks> select(int maxResult) {
         final List<Tasks> result = dao.select(maxResult);
         logger.info("select(Tasks) - exited - return value={} result ");

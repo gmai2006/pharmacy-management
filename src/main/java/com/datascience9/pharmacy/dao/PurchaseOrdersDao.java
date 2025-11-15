@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.PurchaseOrders;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class PurchaseOrdersDao {
      * @return The same PurchaseOrders.
      */
     public PurchaseOrders find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(PurchaseOrders.class, id);
+        return dao.find(PurchaseOrders.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An PurchaseOrders id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(PurchaseOrders.class, id);
+        return id;
     }
 
     /**

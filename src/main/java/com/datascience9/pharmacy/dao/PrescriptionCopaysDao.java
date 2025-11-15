@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.PrescriptionCopays;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class PrescriptionCopaysDao {
      * @return The same PrescriptionCopays.
      */
     public PrescriptionCopays find(java.util.UUID id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(PrescriptionCopays.class, id);
+        return dao.find(PrescriptionCopays.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An PrescriptionCopays id.
+     * @return The Id.
+     */
+    public java.util.UUID delete(java.util.UUID id) {
+        dao.delete(PrescriptionCopays.class, id);
+        return id;
     }
 
     /**

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.AlertRules;
 import java.util.List;
 
 public interface AlertRulesService {
-    public AlertRules find(Integer id);
+    AlertRules find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of AlertRules based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface AlertRulesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return AlertRules records.
      */
-    public List<AlertRules> select(int maxResult);
+    List<AlertRules> select(int maxResult);
 
     /**
      * Select all AlertRules.
      *
      * @return all AlertRules records.
      */
-    public List<AlertRules> selectAll();
+    List<AlertRules> selectAll();
 
     /**
      * Create AlertRules.
@@ -39,7 +41,7 @@ public interface AlertRulesService {
      * @param bean The AlertRules.
      * @return The AlertRules.
      */
-    public AlertRules create(AlertRules bean);
+    AlertRules create(AlertRules bean);
 
     /**
      * Update a AlertRules.
@@ -47,5 +49,5 @@ public interface AlertRulesService {
      * @param bean - The AlertRules.
      * @return AlertRules.
      */
-    public AlertRules update(AlertRules bean);
+    AlertRules update(AlertRules bean);
 }

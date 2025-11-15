@@ -46,6 +46,12 @@ public class DefaultPrescriptionAuditService implements PrescriptionAuditService
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Long delete(Long id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<PrescriptionAudit> select(int maxResult) {
         final List<PrescriptionAudit> result = dao.select(maxResult);
         logger.info("select(PrescriptionAudit) - exited - return value={} result ");

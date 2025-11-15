@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PurchaseOrders;
 import java.util.List;
 
 public interface PurchaseOrdersService {
-    public PurchaseOrders find(java.util.UUID id);
+    PurchaseOrders find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of PurchaseOrders based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PurchaseOrdersService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PurchaseOrders records.
      */
-    public List<PurchaseOrders> select(int maxResult);
+    List<PurchaseOrders> select(int maxResult);
 
     /**
      * Select all PurchaseOrders.
      *
      * @return all PurchaseOrders records.
      */
-    public List<PurchaseOrders> selectAll();
+    List<PurchaseOrders> selectAll();
 
     /**
      * Create PurchaseOrders.
@@ -39,7 +41,7 @@ public interface PurchaseOrdersService {
      * @param bean The PurchaseOrders.
      * @return The PurchaseOrders.
      */
-    public PurchaseOrders create(PurchaseOrders bean);
+    PurchaseOrders create(PurchaseOrders bean);
 
     /**
      * Update a PurchaseOrders.
@@ -47,5 +49,5 @@ public interface PurchaseOrdersService {
      * @param bean - The PurchaseOrders.
      * @return PurchaseOrders.
      */
-    public PurchaseOrders update(PurchaseOrders bean);
+    PurchaseOrders update(PurchaseOrders bean);
 }

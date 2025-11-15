@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.ProfitAuditWarnings;
 import java.util.List;
 
 public interface ProfitAuditWarningsService {
-    public ProfitAuditWarnings find(Long id);
+    ProfitAuditWarnings find(Long id);
+
+    Long delete(Long id);
 
     /**
      * Select a list of ProfitAuditWarnings based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface ProfitAuditWarningsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return ProfitAuditWarnings records.
      */
-    public List<ProfitAuditWarnings> select(int maxResult);
+    List<ProfitAuditWarnings> select(int maxResult);
 
     /**
      * Select all ProfitAuditWarnings.
      *
      * @return all ProfitAuditWarnings records.
      */
-    public List<ProfitAuditWarnings> selectAll();
+    List<ProfitAuditWarnings> selectAll();
 
     /**
      * Create ProfitAuditWarnings.
@@ -39,7 +41,7 @@ public interface ProfitAuditWarningsService {
      * @param bean The ProfitAuditWarnings.
      * @return The ProfitAuditWarnings.
      */
-    public ProfitAuditWarnings create(ProfitAuditWarnings bean);
+    ProfitAuditWarnings create(ProfitAuditWarnings bean);
 
     /**
      * Update a ProfitAuditWarnings.
@@ -47,5 +49,5 @@ public interface ProfitAuditWarningsService {
      * @param bean - The ProfitAuditWarnings.
      * @return ProfitAuditWarnings.
      */
-    public ProfitAuditWarnings update(ProfitAuditWarnings bean);
+    ProfitAuditWarnings update(ProfitAuditWarnings bean);
 }

@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.DscsaSerials;
 import java.util.List;
 
 public interface DscsaSerialsService {
-    public DscsaSerials find(java.util.UUID id);
+    DscsaSerials find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of DscsaSerials based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface DscsaSerialsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return DscsaSerials records.
      */
-    public List<DscsaSerials> select(int maxResult);
+    List<DscsaSerials> select(int maxResult);
 
     /**
      * Select all DscsaSerials.
      *
      * @return all DscsaSerials records.
      */
-    public List<DscsaSerials> selectAll();
+    List<DscsaSerials> selectAll();
 
     /**
      * Create DscsaSerials.
@@ -39,7 +41,7 @@ public interface DscsaSerialsService {
      * @param bean The DscsaSerials.
      * @return The DscsaSerials.
      */
-    public DscsaSerials create(DscsaSerials bean);
+    DscsaSerials create(DscsaSerials bean);
 
     /**
      * Update a DscsaSerials.
@@ -47,5 +49,5 @@ public interface DscsaSerialsService {
      * @param bean - The DscsaSerials.
      * @return DscsaSerials.
      */
-    public DscsaSerials update(DscsaSerials bean);
+    DscsaSerials update(DscsaSerials bean);
 }

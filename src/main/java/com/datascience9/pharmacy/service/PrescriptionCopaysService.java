@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PrescriptionCopays;
 import java.util.List;
 
 public interface PrescriptionCopaysService {
-    public PrescriptionCopays find(java.util.UUID id);
+    PrescriptionCopays find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of PrescriptionCopays based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PrescriptionCopaysService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PrescriptionCopays records.
      */
-    public List<PrescriptionCopays> select(int maxResult);
+    List<PrescriptionCopays> select(int maxResult);
 
     /**
      * Select all PrescriptionCopays.
      *
      * @return all PrescriptionCopays records.
      */
-    public List<PrescriptionCopays> selectAll();
+    List<PrescriptionCopays> selectAll();
 
     /**
      * Create PrescriptionCopays.
@@ -39,7 +41,7 @@ public interface PrescriptionCopaysService {
      * @param bean The PrescriptionCopays.
      * @return The PrescriptionCopays.
      */
-    public PrescriptionCopays create(PrescriptionCopays bean);
+    PrescriptionCopays create(PrescriptionCopays bean);
 
     /**
      * Update a PrescriptionCopays.
@@ -47,5 +49,5 @@ public interface PrescriptionCopaysService {
      * @param bean - The PrescriptionCopays.
      * @return PrescriptionCopays.
      */
-    public PrescriptionCopays update(PrescriptionCopays bean);
+    PrescriptionCopays update(PrescriptionCopays bean);
 }

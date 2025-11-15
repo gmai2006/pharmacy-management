@@ -2,6 +2,7 @@ package com.datascience9.pharmacy.entity.manual;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -17,7 +18,8 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "v_inventory_overview")
 @Immutable
-public class InventoryOverview {
+public class InventoryOverview implements Serializable {
+    private static final long serialVersionUID = 3L;
 
     // ==================== Composite Key Setup ====================
     /**
@@ -28,6 +30,7 @@ public class InventoryOverview {
     @Column(name = "item_id")
     private UUID itemId;
 
+    @Id
     @Column(name = "batch_id", nullable = false)
     private UUID batchId;
 

@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.TaskRouting;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class TaskRoutingDao {
      * @return The same TaskRouting.
      */
     public TaskRouting find(Integer id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(TaskRouting.class, id);
+        return dao.find(TaskRouting.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An TaskRouting id.
+     * @return The Id.
+     */
+    public Integer delete(Integer id) {
+        dao.delete(TaskRouting.class, id);
+        return id;
     }
 
     /**

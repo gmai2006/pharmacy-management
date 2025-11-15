@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.AlertLogs;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class AlertLogsDao {
      * @return The same AlertLogs.
      */
     public AlertLogs find(Long id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(AlertLogs.class, id);
+        return dao.find(AlertLogs.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An AlertLogs id.
+     * @return The Id.
+     */
+    public Long delete(Long id) {
+        dao.delete(AlertLogs.class, id);
+        return id;
     }
 
     /**

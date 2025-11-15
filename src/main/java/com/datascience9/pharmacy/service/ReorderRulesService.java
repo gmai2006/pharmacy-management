@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.ReorderRules;
 import java.util.List;
 
 public interface ReorderRulesService {
-    public ReorderRules find(Integer id);
+    ReorderRules find(Integer id);
+
+    Integer delete(Integer id);
 
     /**
      * Select a list of ReorderRules based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface ReorderRulesService {
      * @param maxResult : a specified maximum number of returned records.
      * @return ReorderRules records.
      */
-    public List<ReorderRules> select(int maxResult);
+    List<ReorderRules> select(int maxResult);
 
     /**
      * Select all ReorderRules.
      *
      * @return all ReorderRules records.
      */
-    public List<ReorderRules> selectAll();
+    List<ReorderRules> selectAll();
 
     /**
      * Create ReorderRules.
@@ -39,7 +41,7 @@ public interface ReorderRulesService {
      * @param bean The ReorderRules.
      * @return The ReorderRules.
      */
-    public ReorderRules create(ReorderRules bean);
+    ReorderRules create(ReorderRules bean);
 
     /**
      * Update a ReorderRules.
@@ -47,5 +49,5 @@ public interface ReorderRulesService {
      * @param bean - The ReorderRules.
      * @return ReorderRules.
      */
-    public ReorderRules update(ReorderRules bean);
+    ReorderRules update(ReorderRules bean);
 }

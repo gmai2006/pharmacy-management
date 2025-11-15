@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.UserPermissions;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class UserPermissionsDao {
      * @return The same UserPermissions.
      */
     public UserPermissions find(Integer id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(UserPermissions.class, id);
+        return dao.find(UserPermissions.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An UserPermissions id.
+     * @return The Id.
+     */
+    public Integer delete(Integer id) {
+        dao.delete(UserPermissions.class, id);
+        return id;
     }
 
     /**

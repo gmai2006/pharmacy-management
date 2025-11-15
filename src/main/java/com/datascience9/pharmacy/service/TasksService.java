@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.Tasks;
 import java.util.List;
 
 public interface TasksService {
-    public Tasks find(java.util.UUID id);
+    Tasks find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of Tasks based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface TasksService {
      * @param maxResult : a specified maximum number of returned records.
      * @return Tasks records.
      */
-    public List<Tasks> select(int maxResult);
+    List<Tasks> select(int maxResult);
 
     /**
      * Select all Tasks.
      *
      * @return all Tasks records.
      */
-    public List<Tasks> selectAll();
+    List<Tasks> selectAll();
 
     /**
      * Create Tasks.
@@ -39,7 +41,7 @@ public interface TasksService {
      * @param bean The Tasks.
      * @return The Tasks.
      */
-    public Tasks create(Tasks bean);
+    Tasks create(Tasks bean);
 
     /**
      * Update a Tasks.
@@ -47,5 +49,5 @@ public interface TasksService {
      * @param bean - The Tasks.
      * @return Tasks.
      */
-    public Tasks update(Tasks bean);
+    Tasks update(Tasks bean);
 }

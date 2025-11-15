@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.PrescriptionItems;
 import java.util.List;
 
 public interface PrescriptionItemsService {
-    public PrescriptionItems find(java.util.UUID id);
+    PrescriptionItems find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of PrescriptionItems based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface PrescriptionItemsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return PrescriptionItems records.
      */
-    public List<PrescriptionItems> select(int maxResult);
+    List<PrescriptionItems> select(int maxResult);
 
     /**
      * Select all PrescriptionItems.
      *
      * @return all PrescriptionItems records.
      */
-    public List<PrescriptionItems> selectAll();
+    List<PrescriptionItems> selectAll();
 
     /**
      * Create PrescriptionItems.
@@ -39,7 +41,7 @@ public interface PrescriptionItemsService {
      * @param bean The PrescriptionItems.
      * @return The PrescriptionItems.
      */
-    public PrescriptionItems create(PrescriptionItems bean);
+    PrescriptionItems create(PrescriptionItems bean);
 
     /**
      * Update a PrescriptionItems.
@@ -47,5 +49,5 @@ public interface PrescriptionItemsService {
      * @param bean - The PrescriptionItems.
      * @return PrescriptionItems.
      */
-    public PrescriptionItems update(PrescriptionItems bean);
+    PrescriptionItems update(PrescriptionItems bean);
 }

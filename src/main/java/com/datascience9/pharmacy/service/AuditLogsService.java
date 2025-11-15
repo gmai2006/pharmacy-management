@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.AuditLogs;
 import java.util.List;
 
 public interface AuditLogsService {
-    public AuditLogs find(Long id);
+    AuditLogs find(Long id);
+
+    Long delete(Long id);
 
     /**
      * Select a list of AuditLogs based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface AuditLogsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return AuditLogs records.
      */
-    public List<AuditLogs> select(int maxResult);
+    List<AuditLogs> select(int maxResult);
 
     /**
      * Select all AuditLogs.
      *
      * @return all AuditLogs records.
      */
-    public List<AuditLogs> selectAll();
+    List<AuditLogs> selectAll();
 
     /**
      * Create AuditLogs.
@@ -39,7 +41,7 @@ public interface AuditLogsService {
      * @param bean The AuditLogs.
      * @return The AuditLogs.
      */
-    public AuditLogs create(AuditLogs bean);
+    AuditLogs create(AuditLogs bean);
 
     /**
      * Update a AuditLogs.
@@ -47,5 +49,5 @@ public interface AuditLogsService {
      * @param bean - The AuditLogs.
      * @return AuditLogs.
      */
-    public AuditLogs update(AuditLogs bean);
+    AuditLogs update(AuditLogs bean);
 }

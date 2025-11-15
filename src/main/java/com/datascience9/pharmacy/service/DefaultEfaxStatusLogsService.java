@@ -46,6 +46,12 @@ public class DefaultEfaxStatusLogsService implements EfaxStatusLogsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Long delete(Long id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<EfaxStatusLogs> select(int maxResult) {
         final List<EfaxStatusLogs> result = dao.select(maxResult);
         logger.info("select(EfaxStatusLogs) - exited - return value={} result ");

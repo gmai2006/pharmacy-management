@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.EfaxRecipients;
 import java.util.List;
 
 public interface EfaxRecipientsService {
-    public EfaxRecipients find(java.util.UUID id);
+    EfaxRecipients find(java.util.UUID id);
+
+    java.util.UUID delete(java.util.UUID id);
 
     /**
      * Select a list of EfaxRecipients based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface EfaxRecipientsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return EfaxRecipients records.
      */
-    public List<EfaxRecipients> select(int maxResult);
+    List<EfaxRecipients> select(int maxResult);
 
     /**
      * Select all EfaxRecipients.
      *
      * @return all EfaxRecipients records.
      */
-    public List<EfaxRecipients> selectAll();
+    List<EfaxRecipients> selectAll();
 
     /**
      * Create EfaxRecipients.
@@ -39,7 +41,7 @@ public interface EfaxRecipientsService {
      * @param bean The EfaxRecipients.
      * @return The EfaxRecipients.
      */
-    public EfaxRecipients create(EfaxRecipients bean);
+    EfaxRecipients create(EfaxRecipients bean);
 
     /**
      * Update a EfaxRecipients.
@@ -47,5 +49,5 @@ public interface EfaxRecipientsService {
      * @param bean - The EfaxRecipients.
      * @return EfaxRecipients.
      */
-    public EfaxRecipients update(EfaxRecipients bean);
+    EfaxRecipients update(EfaxRecipients bean);
 }

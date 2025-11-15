@@ -46,6 +46,12 @@ public class DefaultPrescriptionTransfersService implements PrescriptionTransfer
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<PrescriptionTransfers> select(int maxResult) {
         final List<PrescriptionTransfers> result = dao.select(maxResult);
         logger.info("select(PrescriptionTransfers) - exited - return value={} result ");

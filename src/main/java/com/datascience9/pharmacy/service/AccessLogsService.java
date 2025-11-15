@@ -16,7 +16,9 @@ import com.datascience9.pharmacy.entity.AccessLogs;
 import java.util.List;
 
 public interface AccessLogsService {
-    public AccessLogs find(Long id);
+    AccessLogs find(Long id);
+
+    Long delete(Long id);
 
     /**
      * Select a list of AccessLogs based on a given maximum number of returning records.
@@ -24,14 +26,14 @@ public interface AccessLogsService {
      * @param maxResult : a specified maximum number of returned records.
      * @return AccessLogs records.
      */
-    public List<AccessLogs> select(int maxResult);
+    List<AccessLogs> select(int maxResult);
 
     /**
      * Select all AccessLogs.
      *
      * @return all AccessLogs records.
      */
-    public List<AccessLogs> selectAll();
+    List<AccessLogs> selectAll();
 
     /**
      * Create AccessLogs.
@@ -39,7 +41,7 @@ public interface AccessLogsService {
      * @param bean The AccessLogs.
      * @return The AccessLogs.
      */
-    public AccessLogs create(AccessLogs bean);
+    AccessLogs create(AccessLogs bean);
 
     /**
      * Update a AccessLogs.
@@ -47,5 +49,5 @@ public interface AccessLogsService {
      * @param bean - The AccessLogs.
      * @return AccessLogs.
      */
-    public AccessLogs update(AccessLogs bean);
+    AccessLogs update(AccessLogs bean);
 }

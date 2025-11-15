@@ -17,7 +17,6 @@ import com.datascience9.pharmacy.entity.Queues;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -44,8 +43,18 @@ public class QueuesDao {
      * @return The same Queues.
      */
     public Queues find(Integer id) {
-        final EntityManager em = dao.getEntityManager();
-        return em.find(Queues.class, id);
+        return dao.find(Queues.class, id);
+    }
+
+    /**
+     * Delete an entity.
+     *
+     * @param id An Queues id.
+     * @return The Id.
+     */
+    public Integer delete(Integer id) {
+        dao.delete(Queues.class, id);
+        return id;
     }
 
     /**

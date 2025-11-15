@@ -46,6 +46,12 @@ public class DefaultEncryptionKeysMetaService implements EncryptionKeysMetaServi
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<EncryptionKeysMeta> select(int maxResult) {
         final List<EncryptionKeysMeta> result = dao.select(maxResult);
         logger.info("select(EncryptionKeysMeta) - exited - return value={} result ");

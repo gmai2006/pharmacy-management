@@ -46,6 +46,12 @@ public class DefaultAlertRulesService implements AlertRulesService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<AlertRules> select(int maxResult) {
         final List<AlertRules> result = dao.select(maxResult);
         logger.info("select(AlertRules) - exited - return value={} result ");

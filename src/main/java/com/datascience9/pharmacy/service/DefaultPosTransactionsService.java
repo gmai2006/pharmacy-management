@@ -46,6 +46,12 @@ public class DefaultPosTransactionsService implements PosTransactionsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public java.util.UUID delete(java.util.UUID id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<PosTransactions> select(int maxResult) {
         final List<PosTransactions> result = dao.select(maxResult);
         logger.info("select(PosTransactions) - exited - return value={} result ");

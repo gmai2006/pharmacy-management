@@ -46,6 +46,12 @@ public class DefaultWorkflowStepsService implements WorkflowStepsService {
     }
 
     /** {@inheritDoc} */
+    @Override
+    public Integer delete(Integer id) {
+        return dao.delete(id);
+    }
+
+    /** {@inheritDoc} */
     public List<WorkflowSteps> select(int maxResult) {
         final List<WorkflowSteps> result = dao.select(maxResult);
         logger.info("select(WorkflowSteps) - exited - return value={} result ");

@@ -21,6 +21,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
+import java.util.UUID;
 
 @Path("/users")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -74,6 +75,19 @@ public class UsersResource {
     }
 
     /**
+     * Delete User.
+     *
+     * @param userId - user Id.
+     * @return Users.
+     */
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{userId}")
+    @DELETE
+    public Object delete(@PathParam("userId") String userId) {
+        return this.service.delete(UUID.fromString(userId));
+    }
+
+    /**
      * Delete existing Users.
      *
      * @param id instance of Users.
@@ -88,24 +102,14 @@ public class UsersResource {
      */
     @GET
     @Path("select/{max}")
-    public Response findWithLimit(@PathParam("max") String max) {
+    public List<Users> findWithLimit(@PathParam("max") String max) {
         Integer input = null;
         try {
             input = Integer.valueOf(max);
         } catch (NumberFormatException ex) {
             throw new WebApplicationException(Response.Status.BAD_REQUEST);
         }
-        List<Users> result = service.select(input);
-
-        return Response.status(Response.Status.OK)
-                .header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Credentials", "true")
-                .header(
-                        "Access-Control-Allow-Headers",
-                        "origin, content-type, accept, authorization")
-                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-                .entity(result)
-                .build();
+        return service.select(input);
     }
 
     /**
@@ -115,17 +119,7 @@ public class UsersResource {
      */
     @GET
     @Path("selectAll")
-    public Response selectAll() {
-        List<Users> result = service.selectAll();
-
-        return Response.status(Response.Status.OK)
-                .header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Credentials", "true")
-                .header(
-                        "Access-Control-Allow-Headers",
-                        "origin, content-type, accept, authorization")
-                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-                .entity(result)
-                .build();
+    public List<Users> selectAll() {
+        return service.selectAll();
     }
 }

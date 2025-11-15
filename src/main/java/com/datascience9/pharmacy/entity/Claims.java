@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,8 +24,9 @@ import org.hibernate.type.SqlTypes;
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "claims")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Claims implements Serializable {
-    private static final long serialVersionUID = 176294189247272301L;
+    private static final long serialVersionUID = 176311132690823992L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
