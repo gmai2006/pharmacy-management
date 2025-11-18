@@ -24,6 +24,8 @@ import java.util.logging.Logger;
 @Startup
 public class NotificationServiceStartup {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private KafkaConsumerService consumer;
+    private Thread consumerThread;
 
     @PostConstruct
     public void startup() {
@@ -32,16 +34,25 @@ public class NotificationServiceStartup {
                     String.format(
                             "Notification starts at %s",
                             ConfigManager.getKafkaProducer().getString(ConfigManager.BOOTSTRAP)));
-            KafkaManager.init(
-                    ConfigManager.getKafkaProducer().getString(ConfigManager.BOOTSTRAP),
-                    Arrays.stream(KafkaTopic.values()).map(KafkaTopic::name).toList());
+
+            consumer =
+                    new KafkaConsumerService(
+                            ConfigManager.getKafkaProducer().getString(ConfigManager.BOOTSTRAP),
+                            Arrays.stream(KafkaTopic.values()).map(KafkaTopic::name).toList(),
+                            "pharmacy");
+            consumerThread = new Thread(consumer, "kafka-chat-consumer");
+            consumerThread.start();
+            logger.info("Kafka consumer started.");
         }
     }
 
     @PreDestroy
     public void shutdown() {
         if (ConfigManager.getConfig().hasPath(ConfigManager.KAFKA)) {
-            KafkaManager.shutdown();
+            consumer.shutdown();
+            consumerThread.interrupt();
+            KafkaProducerService.close();
+            logger.info("Kafka consumer started.");
         }
     }
 }

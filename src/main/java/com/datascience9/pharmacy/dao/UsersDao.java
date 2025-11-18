@@ -18,6 +18,7 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /** Auto generated from a schema generated on $date$ */
@@ -74,6 +75,16 @@ public class UsersDao {
      */
     public List<Users> selectAll() {
         return dao.selectAll("select a from Users a", Users.class);
+    }
+
+    /**
+     * Retrieve all records Users.
+     *
+     * @return A list of Users
+     */
+    public List<Users> selectByEmail(String email) {
+        return dao.selectAllWithParameters(
+                "select a from Users a where email=:email", Users.class, Map.of("email", email));
     }
 
     /**

@@ -35,6 +35,8 @@ public interface UsersService {
      */
     List<Users> selectAll();
 
+    List<Users> selectByEmail(String email);
+
     /**
      * Create Users.
      *

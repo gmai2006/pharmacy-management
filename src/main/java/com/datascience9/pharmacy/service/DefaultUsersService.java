@@ -68,6 +68,11 @@ public class DefaultUsersService implements UsersService {
         return results;
     }
 
+    @Override
+    public List<Users> selectByEmail(String email) {
+        return dao.selectByEmail(email);
+    }
+
     /** {@inheritDoc} */
     @Override
     public Users create(Users bean) {

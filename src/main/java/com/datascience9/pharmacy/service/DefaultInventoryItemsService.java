@@ -19,7 +19,10 @@ import com.datascience9.pharmacy.entity.InventoryItems;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 /** Auto generated from a schema generated on $date$ */
@@ -70,6 +73,8 @@ public class DefaultInventoryItemsService implements InventoryItemsService {
     @Override
     public InventoryItems create(InventoryItems bean) {
         requireNonNull(bean);
+        bean.setId(UUID.randomUUID());
+        bean.setCreatedAt(new Timestamp(new Date().getTime()));
         logger.info("create(InventoryItems={}) - entered bean ");
 
         final InventoryItems result = dao.create(bean);

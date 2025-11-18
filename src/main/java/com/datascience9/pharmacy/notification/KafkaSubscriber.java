@@ -14,5 +14,5 @@ package com.datascience9.pharmacy.notification;
 
 @FunctionalInterface
 public interface KafkaSubscriber {
-    void onMessage(String topic, String message);
+    void onMessage(String topic, String key, String message);
 }

@@ -13,32 +13,29 @@
 package com.datascience9.pharmacy.notification;
 
 import java.util.Properties;
-import java.util.concurrent.Future;
 import java.util.logging.Logger;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 public class KafkaProducerService {
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
-    private final KafkaProducer<String, String> producer;
+    private static final Logger logger = Logger.getLogger(KafkaProducerService.class.getName());
+    private static final KafkaProducer<String, String> producer = createProducer();
 
-    public KafkaProducerService(String bootstrapServers) {
+    private static KafkaProducer<String, String> createProducer() {
         Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(ProducerConfig.ACKS_CONFIG, "all");
-        props.put(ProducerConfig.RETRIES_CONFIG, 3);
-        this.producer = new KafkaProducer<>(props);
+        return new KafkaProducer<>(props);
     }
 
     /** Send to a specified topic */
-    public Future<RecordMetadata> sendMessage(String topic, String key, String message) {
+    public static void sendMessage(String topic, String key, String message) {
         ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, message);
-        return producer.send(
+        producer.send(
                 record,
                 (metadata, exception) -> {
                     if (exception != null)
@@ -47,14 +44,14 @@ public class KafkaProducerService {
                                         "[Producer] Error sending to %s: %s%n",
                                         topic, exception.getMessage()));
                     else
-                        logger.severe(
+                        logger.info(
                                 String.format(
                                         "[Producer] Sent to %s[%d] offset=%d%n",
                                         metadata.topic(), metadata.partition(), metadata.offset()));
                 });
     }
 
-    public void close() {
+    public static void close() {
         producer.flush();
         producer.close();
     }

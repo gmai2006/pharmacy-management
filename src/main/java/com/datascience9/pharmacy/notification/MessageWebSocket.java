@@ -33,13 +33,8 @@ public class MessageWebSocket {
 
     @OnMessage
     public void onMessage(String message, Session session) throws IOException {
-        System.out.println("Received message from client: " + message);
-        // Broadcast message to all connected clients or specific ones
-        for (Session s : session.getOpenSessions()) {
-            if (s.isOpen()) {
-                s.getBasicRemote().sendText("Server received: " + message);
-            }
-        }
+        logger.info("onMessage Received message from client: " + message);
+        KafkaProducerService.sendMessage(KafkaTopic.Users.name(), "test", message);
     }
 
     @OnClose
@@ -53,13 +48,14 @@ public class MessageWebSocket {
     }
 
     public static void broadcast(String message) {
+        logger.info(String.format("Web socket broadcast: %s", message));
         sessions.forEach(
                 session -> {
                     try {
                         session.getBasicRemote().sendText(message);
-                        logger.info(String.format("Broadcast the message %S", message));
+                        logger.info(String.format("sent the message %S", message));
                     } catch (IOException e) {
-                        logger.severe(String.format("Cannot broadcast the message %S", message));
+                        logger.severe(String.format("Cannot sent the message %S", message));
                     }
                 });
     }

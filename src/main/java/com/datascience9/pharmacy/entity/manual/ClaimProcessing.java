@@ -2,6 +2,7 @@ package com.datascience9.pharmacy.entity.manual;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -20,7 +21,8 @@ import org.hibernate.type.SqlTypes;
 @Entity
 @Table(name = "v_claim_processing")
 @Immutable
-public class ClaimProcessing {
+public class ClaimProcessing implements Serializable {
+    private static final long serialVersionUID = 43L;
 
     // ==================== Composite Key ====================
     /**

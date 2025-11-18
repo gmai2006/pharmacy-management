@@ -88,13 +88,6 @@ public class UsersResource {
     }
 
     /**
-     * Delete existing Users.
-     *
-     * @param id instance of Users.
-     * @return Users.
-     */
-
-    /**
      * Select all Users with limit of returned records.
      *
      * @param max - number of records.
@@ -113,6 +106,18 @@ public class UsersResource {
     }
 
     /**
+     * Find the user by Id.
+     *
+     * @param id - The user Id.
+     * @return the User.
+     */
+    @GET
+    @Path("find/{id}")
+    public Users find(@PathParam("id") String id) {
+        return service.find(UUID.fromString(id));
+    }
+
+    /**
      * Select all Users records.
      *
      * @return a list Users.
@@ -121,5 +126,16 @@ public class UsersResource {
     @Path("selectAll")
     public List<Users> selectAll() {
         return service.selectAll();
+    }
+
+    /**
+     * Select all Users records.
+     *
+     * @return a list Users.
+     */
+    @GET
+    @Path("byEmail/{email}")
+    public List<Users> selectByEmail(@PathParam("email") String email) {
+        return service.selectByEmail(email);
     }
 }

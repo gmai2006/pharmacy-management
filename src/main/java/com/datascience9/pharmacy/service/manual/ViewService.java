@@ -12,9 +12,7 @@
  */
 package com.datascience9.pharmacy.service.manual;
 
-import com.datascience9.pharmacy.entity.manual.ClaimProcessing;
-import com.datascience9.pharmacy.entity.manual.InventoryOverview;
-import com.datascience9.pharmacy.entity.manual.PrescriptionSummary;
+import com.datascience9.pharmacy.entity.manual.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +22,10 @@ public interface ViewService {
     public PrescriptionSummary findById(UUID id);
 
     List<InventoryOverview> selectAllInventoryOverviews(int max);
+
+    List<AlertLogDetailsView> selectAlertLogView(int max);
+
+    List<TransactionSummary> selectTransactionSummary(int max);
 
     List<InventoryOverview> reorderInventoryNeeded();
 

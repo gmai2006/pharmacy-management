@@ -15,9 +15,7 @@ package com.datascience9.pharmacy.service.manual;
 import static java.util.Objects.requireNonNull;
 
 import com.datascience9.pharmacy.dao.manual.ViewDao;
-import com.datascience9.pharmacy.entity.manual.ClaimProcessing;
-import com.datascience9.pharmacy.entity.manual.InventoryOverview;
-import com.datascience9.pharmacy.entity.manual.PrescriptionSummary;
+import com.datascience9.pharmacy.entity.manual.*;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -51,6 +49,16 @@ public class DefaultViewService implements ViewService {
     @Override
     public List<InventoryOverview> selectAllInventoryOverviews(int max) {
         return dao.selectAllInventoryOverviews(max);
+    }
+
+    @Override
+    public List<AlertLogDetailsView> selectAlertLogView(int max) {
+        return dao.selectAlertLogView(max);
+    }
+
+    @Override
+    public List<TransactionSummary> selectTransactionSummary(int max) {
+        return dao.selectTransactionSummary(max);
     }
 
     @Override

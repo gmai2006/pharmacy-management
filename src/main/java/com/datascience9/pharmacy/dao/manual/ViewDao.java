@@ -13,9 +13,7 @@
 package com.datascience9.pharmacy.dao.manual;
 
 import com.datascience9.pharmacy.dao.core.JpaDao;
-import com.datascience9.pharmacy.entity.manual.ClaimProcessing;
-import com.datascience9.pharmacy.entity.manual.InventoryOverview;
-import com.datascience9.pharmacy.entity.manual.PrescriptionSummary;
+import com.datascience9.pharmacy.entity.manual.*;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -53,6 +51,14 @@ public class ViewDao {
 
     public List<ClaimProcessing> selectClaimProcessing(int max) {
         return dao.select("SELECT p FROM ClaimProcessing p", ClaimProcessing.class, max);
+    }
+
+    public List<AlertLogDetailsView> selectAlertLogView(int max) {
+        return dao.select("SELECT p FROM AlertLogDetailsView p", AlertLogDetailsView.class, max);
+    }
+
+    public List<TransactionSummary> selectTransactionSummary(int max) {
+        return dao.select("SELECT p FROM TransactionSummary p", TransactionSummary.class, max);
     }
 
     public List<InventoryOverview> reorderInventoryNeeded() {

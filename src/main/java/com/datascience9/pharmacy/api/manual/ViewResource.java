@@ -12,9 +12,7 @@
  */
 package com.datascience9.pharmacy.api.manual;
 
-import com.datascience9.pharmacy.entity.manual.ClaimProcessing;
-import com.datascience9.pharmacy.entity.manual.InventoryOverview;
-import com.datascience9.pharmacy.entity.manual.PrescriptionSummary;
+import com.datascience9.pharmacy.entity.manual.*;
 import com.datascience9.pharmacy.service.manual.ViewService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -75,6 +73,30 @@ public class ViewResource {
             throw new WebApplicationException(Response.Status.BAD_REQUEST);
         }
         return this.service.selectClaimProcessing(input);
+    }
+
+    @GET
+    @Path("alertview/{max}")
+    public List<AlertLogDetailsView> getAlertViews(@PathParam("max") String max) {
+        int input;
+        try {
+            input = Integer.parseInt(max);
+        } catch (NumberFormatException ex) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
+        return this.service.selectAlertLogView(input);
+    }
+
+    @GET
+    @Path("transactionsummary/{max}")
+    public List<TransactionSummary> getTransactionSummary(@PathParam("max") String max) {
+        int input;
+        try {
+            input = Integer.parseInt(max);
+        } catch (NumberFormatException ex) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
+        return this.service.selectTransactionSummary(input);
     }
 
     @GET

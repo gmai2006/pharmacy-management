@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-/** Auto generated from a schema generated on $date$ */
 public class KafkaConsumerService implements Runnable {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
     private final KafkaConsumer<String, String> consumer;
@@ -33,6 +32,7 @@ public class KafkaConsumerService implements Runnable {
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
+        props.put(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "pharmacy-instance-1");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
@@ -40,6 +40,7 @@ public class KafkaConsumerService implements Runnable {
 
         this.consumer = new KafkaConsumer<>(props);
         this.subscribedTopics.addAll(topics);
+        logger.info(String.format("Consumer subscribes to : %s", topics));
         consumer.subscribe(subscribedTopics);
         topics.forEach(topic -> subscribers.put(topic, new ArrayList<>()));
     }
@@ -75,11 +76,15 @@ public class KafkaConsumerService implements Runnable {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(500));
             for (ConsumerRecord<String, String> record : records) {
                 String msg =
-                        String.format("receive message [%s] %s", record.topic(), record.value());
+                        String.format(
+                                "Kafka client receives message [%s] [%s] %s",
+                                record.topic(), record.key(), record.value());
                 logger.info(msg);
                 MessageWebSocket.broadcast(msg);
                 List<KafkaSubscriber> receivers = subscribers.get(record.topic());
-                receivers.forEach(receiver -> receiver.onMessage(record.topic(), record.value()));
+                receivers.forEach(
+                        receiver ->
+                                receiver.onMessage(record.topic(), record.key(), record.value()));
             }
         }
         consumer.close();
