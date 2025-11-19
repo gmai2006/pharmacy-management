@@ -21,7 +21,7 @@ import java.io.Serializable;
 @Table(name = "pharmacists")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Pharmacists implements Serializable {
-    private static final long serialVersionUID = 176311132687433523L;
+    private static final long serialVersionUID = 176351898738125658L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -21,7 +22,7 @@ import java.io.Serializable;
 @Table(name = "stations")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Stations implements Serializable {
-    private static final long serialVersionUID = 17635146659254853L;
+    private static final long serialVersionUID = 176351898745915220L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -63,11 +64,13 @@ public class Stations implements Serializable {
 
     /** Description: created_date. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_date")
     private java.time.LocalDateTime createdDate;
 
     /** Description: updated_date. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "updated_date")
     private java.time.LocalDateTime updatedDate;
 

@@ -24,7 +24,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "user_sso")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserSso implements Serializable {
-    private static final long serialVersionUID = 176311132686470397L;
+    private static final long serialVersionUID = 176351898737311422L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

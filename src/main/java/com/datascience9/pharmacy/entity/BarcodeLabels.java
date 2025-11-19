@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "barcode_labels")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BarcodeLabels implements Serializable {
-    private static final long serialVersionUID = 176311132690291464L;
+    private static final long serialVersionUID = 176351898741259141L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -50,6 +51,7 @@ public class BarcodeLabels implements Serializable {
 
     /** Description: generated_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "generated_at")
     private java.time.LocalDateTime generatedAt;
 

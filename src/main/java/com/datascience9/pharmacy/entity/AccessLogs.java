@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "access_logs")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AccessLogs implements Serializable {
-    private static final long serialVersionUID = 176311132694060609L;
+    private static final long serialVersionUID = 176351898744974400L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -82,6 +83,7 @@ public class AccessLogs implements Serializable {
 
     /** Description: accessed_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "accessed_at")
     private java.time.LocalDateTime accessedAt;
 

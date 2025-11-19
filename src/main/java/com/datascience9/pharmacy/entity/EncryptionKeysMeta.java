@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "encryption_keys_meta")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EncryptionKeysMeta implements Serializable {
-    private static final long serialVersionUID = 176311132693729914L;
+    private static final long serialVersionUID = 176351898744657922L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -44,11 +45,13 @@ public class EncryptionKeysMeta implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 
     /** Description: rotated_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "rotated_at")
     private java.time.LocalDateTime rotatedAt;
 

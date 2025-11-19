@@ -26,7 +26,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "queues")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Queues implements Serializable {
-    private static final long serialVersionUID = 176311132689889146L;
+    private static final long serialVersionUID = 176351898740726781L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

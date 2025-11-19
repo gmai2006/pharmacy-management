@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "consent_records")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ConsentRecords implements Serializable {
-    private static final long serialVersionUID = 176311132693643798L;
+    private static final long serialVersionUID = 176351898744592640L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -59,6 +60,7 @@ public class ConsentRecords implements Serializable {
 
     /** Description: recorded_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "recorded_at")
     private java.time.LocalDateTime recordedAt;
 

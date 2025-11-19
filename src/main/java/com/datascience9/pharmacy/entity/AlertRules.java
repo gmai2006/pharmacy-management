@@ -12,11 +12,10 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -26,7 +25,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "alert_rules")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AlertRules implements Serializable {
-    private static final long serialVersionUID = 176311132691380451L;
+    private static final long serialVersionUID = 176351898742454570L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -64,10 +63,9 @@ public class AlertRules implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
-
-    @Transient List<AlertLogs> alertlogs;
 
     public AlertRules() {}
 
@@ -125,13 +123,5 @@ public class AlertRules implements Serializable {
 
     public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public List<AlertLogs> getAlertLogs() {
-        return this.alertlogs;
-    }
-
-    public void setAlertLogs(List<AlertLogs> alertlogs) {
-        this.alertlogs = new ArrayList<>(alertlogs);
     }
 }

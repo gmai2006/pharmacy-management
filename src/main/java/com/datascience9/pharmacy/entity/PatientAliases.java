@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -21,7 +22,7 @@ import java.io.Serializable;
 @Table(name = "patient_aliases")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PatientAliases implements Serializable {
-    private static final long serialVersionUID = 176311132687286209L;
+    private static final long serialVersionUID = 176351898737945971L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -46,6 +47,7 @@ public class PatientAliases implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 

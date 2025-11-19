@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -21,13 +22,13 @@ import java.io.Serializable;
 @Table(name = "fingerprint_history")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FingerprintHistory implements Serializable {
-    private static final long serialVersionUID = 176351466592832303L;
+    private static final long serialVersionUID = 176353437009944749L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
     @Id
-    @Column(name = "id")
-    private Integer id;
+    @Column(columnDefinition = "UUID", name = "id")
+    private java.util.UUID id;
 
     /** Description: station_id. */
     @jakarta.validation.constraints.NotNull
@@ -48,6 +49,7 @@ public class FingerprintHistory implements Serializable {
 
     /** Description: change_date. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "change_date")
     private java.time.LocalDateTime changeDate;
 
@@ -88,11 +90,11 @@ public class FingerprintHistory implements Serializable {
 
     public FingerprintHistory() {}
 
-    public Integer getId() {
+    public java.util.UUID getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(java.util.UUID id) {
         this.id = id;
     }
 

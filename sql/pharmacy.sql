@@ -881,13 +881,12 @@ CREATE TABLE IF NOT EXISTS stations (
 -- 2. DEVICE_FINGERPRINTS TABLE - Core table for device fingerprint mapping
 -- ============================================================================
 CREATE TABLE IF NOT EXISTS device_fingerprints (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
 
     -- Station assignment
     station_id SERIAL UNIQUE NOT NULL,
 
     -- Device fingerprint
-    device_fingerprint VARCHAR(255) UNIQUE NOT NULL,
     fingerprint_hash VARCHAR(64) UNIQUE NOT NULL,
 
     -- Device characteristics
@@ -920,7 +919,7 @@ CREATE TABLE IF NOT EXISTS device_fingerprints (
 -- 3. FINGERPRINT_HISTORY TABLE - Track fingerprint changes
 -- ============================================================================
 CREATE TABLE IF NOT EXISTS fingerprint_history (
-    id SERIAL PRIMARY KEY,
+    id UUID PRIMARY KEY,
 
     station_id SERIAL NOT NULL,
 

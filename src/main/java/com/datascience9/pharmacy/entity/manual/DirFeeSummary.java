@@ -1,18 +1,18 @@
 package com.datascience9.pharmacy.entity.manual;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Immutable;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
+import org.hibernate.annotations.Immutable;
 
 @Entity
 @Immutable
 @Table(name = "v_dir_fee_summary")
 public class DirFeeSummary implements Serializable {
     private static final long serialVersionUID = 355L;
+
     @Id
     @Column(name = "dir_fee_id")
     private Long dirFeeId;
@@ -38,7 +38,7 @@ public class DirFeeSummary implements Serializable {
     private String dirFeePayerName;
 
     @Column(name = "dir_fee_metadata")
-    private String dirFeeMetadata;  // Stored as JSON → map as String or JsonNode
+    private String dirFeeMetadata; // Stored as JSON → map as String or JsonNode
 
     // ---- Claim fields ----
 
@@ -52,7 +52,7 @@ public class DirFeeSummary implements Serializable {
     private OffsetDateTime claimSubmittedAt;
 
     @Column(name = "claim_fiscal_fields")
-    private String claimFiscalFields;  // JSON
+    private String claimFiscalFields; // JSON
 
     @Column(name = "prescription_id")
     private UUID prescriptionId;
@@ -209,4 +209,3 @@ public class DirFeeSummary implements Serializable {
         this.netReimbursementAfterDirFee = netReimbursementAfterDirFee;
     }
 }
-

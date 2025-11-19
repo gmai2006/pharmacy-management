@@ -12,16 +12,20 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.Map;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 /** Auto generated from a schema generated on $date$ */
 @Entity
 @Table(name = "dir_fees")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DirFees implements Serializable {
-    private static final long serialVersionUID = 176311132690942859L;
+    private static final long serialVersionUID = 176351898742082173L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -30,11 +34,13 @@ public class DirFees implements Serializable {
     private Long id;
 
     /** Description: claim_id. */
+    @jakarta.validation.constraints.NotNull
     @Basic
     @Column(columnDefinition = "UUID", name = "claim_id")
     private java.util.UUID claimId;
 
     /** Description: amount. */
+    @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "amount")
     private java.math.BigDecimal amount;
@@ -45,9 +51,27 @@ public class DirFees implements Serializable {
     private String reason;
 
     /** Description: recorded_at. */
+    @jakarta.validation.constraints.NotNull
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "recorded_at")
     private java.time.LocalDateTime recordedAt;
+
+    /** Description: reconciliation_period. */
+    @Basic
+    @Column(name = "reconciliation_period")
+    private String reconciliationPeriod;
+
+    /** Description: payer_name. */
+    @Basic
+    @Column(name = "payer_name")
+    private String payerName;
+
+    /** Description: metadata. */
+    @Basic
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb", name = "metadata")
+    private Map<String, Object> metadata;
 
     public DirFees() {}
 
@@ -75,6 +99,18 @@ public class DirFees implements Serializable {
         return this.recordedAt;
     }
 
+    public String getReconciliationPeriod() {
+        return this.reconciliationPeriod;
+    }
+
+    public String getPayerName() {
+        return this.payerName;
+    }
+
+    public Map<String, Object> getMetadata() {
+        return this.metadata;
+    }
+
     public void setClaimId(java.util.UUID claimId) {
         this.claimId = claimId;
     }
@@ -89,5 +125,17 @@ public class DirFees implements Serializable {
 
     public void setRecordedAt(java.time.LocalDateTime recordedAt) {
         this.recordedAt = recordedAt;
+    }
+
+    public void setReconciliationPeriod(String reconciliationPeriod) {
+        this.reconciliationPeriod = reconciliationPeriod;
+    }
+
+    public void setPayerName(String payerName) {
+        this.payerName = payerName;
+    }
+
+    public void setMetadata(Map<String, Object> metadata) {
+        this.metadata = metadata;
     }
 }

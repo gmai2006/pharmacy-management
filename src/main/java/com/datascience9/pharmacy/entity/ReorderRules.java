@@ -21,7 +21,7 @@ import java.io.Serializable;
 @Table(name = "reorder_rules")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReorderRules implements Serializable {
-    private static final long serialVersionUID = 176311132688354360L;
+    private static final long serialVersionUID = 176351898739122L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

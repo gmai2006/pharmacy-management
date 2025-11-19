@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -23,7 +24,7 @@ import java.util.List;
 @Table(name = "patient_insurances")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PatientInsurances implements Serializable {
-    private static final long serialVersionUID = 176311132692095869L;
+    private static final long serialVersionUID = 176351898742798172L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -61,13 +62,15 @@ public class PatientInsurances implements Serializable {
 
     /** Description: effective_date. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "effective_date")
-    private java.util.Date effectiveDate;
+    private java.time.LocalDateTime effectiveDate;
 
     /** Description: expiration_date. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "expiration_date")
-    private java.util.Date expirationDate;
+    private java.time.LocalDateTime expirationDate;
 
     /** Description: coverage_type. */
     @Basic
@@ -101,11 +104,13 @@ public class PatientInsurances implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 
     /** Description: updated_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "updated_at")
     private java.time.LocalDateTime updatedAt;
 
@@ -141,11 +146,11 @@ public class PatientInsurances implements Serializable {
         return this.planName;
     }
 
-    public java.util.Date getEffectiveDate() {
+    public java.time.LocalDateTime getEffectiveDate() {
         return this.effectiveDate;
     }
 
-    public java.util.Date getExpirationDate() {
+    public java.time.LocalDateTime getExpirationDate() {
         return this.expirationDate;
     }
 
@@ -201,11 +206,11 @@ public class PatientInsurances implements Serializable {
         this.planName = planName;
     }
 
-    public void setEffectiveDate(java.util.Date effectiveDate) {
+    public void setEffectiveDate(java.time.LocalDateTime effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 
-    public void setExpirationDate(java.util.Date expirationDate) {
+    public void setExpirationDate(java.time.LocalDateTime expirationDate) {
         this.expirationDate = expirationDate;
     }
 

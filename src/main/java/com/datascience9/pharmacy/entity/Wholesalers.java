@@ -26,7 +26,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "wholesalers")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Wholesalers implements Serializable {
-    private static final long serialVersionUID = 176311132687583719L;
+    private static final long serialVersionUID = 176351898738396224L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

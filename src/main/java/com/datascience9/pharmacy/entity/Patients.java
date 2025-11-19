@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -26,7 +27,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "patients")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Patients implements Serializable {
-    private static final long serialVersionUID = 17631113268686410L;
+    private static final long serialVersionUID = 176351898737674395L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -53,8 +54,9 @@ public class Patients implements Serializable {
 
     /** Description: dob. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "dob")
-    private java.util.Date dob;
+    private java.time.LocalDateTime dob;
 
     /** Description: gender. */
     @Basic
@@ -90,6 +92,7 @@ public class Patients implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 
@@ -101,7 +104,6 @@ public class Patients implements Serializable {
     @Transient List<AccessLogs> accesslogs;
     @Transient List<EfaxJobs> efaxjobs;
     @Transient List<Prescriptions> prescriptions;
-    @Transient List<AlertLogs> alertlogs;
     @Transient List<ConsentRecords> consentrecords;
     @Transient List<PosTransactions> postransactions;
 
@@ -127,7 +129,7 @@ public class Patients implements Serializable {
         return this.lastName;
     }
 
-    public java.util.Date getDob() {
+    public java.time.LocalDateTime getDob() {
         return this.dob;
     }
 
@@ -171,7 +173,7 @@ public class Patients implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setDob(java.util.Date dob) {
+    public void setDob(java.time.LocalDateTime dob) {
         this.dob = dob;
     }
 
@@ -235,10 +237,6 @@ public class Patients implements Serializable {
         return this.prescriptions;
     }
 
-    public List<AlertLogs> getAlertLogs() {
-        return this.alertlogs;
-    }
-
     public List<ConsentRecords> getConsentRecords() {
         return this.consentrecords;
     }
@@ -277,10 +275,6 @@ public class Patients implements Serializable {
 
     public void setPrescriptions(List<Prescriptions> prescriptions) {
         this.prescriptions = new ArrayList<>(prescriptions);
-    }
-
-    public void setAlertLogs(List<AlertLogs> alertlogs) {
-        this.alertlogs = new ArrayList<>(alertlogs);
     }
 
     public void setConsentRecords(List<ConsentRecords> consentrecords) {

@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -26,7 +27,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "prescriptions")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Prescriptions implements Serializable {
-    private static final long serialVersionUID = 176311132688665216L;
+    private static final long serialVersionUID = 176351898739545404L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -51,6 +52,7 @@ public class Prescriptions implements Serializable {
 
     /** Description: issue_date. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "issue_date")
     private java.time.LocalDateTime issueDate;
 
@@ -84,6 +86,7 @@ public class Prescriptions implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 
@@ -99,36 +102,39 @@ public class Prescriptions implements Serializable {
 
     /** Description: last_status_update. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "last_status_update")
     private java.time.LocalDateTime lastStatusUpdate;
 
     /** Description: estimated_ready_time. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "estimated_ready_time")
     private java.time.LocalDateTime estimatedReadyTime;
 
     /** Description: pickup_time. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "pickup_time")
     private java.time.LocalDateTime pickupTime;
 
     /** Description: completion_time. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "completion_time")
     private java.time.LocalDateTime completionTime;
 
+    @Transient List<PrescriptionClaims> prescriptionclaims;
     @Transient List<PdmpQueries> pdmpqueries;
     @Transient List<PrescriptionCopays> prescriptioncopays;
     @Transient List<PrescriptionAudit> prescriptionaudit;
-    @Transient List<PosTransactions> postransactions;
-    @Transient List<PrescriptionWorkflowLogs> prescriptionworkflowlogs;
-    @Transient List<PrescriptionTransfers> prescriptiontransfers;
-    @Transient List<PrescriptionClaims> prescriptionclaims;
     @Transient List<EfaxIncoming> efaxincoming;
     @Transient List<Claims> claims;
     @Transient List<PrescriptionItems> prescriptionitems;
     @Transient List<EfaxJobs> efaxjobs;
-    @Transient List<AlertLogs> alertlogs;
+    @Transient List<PosTransactions> postransactions;
+    @Transient List<PrescriptionWorkflowLogs> prescriptionworkflowlogs;
+    @Transient List<PrescriptionTransfers> prescriptiontransfers;
     @Transient List<AwpReclaims> awpreclaims;
 
     public Prescriptions() {}
@@ -269,6 +275,10 @@ public class Prescriptions implements Serializable {
         this.completionTime = completionTime;
     }
 
+    public List<PrescriptionClaims> getPrescriptionClaims() {
+        return this.prescriptionclaims;
+    }
+
     public List<PdmpQueries> getPdmpQueries() {
         return this.pdmpqueries;
     }
@@ -279,22 +289,6 @@ public class Prescriptions implements Serializable {
 
     public List<PrescriptionAudit> getPrescriptionAudit() {
         return this.prescriptionaudit;
-    }
-
-    public List<PosTransactions> getPosTransactions() {
-        return this.postransactions;
-    }
-
-    public List<PrescriptionWorkflowLogs> getPrescriptionWorkflowLogs() {
-        return this.prescriptionworkflowlogs;
-    }
-
-    public List<PrescriptionTransfers> getPrescriptionTransfers() {
-        return this.prescriptiontransfers;
-    }
-
-    public List<PrescriptionClaims> getPrescriptionClaims() {
-        return this.prescriptionclaims;
     }
 
     public List<EfaxIncoming> getEfaxIncoming() {
@@ -313,12 +307,24 @@ public class Prescriptions implements Serializable {
         return this.efaxjobs;
     }
 
-    public List<AlertLogs> getAlertLogs() {
-        return this.alertlogs;
+    public List<PosTransactions> getPosTransactions() {
+        return this.postransactions;
+    }
+
+    public List<PrescriptionWorkflowLogs> getPrescriptionWorkflowLogs() {
+        return this.prescriptionworkflowlogs;
+    }
+
+    public List<PrescriptionTransfers> getPrescriptionTransfers() {
+        return this.prescriptiontransfers;
     }
 
     public List<AwpReclaims> getAwpReclaims() {
         return this.awpreclaims;
+    }
+
+    public void setPrescriptionClaims(List<PrescriptionClaims> prescriptionclaims) {
+        this.prescriptionclaims = new ArrayList<>(prescriptionclaims);
     }
 
     public void setPdmpQueries(List<PdmpQueries> pdmpqueries) {
@@ -331,23 +337,6 @@ public class Prescriptions implements Serializable {
 
     public void setPrescriptionAudit(List<PrescriptionAudit> prescriptionaudit) {
         this.prescriptionaudit = new ArrayList<>(prescriptionaudit);
-    }
-
-    public void setPosTransactions(List<PosTransactions> postransactions) {
-        this.postransactions = new ArrayList<>(postransactions);
-    }
-
-    public void setPrescriptionWorkflowLogs(
-            List<PrescriptionWorkflowLogs> prescriptionworkflowlogs) {
-        this.prescriptionworkflowlogs = new ArrayList<>(prescriptionworkflowlogs);
-    }
-
-    public void setPrescriptionTransfers(List<PrescriptionTransfers> prescriptiontransfers) {
-        this.prescriptiontransfers = new ArrayList<>(prescriptiontransfers);
-    }
-
-    public void setPrescriptionClaims(List<PrescriptionClaims> prescriptionclaims) {
-        this.prescriptionclaims = new ArrayList<>(prescriptionclaims);
     }
 
     public void setEfaxIncoming(List<EfaxIncoming> efaxincoming) {
@@ -366,8 +355,17 @@ public class Prescriptions implements Serializable {
         this.efaxjobs = new ArrayList<>(efaxjobs);
     }
 
-    public void setAlertLogs(List<AlertLogs> alertlogs) {
-        this.alertlogs = new ArrayList<>(alertlogs);
+    public void setPosTransactions(List<PosTransactions> postransactions) {
+        this.postransactions = new ArrayList<>(postransactions);
+    }
+
+    public void setPrescriptionWorkflowLogs(
+            List<PrescriptionWorkflowLogs> prescriptionworkflowlogs) {
+        this.prescriptionworkflowlogs = new ArrayList<>(prescriptionworkflowlogs);
+    }
+
+    public void setPrescriptionTransfers(List<PrescriptionTransfers> prescriptiontransfers) {
+        this.prescriptiontransfers = new ArrayList<>(prescriptiontransfers);
     }
 
     public void setAwpReclaims(List<AwpReclaims> awpreclaims) {

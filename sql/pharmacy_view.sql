@@ -841,3 +841,33 @@ LEFT JOIN payment_totals pay
 LEFT JOIN dir_fee_totals df
        ON df.prescription_id = ptot.prescription_id;
 
+-- View: All active stations summary
+CREATE OR REPLACE VIEW v_active_stations_summary AS
+SELECT
+    df.station_id,
+    df.department,
+    df.location,
+    df.browser_user_agent,
+    df.screen_resolution,
+    df.timezone,
+    df.assigned_date,
+    df.last_seen,
+    df.access_count,
+    EXTRACT(DAY FROM (CURRENT_TIMESTAMP - df.last_seen)) as days_inactive
+FROM device_fingerprints df
+WHERE df.is_active = TRUE
+ORDER BY df.assigned_date DESC;
+
+-- View: Inactive stations (not accessed in 30 days)
+CREATE OR REPLACE VIEW inactive_stations AS
+SELECT
+    df.station_id,
+    df.department,
+    df.location,
+    df.last_seen,
+    EXTRACT(DAY FROM (CURRENT_TIMESTAMP - df.last_seen)) as days_inactive
+FROM device_fingerprints df
+WHERE df.is_active = TRUE
+AND CURRENT_TIMESTAMP - df.last_seen > INTERVAL '30 days'
+ORDER BY df.last_seen ASC;
+

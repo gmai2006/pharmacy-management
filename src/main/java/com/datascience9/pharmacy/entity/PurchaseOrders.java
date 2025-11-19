@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "purchase_orders")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PurchaseOrders implements Serializable {
-    private static final long serialVersionUID = 176311132688553335L;
+    private static final long serialVersionUID = 176351898739363466L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -49,13 +50,15 @@ public class PurchaseOrders implements Serializable {
 
     /** Description: ordered_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "ordered_at")
     private java.time.LocalDateTime orderedAt;
 
     /** Description: expected_arrival. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "expected_arrival")
-    private java.util.Date expectedArrival;
+    private java.time.LocalDateTime expectedArrival;
 
     /** Description: payload. */
     @Basic
@@ -89,7 +92,7 @@ public class PurchaseOrders implements Serializable {
         return this.orderedAt;
     }
 
-    public java.util.Date getExpectedArrival() {
+    public java.time.LocalDateTime getExpectedArrival() {
         return this.expectedArrival;
     }
 
@@ -113,7 +116,7 @@ public class PurchaseOrders implements Serializable {
         this.orderedAt = orderedAt;
     }
 
-    public void setExpectedArrival(java.util.Date expectedArrival) {
+    public void setExpectedArrival(java.time.LocalDateTime expectedArrival) {
         this.expectedArrival = expectedArrival;
     }
 

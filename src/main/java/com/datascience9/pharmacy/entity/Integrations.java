@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -26,7 +27,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "integrations")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Integrations implements Serializable {
-    private static final long serialVersionUID = 176311132693122323L;
+    private static final long serialVersionUID = 176351898743933556L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -53,6 +54,7 @@ public class Integrations implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 

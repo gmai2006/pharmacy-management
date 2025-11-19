@@ -23,7 +23,7 @@ import java.util.List;
 @Table(name = "roles")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Roles implements Serializable {
-    private static final long serialVersionUID = 176311132685033955L;
+    private static final long serialVersionUID = 176351898736059788L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

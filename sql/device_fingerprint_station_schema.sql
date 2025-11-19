@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS fingerprint_history (
 -- ============================================================================
 
 -- View: All active stations summary
-CREATE OR REPLACE VIEW active_stations_summary AS
+CREATE OR REPLACE VIEW v_active_stations_summary AS
 SELECT
     df.station_id,
     df.department,

@@ -26,7 +26,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "workflow_steps")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class WorkflowSteps implements Serializable {
-    private static final long serialVersionUID = 17631113268973137L;
+    private static final long serialVersionUID = 176351898740567010L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -23,7 +24,7 @@ import java.util.List;
 @Table(name = "efax_recipients")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EfaxRecipients implements Serializable {
-    private static final long serialVersionUID = 176311132694237650L;
+    private static final long serialVersionUID = 176351898745127183L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -65,11 +66,13 @@ public class EfaxRecipients implements Serializable {
 
     /** Description: last_verified_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "last_verified_at")
     private java.time.LocalDateTime lastVerifiedAt;
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 

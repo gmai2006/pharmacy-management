@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -26,7 +27,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "efax_jobs")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EfaxJobs implements Serializable {
-    private static final long serialVersionUID = 176311132694387072L;
+    private static final long serialVersionUID = 176351898745283724L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -93,16 +94,19 @@ public class EfaxJobs implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 
     /** Description: sent_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "sent_at")
     private java.time.LocalDateTime sentAt;
 
     /** Description: completed_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "completed_at")
     private java.time.LocalDateTime completedAt;
 

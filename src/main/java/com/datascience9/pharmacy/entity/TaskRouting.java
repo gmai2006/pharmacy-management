@@ -24,7 +24,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "task_routing")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TaskRouting implements Serializable {
-    private static final long serialVersionUID = 176311132690158143L;
+    private static final long serialVersionUID = 176351898741183966L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull

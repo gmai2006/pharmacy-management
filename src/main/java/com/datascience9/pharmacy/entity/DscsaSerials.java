@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -24,7 +25,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "dscsa_serials")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DscsaSerials implements Serializable {
-    private static final long serialVersionUID = 17631113268819096L;
+    private static final long serialVersionUID = 176351898738961869L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -57,6 +58,7 @@ public class DscsaSerials implements Serializable {
 
     /** Description: last_updated. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "last_updated")
     private java.time.LocalDateTime lastUpdated;
 

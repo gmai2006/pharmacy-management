@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -21,25 +22,19 @@ import java.io.Serializable;
 @Table(name = "device_fingerprints")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DeviceFingerprints implements Serializable {
-    private static final long serialVersionUID = 176351466592668329L;
+    private static final long serialVersionUID = 176353437009887463L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
     @Id
-    @Column(name = "id")
-    private Integer id;
+    @Column(columnDefinition = "UUID", name = "id")
+    private java.util.UUID id;
 
     /** Description: station_id. */
     @jakarta.validation.constraints.NotNull
     @Basic
     @Column(name = "station_id")
     private Integer stationId;
-
-    /** Description: device_fingerprint. */
-    @jakarta.validation.constraints.NotNull
-    @Basic
-    @Column(name = "device_fingerprint")
-    private String deviceFingerprint;
 
     /** Description: fingerprint_hash. */
     @jakarta.validation.constraints.NotNull
@@ -90,11 +85,13 @@ public class DeviceFingerprints implements Serializable {
 
     /** Description: assigned_date. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "assigned_date")
     private java.time.LocalDateTime assignedDate;
 
     /** Description: last_seen. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "last_seen")
     private java.time.LocalDateTime lastSeen;
 
@@ -110,20 +107,16 @@ public class DeviceFingerprints implements Serializable {
 
     public DeviceFingerprints() {}
 
-    public Integer getId() {
+    public java.util.UUID getId() {
         return this.id;
     }
 
-    public void setId(Integer id) {
+    public void setId(java.util.UUID id) {
         this.id = id;
     }
 
     public Integer getStationId() {
         return this.stationId;
-    }
-
-    public String getDeviceFingerprint() {
-        return this.deviceFingerprint;
     }
 
     public String getFingerprintHash() {
@@ -180,10 +173,6 @@ public class DeviceFingerprints implements Serializable {
 
     public void setStationId(Integer stationId) {
         this.stationId = stationId;
-    }
-
-    public void setDeviceFingerprint(String deviceFingerprint) {
-        this.deviceFingerprint = deviceFingerprint;
     }
 
     public void setFingerprintHash(String fingerprintHash) {

@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -23,7 +24,7 @@ import java.util.List;
 @Table(name = "users")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Users implements Serializable {
-    private static final long serialVersionUID = 176311132686045706L;
+    private static final long serialVersionUID = 176351898737099449L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -61,11 +62,13 @@ public class Users implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 
     /** Description: last_login_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "last_login_at")
     private java.time.LocalDateTime lastLoginAt;
 
@@ -83,7 +86,6 @@ public class Users implements Serializable {
     @Transient List<EfaxJobs> efaxjobs;
     @Transient List<Prescriptions> prescriptions;
     @Transient List<BarcodeLabels> barcodelabels;
-    @Transient List<AlertLogs> alertlogs;
     @Transient List<ConsentRecords> consentrecords;
     @Transient List<Tasks> tasks;
     @Transient List<PosSignatures> possignatures;
@@ -210,10 +212,6 @@ public class Users implements Serializable {
         return this.barcodelabels;
     }
 
-    public List<AlertLogs> getAlertLogs() {
-        return this.alertlogs;
-    }
-
     public List<ConsentRecords> getConsentRecords() {
         return this.consentrecords;
     }
@@ -281,10 +279,6 @@ public class Users implements Serializable {
 
     public void setBarcodeLabels(List<BarcodeLabels> barcodelabels) {
         this.barcodelabels = new ArrayList<>(barcodelabels);
-    }
-
-    public void setAlertLogs(List<AlertLogs> alertlogs) {
-        this.alertlogs = new ArrayList<>(alertlogs);
     }
 
     public void setConsentRecords(List<ConsentRecords> consentrecords) {

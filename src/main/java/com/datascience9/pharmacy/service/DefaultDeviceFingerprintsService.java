@@ -15,11 +15,16 @@ package com.datascience9.pharmacy.service;
 import static java.util.Objects.requireNonNull;
 
 import com.datascience9.pharmacy.dao.DeviceFingerprintsDao;
+import com.datascience9.pharmacy.dao.StationsDao;
 import com.datascience9.pharmacy.entity.DeviceFingerprints;
+import com.datascience9.pharmacy.entity.Stations;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 /** Auto generated from a schema generated on $date$ */
@@ -28,12 +33,15 @@ import java.util.logging.Logger;
 public class DefaultDeviceFingerprintsService implements DeviceFingerprintsService {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
     private final DeviceFingerprintsDao dao;
+    private final StationsDao stationsDao;
 
     @Inject
     @Named("DefaultDeviceFingerprintsDao")
-    public DefaultDeviceFingerprintsService(final DeviceFingerprintsDao dao) {
+    public DefaultDeviceFingerprintsService(
+            final DeviceFingerprintsDao dao, StationsDao stationDao) {
         requireNonNull(dao);
         this.dao = dao;
+        this.stationsDao = stationDao;
     }
 
     /** {@inheritDoc} */
@@ -70,8 +78,24 @@ public class DefaultDeviceFingerprintsService implements DeviceFingerprintsServi
     @Override
     public DeviceFingerprints create(DeviceFingerprints bean) {
         requireNonNull(bean);
-        logger.info("create(DeviceFingerprints={}) - entered bean ");
+        final List<Stations> stations = stationsDao.selectAll();
+        final Optional<Stations> station =
+                stations.stream()
+                        .filter(s -> s.getDepartment().equals(bean.getDepartment()))
+                        .findFirst();
+        bean.setId(UUID.randomUUID());
 
+        if (station.isEmpty()) return null;
+
+        final Stations found = station.get();
+        found.setCurrentNumber(found.getCurrentNumber() + 1);
+        bean.setStationId(found.getId());
+        bean.setLocation(found.getLocation());
+        bean.setLanguage("US");
+        bean.setAssignedDate(LocalDateTime.now());
+        bean.setLastSeen(LocalDateTime.now());
+        bean.setIsActive(true);
+        stationsDao.update(found);
         final DeviceFingerprints result = dao.create(bean);
 
         logger.info("create(DeviceFingerprints) - exited - return value={} result ");

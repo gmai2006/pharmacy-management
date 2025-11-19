@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -23,7 +24,7 @@ import java.util.List;
 @Table(name = "inventory_batches")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class InventoryBatches implements Serializable {
-    private static final long serialVersionUID = 176311132687957900L;
+    private static final long serialVersionUID = 176351898738722828L;
 
     /** Description: id. */
     @jakarta.validation.constraints.NotNull
@@ -43,8 +44,9 @@ public class InventoryBatches implements Serializable {
 
     /** Description: expiry_date. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "expiry_date")
-    private java.util.Date expiryDate;
+    private java.time.LocalDateTime expiryDate;
 
     /** Description: quantity_on_hand. */
     @jakarta.validation.constraints.NotNull
@@ -64,11 +66,13 @@ public class InventoryBatches implements Serializable {
 
     /** Description: created_at. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 
     /** Description: last_order. */
     @Basic
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @Column(name = "last_order")
     private java.time.LocalDateTime lastOrder;
 
@@ -92,7 +96,7 @@ public class InventoryBatches implements Serializable {
         return this.lotNumber;
     }
 
-    public java.util.Date getExpiryDate() {
+    public java.time.LocalDateTime getExpiryDate() {
         return this.expiryDate;
     }
 
@@ -124,7 +128,7 @@ public class InventoryBatches implements Serializable {
         this.lotNumber = lotNumber;
     }
 
-    public void setExpiryDate(java.util.Date expiryDate) {
+    public void setExpiryDate(java.time.LocalDateTime expiryDate) {
         this.expiryDate = expiryDate;
     }
 
