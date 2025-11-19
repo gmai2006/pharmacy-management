@@ -1,6 +1,5 @@
 package com.datascience9.pharmacy.api.manual;
 
-
 import com.datascience9.pharmacy.service.manual.BarcodeScannerService;
 import com.datascience9.pharmacy.service.manual.BarcodeScannerService.ScanResult;
 import jakarta.ws.rs.Consumes;
@@ -30,4 +29,3 @@ public class BarcodeResource {
         return Response.ok(result).build();
     }
 }
-

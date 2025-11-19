@@ -747,3 +747,97 @@ GROUP BY i.name;
 -- ✅ END OF E-FAX EXTENSION SCHEMA
 -- ============================================================
 
+---dir fees view
+CREATE OR REPLACE VIEW v_dir_fee_summary AS
+SELECT
+    df.id AS dir_fee_id,
+    df.claim_id,
+
+    -- Fee details
+    df.amount AS dir_fee_amount,
+    df.reason AS dir_fee_reason,
+    df.recorded_at AS dir_fee_recorded_at,
+    df.reconciliation_period,
+    df.payer_name AS dir_fee_payer_name,
+    df.metadata AS dir_fee_metadata,
+
+    -- Claim details
+    c.payer_name AS claim_payer_name,
+    c.claim_status,
+    c.submitted_at AS claim_submitted_at,
+    c.fiscal_fields AS claim_fiscal_fields,
+    c.prescription_id,
+
+    -- Derived values
+    CASE
+        WHEN c.fiscal_fields ? 'reimbursement_amount' THEN
+            (c.fiscal_fields->>'reimbursement_amount')::numeric
+        ELSE NULL
+    END AS claim_reimbursement_amount,
+
+    CASE
+        WHEN c.fiscal_fields ? 'plan_paid' THEN
+            (c.fiscal_fields->>'plan_paid')::numeric
+        ELSE NULL
+    END AS claim_plan_paid,
+
+    CASE
+        WHEN c.fiscal_fields ? 'patient_paid' THEN
+            (c.fiscal_fields->>'patient_paid')::numeric
+        ELSE NULL
+    END AS claim_patient_paid,
+
+    -- Useful computed metric
+    CASE
+        WHEN c.fiscal_fields ? 'reimbursement_amount'
+        THEN (c.fiscal_fields->>'reimbursement_amount')::numeric - df.amount
+        ELSE NULL
+    END AS net_reimbursement_after_dir_fee
+
+FROM dir_fees df
+LEFT JOIN claims c
+       ON df.claim_id = c.id
+
+ORDER BY df.recorded_at DESC;
+-------------------------------
+
+CREATE OR REPLACE VIEW v_prescription_payment_dir_fee_summary AS
+WITH payment_totals AS (
+    -- Total payments per prescription (via pos_transactions + payments)
+    SELECT
+        pt.prescription_id,
+        SUM(p.amount) AS total_payments
+    FROM pos_transactions pt
+    JOIN payments p
+      ON p.pos_transaction_id = pt.id
+    GROUP BY pt.prescription_id
+),
+dir_fee_totals AS (
+    -- Total DIR fees per prescription (from v_dir_fee_summary)
+    SELECT
+        vdfs.prescription_id,
+        SUM(vdfs.dir_fee_amount) AS total_dir_fees
+    FROM v_dir_fee_summary vdfs
+    GROUP BY vdfs.prescription_id
+),
+pos_totals AS (
+    -- Total POS (billed) amount per prescription
+    SELECT
+        pt.prescription_id,
+        SUM(pt.total_amount) AS total_pos_amount
+    FROM pos_transactions pt
+    GROUP BY pt.prescription_id
+)
+SELECT
+    ptot.prescription_id,
+    ptot.total_pos_amount,                                  -- total billed at POS
+    COALESCE(pay.total_payments, 0) AS total_payments,     -- total collected payments
+    COALESCE(df.total_dir_fees, 0) AS total_dir_fees,      -- total DIR fees
+    COALESCE(pay.total_payments, 0)
+      - COALESCE(df.total_dir_fees, 0) AS net_after_dir_fees
+FROM pos_totals ptot
+LEFT JOIN payment_totals pay
+       ON pay.prescription_id = ptot.prescription_id
+LEFT JOIN dir_fee_totals df
+       ON df.prescription_id = ptot.prescription_id;
+

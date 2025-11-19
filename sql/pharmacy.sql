@@ -299,13 +299,41 @@ CREATE TABLE claims (
   fiscal_fields JSONB -- e.g., reimbursement amounts
 );
 
-CREATE TABLE dir_fees (
-  id BIGSERIAL PRIMARY KEY,
-  claim_id UUID REFERENCES claims(id),
-  amount NUMERIC(12,2),
-  reason TEXT,
-  recorded_at TIMESTAMPTZ DEFAULT now()
+CREATE TABLE IF NOT EXISTS dir_fees (
+    id BIGSERIAL PRIMARY KEY,
+
+    -- The claim this DIR fee applies to (required)
+    claim_id UUID NOT NULL REFERENCES claims(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+
+    -- Dollar amount of the DIR fee
+    amount NUMERIC(12,2) NOT NULL CHECK (amount >= 0),
+
+    -- PBM-provided reason (performance, network adjustment, etc.)
+    reason TEXT,
+
+    -- Date/time the DIR fee was assessed or recorded
+    recorded_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+
+    -- Optional: Pharmacy’s reconciliation cycle (useful for DIR fee reports)
+    reconciliation_period TEXT,    -- e.g., '2025-Q1', '2025-04'
+
+    -- Optional: PBM name or payer identifier
+    payer_name TEXT,
+
+    -- Optional: PBM-provided raw metadata (JSON response, adjudication details)
+    metadata JSONB
 );
+
+CREATE INDEX IF NOT EXISTS idx_dir_fees_claim_id
+    ON dir_fees (claim_id);
+
+CREATE INDEX IF NOT EXISTS idx_dir_fees_recorded_at
+    ON dir_fees (recorded_at);
+
+CREATE INDEX IF NOT EXISTS idx_dir_fees_reconciliation_period
+    ON dir_fees (reconciliation_period);
 
 CREATE TABLE awp_reclaims (
   id BIGSERIAL PRIMARY KEY,
@@ -366,7 +394,7 @@ CREATE TABLE IF NOT EXISTS public.alert_logs
         REFERENCES public.users (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-
+);
 
 -- ============================================================
 -- 1️⃣ INSURANCE COMPANIES
@@ -833,35 +861,86 @@ EXECUTE FUNCTION log_efax_access();
 ALTER TABLE efax_jobs
 ADD COLUMN IF NOT EXISTS claim_id UUID REFERENCES prescription_claims(id);
 
-
-CREATE TABLE stations (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    name TEXT NOT NULL,                     -- Display name: "POS-1", "Fill Station A", "Drive-Thru Window"
-    code TEXT UNIQUE NOT NULL,              -- Short machine code, e.g., POS1, FILL_A, DRIVE_THRU
-    type TEXT NOT NULL CHECK (
-        type IN (
-            'pos',
-            'dropoff',
-            'data_entry',
-            'fill',
-            'verification',
-            'pickup',
-            'drive_thru',
-            'counseling',
-            'admin',
-            'other'
-        )
-    ),
-    location TEXT,                           -- e.g., "Front counter", "Back room", "Window 2"
-    is_active BOOLEAN NOT NULL DEFAULT TRUE,
-    capabilities JSONB,                      -- e.g., {"signature_capture": true, "label_printing": true}
-
-    created_at TIMESTAMPTZ DEFAULT now(),
-    updated_at TIMESTAMPTZ DEFAULT now()
+-- ============================================================================
+-- 1. STATIONS TABLE - Stores station configuration
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS stations (
+    id SERIAL PRIMARY KEY,
+    station_prefix VARCHAR(10) NOT NULL,
+    department VARCHAR(50) NOT NULL,
+    location VARCHAR(100),
+    starting_number INTEGER DEFAULT 1,
+    current_number INTEGER DEFAULT 1,
+    max_stations INTEGER,
+    created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT unique_station_config UNIQUE(station_prefix, department, location)
 );
 
-CREATE INDEX idx_stations_type ON stations(type);
-CREATE INDEX idx_stations_active ON stations(is_active);
+-- ============================================================================
+-- 2. DEVICE_FINGERPRINTS TABLE - Core table for device fingerprint mapping
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS device_fingerprints (
+    id SERIAL PRIMARY KEY,
 
---ALTER TABLE pos_transactions
---    ADD COLUMN station_uuid UUID REFERENCES stations(id);
+    -- Station assignment
+    station_id SERIAL UNIQUE NOT NULL,
+
+    -- Device fingerprint
+    device_fingerprint VARCHAR(255) UNIQUE NOT NULL,
+    fingerprint_hash VARCHAR(64) UNIQUE NOT NULL,
+
+    -- Device characteristics
+    browser_user_agent TEXT,
+    screen_resolution VARCHAR(50),
+    timezone VARCHAR(50),
+    language VARCHAR(20),
+
+    -- Canvas and WebGL fingerprints
+    canvas_fingerprint TEXT,
+    webgl_fingerprint VARCHAR(255),
+
+    -- Device metadata
+    department VARCHAR(50) NOT NULL,
+    location VARCHAR(100),
+
+    -- Tracking information
+    assigned_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_seen TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_active BOOLEAN DEFAULT TRUE,
+
+    -- Statistics
+    access_count INTEGER DEFAULT 1,
+
+    -- Foreign key
+    FOREIGN KEY (station_id) REFERENCES stations(id) ON DELETE CASCADE
+);
+
+-- ============================================================================
+-- 3. FINGERPRINT_HISTORY TABLE - Track fingerprint changes
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS fingerprint_history (
+    id SERIAL PRIMARY KEY,
+
+    station_id SERIAL NOT NULL,
+
+    -- Fingerprint comparison
+    old_fingerprint_hash VARCHAR(64),
+    new_fingerprint_hash VARCHAR(64) NOT NULL,
+
+    -- Change details
+    change_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    reason VARCHAR(255),
+    similarity_percentage NUMERIC(5, 2),
+
+    -- Browser info
+    browser_user_agent TEXT,
+    screen_resolution VARCHAR(50),
+    timezone VARCHAR(50),
+
+    -- Admin notes
+    notes TEXT,
+    verified_by VARCHAR(100),
+
+    FOREIGN KEY (station_id) REFERENCES device_fingerprints(station_id) ON DELETE CASCADE
+);

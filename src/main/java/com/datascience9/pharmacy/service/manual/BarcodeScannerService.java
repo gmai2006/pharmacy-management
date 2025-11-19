@@ -3,8 +3,6 @@ package com.datascience9.pharmacy.service.manual;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -12,6 +10,7 @@ import java.util.Base64;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.Map;
+import javax.imageio.ImageIO;
 
 public class BarcodeScannerService {
 
@@ -52,9 +51,7 @@ public class BarcodeScannerService {
                             BarcodeFormat.UPC_A,
                             BarcodeFormat.UPC_E,
                             BarcodeFormat.DATA_MATRIX,
-                            BarcodeFormat.QR_CODE
-                    )
-            );
+                            BarcodeFormat.QR_CODE));
 
             Result result = new MultiFormatReader().decode(bitmap, hints);
 
@@ -90,4 +87,3 @@ public class BarcodeScannerService {
         }
     }
 }
-
