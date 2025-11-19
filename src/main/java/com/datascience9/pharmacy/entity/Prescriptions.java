@@ -52,7 +52,7 @@ public class Prescriptions implements Serializable {
     /** Description: issue_date. */
     @Basic
     @Column(name = "issue_date")
-    private java.sql.Timestamp issueDate;
+    private java.time.LocalDateTime issueDate;
 
     /** Description: status. */
     @jakarta.validation.constraints.NotNull
@@ -85,7 +85,7 @@ public class Prescriptions implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     /** Description: queue_name. */
     @Basic
@@ -100,22 +100,22 @@ public class Prescriptions implements Serializable {
     /** Description: last_status_update. */
     @Basic
     @Column(name = "last_status_update")
-    private java.sql.Timestamp lastStatusUpdate;
+    private java.time.LocalDateTime lastStatusUpdate;
 
     /** Description: estimated_ready_time. */
     @Basic
     @Column(name = "estimated_ready_time")
-    private java.sql.Timestamp estimatedReadyTime;
+    private java.time.LocalDateTime estimatedReadyTime;
 
     /** Description: pickup_time. */
     @Basic
     @Column(name = "pickup_time")
-    private java.sql.Timestamp pickupTime;
+    private java.time.LocalDateTime pickupTime;
 
     /** Description: completion_time. */
     @Basic
     @Column(name = "completion_time")
-    private java.sql.Timestamp completionTime;
+    private java.time.LocalDateTime completionTime;
 
     @Transient List<PdmpQueries> pdmpqueries;
     @Transient List<PrescriptionCopays> prescriptioncopays;
@@ -153,7 +153,7 @@ public class Prescriptions implements Serializable {
         return this.prescriberDea;
     }
 
-    public java.sql.Timestamp getIssueDate() {
+    public java.time.LocalDateTime getIssueDate() {
         return this.issueDate;
     }
 
@@ -177,7 +177,7 @@ public class Prescriptions implements Serializable {
         return this.metadata;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -189,19 +189,19 @@ public class Prescriptions implements Serializable {
         return this.assignedTo;
     }
 
-    public java.sql.Timestamp getLastStatusUpdate() {
+    public java.time.LocalDateTime getLastStatusUpdate() {
         return this.lastStatusUpdate;
     }
 
-    public java.sql.Timestamp getEstimatedReadyTime() {
+    public java.time.LocalDateTime getEstimatedReadyTime() {
         return this.estimatedReadyTime;
     }
 
-    public java.sql.Timestamp getPickupTime() {
+    public java.time.LocalDateTime getPickupTime() {
         return this.pickupTime;
     }
 
-    public java.sql.Timestamp getCompletionTime() {
+    public java.time.LocalDateTime getCompletionTime() {
         return this.completionTime;
     }
 
@@ -217,7 +217,7 @@ public class Prescriptions implements Serializable {
         this.prescriberDea = prescriberDea;
     }
 
-    public void setIssueDate(java.sql.Timestamp issueDate) {
+    public void setIssueDate(java.time.LocalDateTime issueDate) {
         this.issueDate = issueDate;
     }
 
@@ -241,7 +241,7 @@ public class Prescriptions implements Serializable {
         this.metadata = metadata;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -253,19 +253,19 @@ public class Prescriptions implements Serializable {
         this.assignedTo = assignedTo;
     }
 
-    public void setLastStatusUpdate(java.sql.Timestamp lastStatusUpdate) {
+    public void setLastStatusUpdate(java.time.LocalDateTime lastStatusUpdate) {
         this.lastStatusUpdate = lastStatusUpdate;
     }
 
-    public void setEstimatedReadyTime(java.sql.Timestamp estimatedReadyTime) {
+    public void setEstimatedReadyTime(java.time.LocalDateTime estimatedReadyTime) {
         this.estimatedReadyTime = estimatedReadyTime;
     }
 
-    public void setPickupTime(java.sql.Timestamp pickupTime) {
+    public void setPickupTime(java.time.LocalDateTime pickupTime) {
         this.pickupTime = pickupTime;
     }
 
-    public void setCompletionTime(java.sql.Timestamp completionTime) {
+    public void setCompletionTime(java.time.LocalDateTime completionTime) {
         this.completionTime = completionTime;
     }
 

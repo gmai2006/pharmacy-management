@@ -56,7 +56,7 @@ public class IntegrationEvents implements Serializable {
     /** Description: processed_at. */
     @Basic
     @Column(name = "processed_at")
-    private java.sql.Timestamp processedAt;
+    private java.time.LocalDateTime processedAt;
 
     /** Description: status. */
     @Basic
@@ -89,7 +89,7 @@ public class IntegrationEvents implements Serializable {
         return this.payload;
     }
 
-    public java.sql.Timestamp getProcessedAt() {
+    public java.time.LocalDateTime getProcessedAt() {
         return this.processedAt;
     }
 
@@ -113,7 +113,7 @@ public class IntegrationEvents implements Serializable {
         this.payload = payload;
     }
 
-    public void setProcessedAt(java.sql.Timestamp processedAt) {
+    public void setProcessedAt(java.time.LocalDateTime processedAt) {
         this.processedAt = processedAt;
     }
 

@@ -52,7 +52,7 @@ public class Claims implements Serializable {
     /** Description: submitted_at. */
     @Basic
     @Column(name = "submitted_at")
-    private java.sql.Timestamp submittedAt;
+    private java.time.LocalDateTime submittedAt;
 
     /** Description: response. */
     @Basic
@@ -90,7 +90,7 @@ public class Claims implements Serializable {
         return this.claimStatus;
     }
 
-    public java.sql.Timestamp getSubmittedAt() {
+    public java.time.LocalDateTime getSubmittedAt() {
         return this.submittedAt;
     }
 
@@ -114,7 +114,7 @@ public class Claims implements Serializable {
         this.claimStatus = claimStatus;
     }
 
-    public void setSubmittedAt(java.sql.Timestamp submittedAt) {
+    public void setSubmittedAt(java.time.LocalDateTime submittedAt) {
         this.submittedAt = submittedAt;
     }
 

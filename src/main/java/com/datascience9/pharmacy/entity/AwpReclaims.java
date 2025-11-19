@@ -42,7 +42,7 @@ public class AwpReclaims implements Serializable {
     /** Description: processed_at. */
     @Basic
     @Column(name = "processed_at")
-    private java.sql.Timestamp processedAt;
+    private java.time.LocalDateTime processedAt;
 
     /** Description: notes. */
     @Basic
@@ -67,7 +67,7 @@ public class AwpReclaims implements Serializable {
         return this.amount;
     }
 
-    public java.sql.Timestamp getProcessedAt() {
+    public java.time.LocalDateTime getProcessedAt() {
         return this.processedAt;
     }
 
@@ -83,7 +83,7 @@ public class AwpReclaims implements Serializable {
         this.amount = amount;
     }
 
-    public void setProcessedAt(java.sql.Timestamp processedAt) {
+    public void setProcessedAt(java.time.LocalDateTime processedAt) {
         this.processedAt = processedAt;
     }
 

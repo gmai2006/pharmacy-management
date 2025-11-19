@@ -58,7 +58,7 @@ public class DscsaSerials implements Serializable {
     /** Description: last_updated. */
     @Basic
     @Column(name = "last_updated")
-    private java.sql.Timestamp lastUpdated;
+    private java.time.LocalDateTime lastUpdated;
 
     public DscsaSerials() {}
 
@@ -86,7 +86,7 @@ public class DscsaSerials implements Serializable {
         return this.traceMetadata;
     }
 
-    public java.sql.Timestamp getLastUpdated() {
+    public java.time.LocalDateTime getLastUpdated() {
         return this.lastUpdated;
     }
 
@@ -106,7 +106,7 @@ public class DscsaSerials implements Serializable {
         this.traceMetadata = traceMetadata;
     }
 
-    public void setLastUpdated(java.sql.Timestamp lastUpdated) {
+    public void setLastUpdated(java.time.LocalDateTime lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 }

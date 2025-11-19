@@ -63,7 +63,7 @@ public class Reports implements Serializable {
     /** Description: last_run. */
     @Basic
     @Column(name = "last_run")
-    private java.sql.Timestamp lastRun;
+    private java.time.LocalDateTime lastRun;
 
     public Reports() {}
 
@@ -95,7 +95,7 @@ public class Reports implements Serializable {
         return this.schedule;
     }
 
-    public java.sql.Timestamp getLastRun() {
+    public java.time.LocalDateTime getLastRun() {
         return this.lastRun;
     }
 
@@ -119,7 +119,7 @@ public class Reports implements Serializable {
         this.schedule = schedule;
     }
 
-    public void setLastRun(java.sql.Timestamp lastRun) {
+    public void setLastRun(java.time.LocalDateTime lastRun) {
         this.lastRun = lastRun;
     }
 }

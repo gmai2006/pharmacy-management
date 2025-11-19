@@ -61,7 +61,7 @@ public class PrescriptionTransfers implements Serializable {
     /** Description: transmitted_at. */
     @Basic
     @Column(name = "transmitted_at")
-    private java.sql.Timestamp transmittedAt;
+    private java.time.LocalDateTime transmittedAt;
 
     /** Description: status. */
     @Basic
@@ -103,7 +103,7 @@ public class PrescriptionTransfers implements Serializable {
         return this.payload;
     }
 
-    public java.sql.Timestamp getTransmittedAt() {
+    public java.time.LocalDateTime getTransmittedAt() {
         return this.transmittedAt;
     }
 
@@ -135,7 +135,7 @@ public class PrescriptionTransfers implements Serializable {
         this.payload = payload;
     }
 
-    public void setTransmittedAt(java.sql.Timestamp transmittedAt) {
+    public void setTransmittedAt(java.time.LocalDateTime transmittedAt) {
         this.transmittedAt = transmittedAt;
     }
 

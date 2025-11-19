@@ -62,7 +62,7 @@ public class PrescriptionAudit implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     public PrescriptionAudit() {}
 
@@ -94,7 +94,7 @@ public class PrescriptionAudit implements Serializable {
         return this.reason;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -118,7 +118,7 @@ public class PrescriptionAudit implements Serializable {
         this.reason = reason;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 }

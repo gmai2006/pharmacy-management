@@ -67,7 +67,7 @@ public class PrescriptionWorkflowLogs implements Serializable {
     /** Description: changed_at. */
     @Basic
     @Column(name = "changed_at")
-    private java.sql.Timestamp changedAt;
+    private java.time.LocalDateTime changedAt;
 
     /** Description: metadata. */
     @Basic
@@ -109,7 +109,7 @@ public class PrescriptionWorkflowLogs implements Serializable {
         return this.changeReason;
     }
 
-    public java.sql.Timestamp getChangedAt() {
+    public java.time.LocalDateTime getChangedAt() {
         return this.changedAt;
     }
 
@@ -141,7 +141,7 @@ public class PrescriptionWorkflowLogs implements Serializable {
         this.changeReason = changeReason;
     }
 
-    public void setChangedAt(java.sql.Timestamp changedAt) {
+    public void setChangedAt(java.time.LocalDateTime changedAt) {
         this.changedAt = changedAt;
     }
 

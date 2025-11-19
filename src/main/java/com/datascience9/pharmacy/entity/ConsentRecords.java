@@ -60,7 +60,7 @@ public class ConsentRecords implements Serializable {
     /** Description: recorded_at. */
     @Basic
     @Column(name = "recorded_at")
-    private java.sql.Timestamp recordedAt;
+    private java.time.LocalDateTime recordedAt;
 
     /** Description: metadata. */
     @Basic
@@ -98,7 +98,7 @@ public class ConsentRecords implements Serializable {
         return this.recordedBy;
     }
 
-    public java.sql.Timestamp getRecordedAt() {
+    public java.time.LocalDateTime getRecordedAt() {
         return this.recordedAt;
     }
 
@@ -126,7 +126,7 @@ public class ConsentRecords implements Serializable {
         this.recordedBy = recordedBy;
     }
 
-    public void setRecordedAt(java.sql.Timestamp recordedAt) {
+    public void setRecordedAt(java.time.LocalDateTime recordedAt) {
         this.recordedAt = recordedAt;
     }
 

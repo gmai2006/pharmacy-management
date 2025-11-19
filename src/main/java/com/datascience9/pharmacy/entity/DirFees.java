@@ -47,7 +47,7 @@ public class DirFees implements Serializable {
     /** Description: recorded_at. */
     @Basic
     @Column(name = "recorded_at")
-    private java.sql.Timestamp recordedAt;
+    private java.time.LocalDateTime recordedAt;
 
     public DirFees() {}
 
@@ -71,7 +71,7 @@ public class DirFees implements Serializable {
         return this.reason;
     }
 
-    public java.sql.Timestamp getRecordedAt() {
+    public java.time.LocalDateTime getRecordedAt() {
         return this.recordedAt;
     }
 
@@ -87,7 +87,7 @@ public class DirFees implements Serializable {
         this.reason = reason;
     }
 
-    public void setRecordedAt(java.sql.Timestamp recordedAt) {
+    public void setRecordedAt(java.time.LocalDateTime recordedAt) {
         this.recordedAt = recordedAt;
     }
 }

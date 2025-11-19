@@ -46,7 +46,7 @@ public class EfaxIncoming implements Serializable {
     /** Description: received_at. */
     @Basic
     @Column(name = "received_at")
-    private java.sql.Timestamp receivedAt;
+    private java.time.LocalDateTime receivedAt;
 
     /** Description: total_pages. */
     @Basic
@@ -103,7 +103,7 @@ public class EfaxIncoming implements Serializable {
         return this.fromName;
     }
 
-    public java.sql.Timestamp getReceivedAt() {
+    public java.time.LocalDateTime getReceivedAt() {
         return this.receivedAt;
     }
 
@@ -143,7 +143,7 @@ public class EfaxIncoming implements Serializable {
         this.fromName = fromName;
     }
 
-    public void setReceivedAt(java.sql.Timestamp receivedAt) {
+    public void setReceivedAt(java.time.LocalDateTime receivedAt) {
         this.receivedAt = receivedAt;
     }
 

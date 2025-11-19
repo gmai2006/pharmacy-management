@@ -84,7 +84,7 @@ public class PrescriptionItems implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     @Transient List<BarcodeLabels> barcodelabels;
 
@@ -134,7 +134,7 @@ public class PrescriptionItems implements Serializable {
         return this.status;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -174,7 +174,7 @@ public class PrescriptionItems implements Serializable {
         this.status = status;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

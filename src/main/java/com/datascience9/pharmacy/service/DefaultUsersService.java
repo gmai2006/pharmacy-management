@@ -19,8 +19,6 @@ import com.datascience9.pharmacy.entity.Users;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -78,7 +76,7 @@ public class DefaultUsersService implements UsersService {
     public Users create(Users bean) {
         requireNonNull(bean);
         bean.setId(UUID.randomUUID());
-        bean.setCreatedAt(new Timestamp(new Date().getTime()));
+        bean.setCreatedAt(java.time.LocalDateTime.now());
         final Users result = dao.create(bean);
         return result;
     }

@@ -19,8 +19,6 @@ import com.datascience9.pharmacy.entity.Patients;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -75,7 +73,7 @@ public class DefaultPatientsService implements PatientsService {
         requireNonNull(bean);
         logger.info("create(Patients={}) - entered bean ");
         bean.setId(UUID.randomUUID());
-        bean.setCreatedAt(new Timestamp(new Date().getTime()));
+        bean.setCreatedAt(java.time.LocalDateTime.now());
         final Patients result = dao.create(bean);
 
         logger.info("create(Patients) - exited - return value={} result ");

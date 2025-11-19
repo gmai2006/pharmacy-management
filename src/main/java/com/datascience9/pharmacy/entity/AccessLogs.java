@@ -83,7 +83,7 @@ public class AccessLogs implements Serializable {
     /** Description: accessed_at. */
     @Basic
     @Column(name = "accessed_at")
-    private java.sql.Timestamp accessedAt;
+    private java.time.LocalDateTime accessedAt;
 
     public AccessLogs() {}
 
@@ -131,7 +131,7 @@ public class AccessLogs implements Serializable {
         return this.userAgent;
     }
 
-    public java.sql.Timestamp getAccessedAt() {
+    public java.time.LocalDateTime getAccessedAt() {
         return this.accessedAt;
     }
 
@@ -171,7 +171,7 @@ public class AccessLogs implements Serializable {
         this.userAgent = userAgent;
     }
 
-    public void setAccessedAt(java.sql.Timestamp accessedAt) {
+    public void setAccessedAt(java.time.LocalDateTime accessedAt) {
         this.accessedAt = accessedAt;
     }
 }

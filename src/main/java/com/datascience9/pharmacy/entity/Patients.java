@@ -91,7 +91,7 @@ public class Patients implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     @Transient List<PdmpQueries> pdmpqueries;
     @Transient List<PrescriptionCopays> prescriptioncopays;
@@ -155,7 +155,7 @@ public class Patients implements Serializable {
         return this.accessibilityPreferences;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -199,7 +199,7 @@ public class Patients implements Serializable {
         this.accessibilityPreferences = accessibilityPreferences;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

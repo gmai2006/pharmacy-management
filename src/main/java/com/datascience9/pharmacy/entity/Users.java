@@ -62,12 +62,12 @@ public class Users implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     /** Description: last_login_at. */
     @Basic
     @Column(name = "last_login_at")
-    private java.sql.Timestamp lastLoginAt;
+    private java.time.LocalDateTime lastLoginAt;
 
     @Transient List<Reports> reports;
     @Transient List<PdmpQueries> pdmpqueries;
@@ -118,11 +118,11 @@ public class Users implements Serializable {
         return this.isActive;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
-    public java.sql.Timestamp getLastLoginAt() {
+    public java.time.LocalDateTime getLastLoginAt() {
         return this.lastLoginAt;
     }
 
@@ -146,11 +146,11 @@ public class Users implements Serializable {
         this.isActive = isActive;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public void setLastLoginAt(java.sql.Timestamp lastLoginAt) {
+    public void setLastLoginAt(java.time.LocalDateTime lastLoginAt) {
         this.lastLoginAt = lastLoginAt;
     }
 

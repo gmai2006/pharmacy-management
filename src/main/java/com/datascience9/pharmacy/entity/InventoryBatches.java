@@ -65,12 +65,12 @@ public class InventoryBatches implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     /** Description: last_order. */
     @Basic
     @Column(name = "last_order")
-    private java.sql.Timestamp lastOrder;
+    private java.time.LocalDateTime lastOrder;
 
     @Transient List<DscsaSerials> dscsaserials;
 
@@ -108,11 +108,11 @@ public class InventoryBatches implements Serializable {
         return this.wholesalerId;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
-    public java.sql.Timestamp getLastOrder() {
+    public java.time.LocalDateTime getLastOrder() {
         return this.lastOrder;
     }
 
@@ -140,11 +140,11 @@ public class InventoryBatches implements Serializable {
         this.wholesalerId = wholesalerId;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public void setLastOrder(java.sql.Timestamp lastOrder) {
+    public void setLastOrder(java.time.LocalDateTime lastOrder) {
         this.lastOrder = lastOrder;
     }
 

@@ -58,7 +58,7 @@ public class PrescriptionClaims implements Serializable {
     /** Description: claim_date. */
     @Basic
     @Column(name = "claim_date")
-    private java.sql.Timestamp claimDate;
+    private java.time.LocalDateTime claimDate;
 
     /** Description: billed_amount. */
     @Basic
@@ -99,12 +99,12 @@ public class PrescriptionClaims implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     /** Description: updated_at. */
     @Basic
     @Column(name = "updated_at")
-    private java.sql.Timestamp updatedAt;
+    private java.time.LocalDateTime updatedAt;
 
     @Transient List<PrescriptionCopays> prescriptioncopays;
 
@@ -134,7 +134,7 @@ public class PrescriptionClaims implements Serializable {
         return this.claimStatus;
     }
 
-    public java.sql.Timestamp getClaimDate() {
+    public java.time.LocalDateTime getClaimDate() {
         return this.claimDate;
     }
 
@@ -166,11 +166,11 @@ public class PrescriptionClaims implements Serializable {
         return this.adjudicationData;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
-    public java.sql.Timestamp getUpdatedAt() {
+    public java.time.LocalDateTime getUpdatedAt() {
         return this.updatedAt;
     }
 
@@ -190,7 +190,7 @@ public class PrescriptionClaims implements Serializable {
         this.claimStatus = claimStatus;
     }
 
-    public void setClaimDate(java.sql.Timestamp claimDate) {
+    public void setClaimDate(java.time.LocalDateTime claimDate) {
         this.claimDate = claimDate;
     }
 
@@ -222,11 +222,11 @@ public class PrescriptionClaims implements Serializable {
         this.adjudicationData = adjudicationData;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public void setUpdatedAt(java.sql.Timestamp updatedAt) {
+    public void setUpdatedAt(java.time.LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

@@ -51,7 +51,7 @@ public class BarcodeLabels implements Serializable {
     /** Description: generated_at. */
     @Basic
     @Column(name = "generated_at")
-    private java.sql.Timestamp generatedAt;
+    private java.time.LocalDateTime generatedAt;
 
     /** Description: printed_by. */
     @Basic
@@ -86,7 +86,7 @@ public class BarcodeLabels implements Serializable {
         return this.labelType;
     }
 
-    public java.sql.Timestamp getGeneratedAt() {
+    public java.time.LocalDateTime getGeneratedAt() {
         return this.generatedAt;
     }
 
@@ -110,7 +110,7 @@ public class BarcodeLabels implements Serializable {
         this.labelType = labelType;
     }
 
-    public void setGeneratedAt(java.sql.Timestamp generatedAt) {
+    public void setGeneratedAt(java.time.LocalDateTime generatedAt) {
         this.generatedAt = generatedAt;
     }
 

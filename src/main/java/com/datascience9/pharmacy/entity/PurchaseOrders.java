@@ -50,7 +50,7 @@ public class PurchaseOrders implements Serializable {
     /** Description: ordered_at. */
     @Basic
     @Column(name = "ordered_at")
-    private java.sql.Timestamp orderedAt;
+    private java.time.LocalDateTime orderedAt;
 
     /** Description: expected_arrival. */
     @Basic
@@ -85,7 +85,7 @@ public class PurchaseOrders implements Serializable {
         return this.status;
     }
 
-    public java.sql.Timestamp getOrderedAt() {
+    public java.time.LocalDateTime getOrderedAt() {
         return this.orderedAt;
     }
 
@@ -109,7 +109,7 @@ public class PurchaseOrders implements Serializable {
         this.status = status;
     }
 
-    public void setOrderedAt(java.sql.Timestamp orderedAt) {
+    public void setOrderedAt(java.time.LocalDateTime orderedAt) {
         this.orderedAt = orderedAt;
     }
 

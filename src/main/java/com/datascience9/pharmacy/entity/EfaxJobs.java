@@ -94,17 +94,17 @@ public class EfaxJobs implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     /** Description: sent_at. */
     @Basic
     @Column(name = "sent_at")
-    private java.sql.Timestamp sentAt;
+    private java.time.LocalDateTime sentAt;
 
     /** Description: completed_at. */
     @Basic
     @Column(name = "completed_at")
-    private java.sql.Timestamp completedAt;
+    private java.time.LocalDateTime completedAt;
 
     /** Description: error_message. */
     @Basic
@@ -179,15 +179,15 @@ public class EfaxJobs implements Serializable {
         return this.priority;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
-    public java.sql.Timestamp getSentAt() {
+    public java.time.LocalDateTime getSentAt() {
         return this.sentAt;
     }
 
-    public java.sql.Timestamp getCompletedAt() {
+    public java.time.LocalDateTime getCompletedAt() {
         return this.completedAt;
     }
 
@@ -247,15 +247,15 @@ public class EfaxJobs implements Serializable {
         this.priority = priority;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public void setSentAt(java.sql.Timestamp sentAt) {
+    public void setSentAt(java.time.LocalDateTime sentAt) {
         this.sentAt = sentAt;
     }
 
-    public void setCompletedAt(java.sql.Timestamp completedAt) {
+    public void setCompletedAt(java.time.LocalDateTime completedAt) {
         this.completedAt = completedAt;
     }
 

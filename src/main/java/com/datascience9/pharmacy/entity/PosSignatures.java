@@ -52,7 +52,7 @@ public class PosSignatures implements Serializable {
     /** Description: signed_at. */
     @Basic
     @Column(name = "signed_at")
-    private java.sql.Timestamp signedAt;
+    private java.time.LocalDateTime signedAt;
 
     public PosSignatures() {}
 
@@ -80,7 +80,7 @@ public class PosSignatures implements Serializable {
         return this.signedBy;
     }
 
-    public java.sql.Timestamp getSignedAt() {
+    public java.time.LocalDateTime getSignedAt() {
         return this.signedAt;
     }
 
@@ -100,7 +100,7 @@ public class PosSignatures implements Serializable {
         this.signedBy = signedBy;
     }
 
-    public void setSignedAt(java.sql.Timestamp signedAt) {
+    public void setSignedAt(java.time.LocalDateTime signedAt) {
         this.signedAt = signedAt;
     }
 }

@@ -45,12 +45,12 @@ public class EncryptionKeysMeta implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     /** Description: rotated_at. */
     @Basic
     @Column(name = "rotated_at")
-    private java.sql.Timestamp rotatedAt;
+    private java.time.LocalDateTime rotatedAt;
 
     /** Description: metadata. */
     @Basic
@@ -76,11 +76,11 @@ public class EncryptionKeysMeta implements Serializable {
         return this.purpose;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
-    public java.sql.Timestamp getRotatedAt() {
+    public java.time.LocalDateTime getRotatedAt() {
         return this.rotatedAt;
     }
 
@@ -96,11 +96,11 @@ public class EncryptionKeysMeta implements Serializable {
         this.purpose = purpose;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public void setRotatedAt(java.sql.Timestamp rotatedAt) {
+    public void setRotatedAt(java.time.LocalDateTime rotatedAt) {
         this.rotatedAt = rotatedAt;
     }
 

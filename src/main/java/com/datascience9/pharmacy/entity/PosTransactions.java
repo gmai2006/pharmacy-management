@@ -63,7 +63,7 @@ public class PosTransactions implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     /** Description: metadata. */
     @Basic
@@ -104,7 +104,7 @@ public class PosTransactions implements Serializable {
         return this.status;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -132,7 +132,7 @@ public class PosTransactions implements Serializable {
         this.status = status;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

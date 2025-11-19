@@ -49,7 +49,7 @@ public class UserPermissions implements Serializable {
     /** Description: granted_at. */
     @Basic
     @Column(name = "granted_at")
-    private java.sql.Timestamp grantedAt;
+    private java.time.LocalDateTime grantedAt;
 
     public UserPermissions() {}
 
@@ -73,7 +73,7 @@ public class UserPermissions implements Serializable {
         return this.granted;
     }
 
-    public java.sql.Timestamp getGrantedAt() {
+    public java.time.LocalDateTime getGrantedAt() {
         return this.grantedAt;
     }
 
@@ -89,7 +89,7 @@ public class UserPermissions implements Serializable {
         this.granted = granted;
     }
 
-    public void setGrantedAt(java.sql.Timestamp grantedAt) {
+    public void setGrantedAt(java.time.LocalDateTime grantedAt) {
         this.grantedAt = grantedAt;
     }
 }

@@ -65,7 +65,7 @@ public class AlertRules implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     @Transient List<AlertLogs> alertlogs;
 
@@ -99,7 +99,7 @@ public class AlertRules implements Serializable {
         return this.active;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -123,7 +123,7 @@ public class AlertRules implements Serializable {
         this.active = active;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

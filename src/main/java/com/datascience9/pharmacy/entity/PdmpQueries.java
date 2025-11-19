@@ -80,12 +80,12 @@ public class PdmpQueries implements Serializable {
     /** Description: transmitted_at. */
     @Basic
     @Column(name = "transmitted_at")
-    private java.sql.Timestamp transmittedAt;
+    private java.time.LocalDateTime transmittedAt;
 
     /** Description: completed_at. */
     @Basic
     @Column(name = "completed_at")
-    private java.sql.Timestamp completedAt;
+    private java.time.LocalDateTime completedAt;
 
     /** Description: error_message. */
     @Basic
@@ -95,7 +95,7 @@ public class PdmpQueries implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     public PdmpQueries() {}
 
@@ -139,11 +139,11 @@ public class PdmpQueries implements Serializable {
         return this.responsePayload;
     }
 
-    public java.sql.Timestamp getTransmittedAt() {
+    public java.time.LocalDateTime getTransmittedAt() {
         return this.transmittedAt;
     }
 
-    public java.sql.Timestamp getCompletedAt() {
+    public java.time.LocalDateTime getCompletedAt() {
         return this.completedAt;
     }
 
@@ -151,7 +151,7 @@ public class PdmpQueries implements Serializable {
         return this.errorMessage;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -187,11 +187,11 @@ public class PdmpQueries implements Serializable {
         this.responsePayload = responsePayload;
     }
 
-    public void setTransmittedAt(java.sql.Timestamp transmittedAt) {
+    public void setTransmittedAt(java.time.LocalDateTime transmittedAt) {
         this.transmittedAt = transmittedAt;
     }
 
-    public void setCompletedAt(java.sql.Timestamp completedAt) {
+    public void setCompletedAt(java.time.LocalDateTime completedAt) {
         this.completedAt = completedAt;
     }
 
@@ -199,7 +199,7 @@ public class PdmpQueries implements Serializable {
         this.errorMessage = errorMessage;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 }

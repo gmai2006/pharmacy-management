@@ -75,12 +75,12 @@ public class PrescriptionCopays implements Serializable {
     /** Description: paid_at. */
     @Basic
     @Column(name = "paid_at")
-    private java.sql.Timestamp paidAt;
+    private java.time.LocalDateTime paidAt;
 
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     public PrescriptionCopays() {}
 
@@ -124,11 +124,11 @@ public class PrescriptionCopays implements Serializable {
         return this.paymentReference;
     }
 
-    public java.sql.Timestamp getPaidAt() {
+    public java.time.LocalDateTime getPaidAt() {
         return this.paidAt;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -164,11 +164,11 @@ public class PrescriptionCopays implements Serializable {
         this.paymentReference = paymentReference;
     }
 
-    public void setPaidAt(java.sql.Timestamp paidAt) {
+    public void setPaidAt(java.time.LocalDateTime paidAt) {
         this.paidAt = paidAt;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 }

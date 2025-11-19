@@ -54,7 +54,7 @@ public class Integrations implements Serializable {
     /** Description: created_at. */
     @Basic
     @Column(name = "created_at")
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     @Transient List<IntegrationEvents> integrationevents;
 
@@ -80,7 +80,7 @@ public class Integrations implements Serializable {
         return this.config;
     }
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return this.createdAt;
     }
 
@@ -96,7 +96,7 @@ public class Integrations implements Serializable {
         this.config = config;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
