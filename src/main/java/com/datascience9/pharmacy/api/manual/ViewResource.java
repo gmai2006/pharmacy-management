@@ -12,6 +12,7 @@
  */
 package com.datascience9.pharmacy.api.manual;
 
+import com.datascience9.pharmacy.dao.manual.AuthLogDao;
 import com.datascience9.pharmacy.entity.manual.*;
 import com.datascience9.pharmacy.service.manual.ViewService;
 import jakarta.inject.Inject;
@@ -25,6 +26,8 @@ import java.util.Objects;
 @Produces({"application/json"})
 public class ViewResource {
     @Inject private ViewService service;
+
+    @Inject private AuthLogDao authLogDao;
 
     public ViewResource() {}
 
@@ -97,6 +100,31 @@ public class ViewResource {
             throw new WebApplicationException(Response.Status.BAD_REQUEST);
         }
         return this.service.selectTransactionSummary(input);
+    }
+
+    @GET
+    @Path("dirsummary/{max}")
+    public List<DirFeeSummary> getDirfeeSummary(@PathParam("max") String max) {
+        int input;
+        try {
+            input = Integer.parseInt(max);
+        } catch (NumberFormatException ex) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
+        return this.service.selectDirSummary(input);
+    }
+
+    @GET
+    @Path("prescriptiondirsummary/{max}")
+    public List<PrescriptionPaymentDirFeeSummary> getPrescriptionDirfeeSummary(
+            @PathParam("max") String max) {
+        int input;
+        try {
+            input = Integer.parseInt(max);
+        } catch (NumberFormatException ex) {
+            throw new WebApplicationException(Response.Status.BAD_REQUEST);
+        }
+        return this.service.selectPrescriptionPaymentDirSummary(input);
     }
 
     @GET

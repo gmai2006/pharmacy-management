@@ -19,6 +19,7 @@ import com.datascience9.pharmacy.entity.PrescriptionWorkflowLogs;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -71,7 +72,7 @@ public class DefaultPrescriptionWorkflowLogsService implements PrescriptionWorkf
     public PrescriptionWorkflowLogs create(PrescriptionWorkflowLogs bean) {
         requireNonNull(bean);
         logger.info("create(PrescriptionWorkflowLogs={}) - entered bean ");
-
+        bean.setChangedAt(LocalDateTime.now());
         final PrescriptionWorkflowLogs result = dao.create(bean);
 
         logger.info("create(PrescriptionWorkflowLogs) - exited - return value={} result ");

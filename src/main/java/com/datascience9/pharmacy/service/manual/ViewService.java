@@ -32,4 +32,8 @@ public interface ViewService {
     List<InventoryOverview> expiringInventory();
 
     List<ClaimProcessing> selectClaimProcessing(int max);
+
+    List<DirFeeSummary> selectDirSummary(int max);
+
+    List<PrescriptionPaymentDirFeeSummary> selectPrescriptionPaymentDirSummary(int max);
 }

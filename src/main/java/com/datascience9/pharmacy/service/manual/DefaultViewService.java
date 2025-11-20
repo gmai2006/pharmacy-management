@@ -62,6 +62,16 @@ public class DefaultViewService implements ViewService {
     }
 
     @Override
+    public List<DirFeeSummary> selectDirSummary(int max) {
+        return dao.selectDirSummary(max);
+    }
+
+    @Override
+    public List<PrescriptionPaymentDirFeeSummary> selectPrescriptionPaymentDirSummary(int max) {
+        return dao.selectPrescriptionPaymentDirSummary(max);
+    }
+
+    @Override
     public List<InventoryOverview> reorderInventoryNeeded() {
         return dao.reorderInventoryNeeded();
     }

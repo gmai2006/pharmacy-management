@@ -61,6 +61,17 @@ public class ViewDao {
         return dao.select("SELECT p FROM TransactionSummary p", TransactionSummary.class, max);
     }
 
+    public List<DirFeeSummary> selectDirSummary(int max) {
+        return dao.select("SELECT p FROM DirFeeSummary p", DirFeeSummary.class, max);
+    }
+
+    public List<PrescriptionPaymentDirFeeSummary> selectPrescriptionPaymentDirSummary(int max) {
+        return dao.select(
+                "SELECT p FROM PrescriptionPaymentDirFeeSummary p",
+                PrescriptionPaymentDirFeeSummary.class,
+                max);
+    }
+
     public List<InventoryOverview> reorderInventoryNeeded() {
         return dao.selectAll(
                 "SELECT p FROM InventoryOverview p where needs_reorder is true",

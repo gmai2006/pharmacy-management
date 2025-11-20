@@ -581,18 +581,17 @@ CREATE TABLE reports (
 );
 
 -- ---------- Audit logs (generic) ----------
-CREATE TABLE audit_logs (
-  id BIGSERIAL PRIMARY KEY,
-  entity_type TEXT,
-  entity_id UUID,
-  user_id UUID,
-  action TEXT,
-  payload JSONB,
-  ip_address TEXT,
-  user_agent TEXT,
-  created_at TIMESTAMPTZ DEFAULT now()
+CREATE TABLE auth_logs (
+    id BIGSERIAL PRIMARY KEY,
+    user_id UUID REFERENCES users(id),
+    username TEXT,
+    event_type TEXT CHECK (event_type IN ('login','logout')),
+    status TEXT CHECK (status IN ('success','failure')),
+    ip_address TEXT,
+    user_agent TEXT,
+    metadata JSONB,
+    created_at TIMESTAMPTZ DEFAULT now()
 );
-CREATE INDEX idx_audit_entity ON audit_logs (entity_type, entity_id);
 
 -- ---------- Consent & privacy ----------
 CREATE TABLE consent_records (

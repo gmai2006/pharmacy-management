@@ -803,43 +803,44 @@ ORDER BY df.recorded_at DESC;
 
 CREATE OR REPLACE VIEW v_prescription_payment_dir_fee_summary AS
 WITH payment_totals AS (
-    -- Total payments per prescription (via pos_transactions + payments)
     SELECT
         pt.prescription_id,
         SUM(p.amount) AS total_payments
     FROM pos_transactions pt
-    JOIN payments p
-      ON p.pos_transaction_id = pt.id
+    JOIN payments p ON p.pos_transaction_id = pt.id
     GROUP BY pt.prescription_id
 ),
+
 dir_fee_totals AS (
-    -- Total DIR fees per prescription (from v_dir_fee_summary)
     SELECT
         vdfs.prescription_id,
         SUM(vdfs.dir_fee_amount) AS total_dir_fees
     FROM v_dir_fee_summary vdfs
     GROUP BY vdfs.prescription_id
 ),
+
 pos_totals AS (
-    -- Total POS (billed) amount per prescription
     SELECT
         pt.prescription_id,
-        SUM(pt.total_amount) AS total_pos_amount
+        SUM(pt.total_amount) AS total_pos_amount,
+        MIN(pt.created_at) AS pos_created_at   -- NEW FIELD
     FROM pos_transactions pt
     GROUP BY pt.prescription_id
 )
+
 SELECT
     ptot.prescription_id,
-    ptot.total_pos_amount,                                  -- total billed at POS
-    COALESCE(pay.total_payments, 0) AS total_payments,     -- total collected payments
-    COALESCE(df.total_dir_fees, 0) AS total_dir_fees,      -- total DIR fees
-    COALESCE(pay.total_payments, 0)
-      - COALESCE(df.total_dir_fees, 0) AS net_after_dir_fees
+    ptot.total_pos_amount,
+    ptot.pos_created_at,                      -- NEW FIELD EXPOSED IN THE VIEW
+    COALESCE(pay.total_payments, 0) AS total_payments,
+    COALESCE(df.total_dir_fees, 0) AS total_dir_fees,
+    COALESCE(pay.total_payments, 0) - COALESCE(df.total_dir_fees, 0) AS net_after_dir_fees
 FROM pos_totals ptot
 LEFT JOIN payment_totals pay
        ON pay.prescription_id = ptot.prescription_id
 LEFT JOIN dir_fee_totals df
-       ON df.prescription_id = ptot.prescription_id;
+       ON df.prescription_id = ptot.prescription_id
+ORDER BY ptot.pos_created_at DESC;
 
 -- View: All active stations summary
 CREATE OR REPLACE VIEW v_active_stations_summary AS

@@ -28,7 +28,7 @@ public class PrescriptionWorkflowLogs implements Serializable {
     private static final long serialVersionUID = 176351898743729423L;
 
     /** Description: id. */
-    @jakarta.validation.constraints.NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private Long id;
