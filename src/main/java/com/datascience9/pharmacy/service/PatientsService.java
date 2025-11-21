@@ -13,6 +13,7 @@
 package com.datascience9.pharmacy.service;
 
 import com.datascience9.pharmacy.entity.Patients;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PatientsService {
@@ -50,4 +51,6 @@ public interface PatientsService {
      * @return Patients.
      */
     Patients update(Patients bean);
+
+    List<Patients> searchPatients(String firstName, String lastName, LocalDateTime dob);
 }

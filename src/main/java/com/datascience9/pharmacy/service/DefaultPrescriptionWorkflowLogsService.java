@@ -71,7 +71,6 @@ public class DefaultPrescriptionWorkflowLogsService implements PrescriptionWorkf
     @Override
     public PrescriptionWorkflowLogs create(PrescriptionWorkflowLogs bean) {
         requireNonNull(bean);
-        logger.info("create(PrescriptionWorkflowLogs={}) - entered bean ");
         bean.setChangedAt(LocalDateTime.now());
         final PrescriptionWorkflowLogs result = dao.create(bean);
 

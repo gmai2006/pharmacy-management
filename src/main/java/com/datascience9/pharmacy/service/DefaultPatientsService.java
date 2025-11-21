@@ -19,6 +19,7 @@ import com.datascience9.pharmacy.entity.Patients;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Logger;
@@ -90,5 +91,10 @@ public class DefaultPatientsService implements PatientsService {
 
         logger.info("update(Patients) - exited - return value={} result ");
         return result;
+    }
+
+    @Override
+    public List<Patients> searchPatients(String firstName, String lastName, LocalDateTime dob) {
+        return dao.searchPatients(firstName, lastName, dob);
     }
 }

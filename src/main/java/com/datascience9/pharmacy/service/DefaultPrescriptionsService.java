@@ -20,6 +20,7 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 /** Auto generated from a schema generated on $date$ */
@@ -70,8 +71,7 @@ public class DefaultPrescriptionsService implements PrescriptionsService {
     @Override
     public Prescriptions create(Prescriptions bean) {
         requireNonNull(bean);
-        logger.info("create(Prescriptions={}) - entered bean ");
-
+        bean.setId(UUID.randomUUID());
         final Prescriptions result = dao.create(bean);
 
         logger.info("create(Prescriptions) - exited - return value={} result ");

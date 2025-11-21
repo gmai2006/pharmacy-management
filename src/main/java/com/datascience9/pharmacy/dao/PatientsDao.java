@@ -17,6 +17,8 @@ import com.datascience9.pharmacy.entity.Patients;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.persistence.TypedQuery;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -94,5 +96,54 @@ public class PatientsDao {
      */
     public Patients update(Patients e) {
         return dao.update(e);
+    }
+
+    public List<Patients> searchPatients(String firstName, String lastName, LocalDateTime dob) {
+
+        // Normalize whitespace
+        firstName = normalize(firstName);
+        lastName = normalize(lastName);
+
+        StringBuilder jpql = new StringBuilder("SELECT p FROM Patients p");
+        boolean hasCondition = false;
+
+        if (firstName != null) {
+            jpql.append(" WHERE LOWER(p.firstName) LIKE LOWER(CONCAT(:firstName, '%'))");
+            hasCondition = true;
+        }
+
+        if (lastName != null) {
+            jpql.append(hasCondition ? " AND" : " WHERE");
+            jpql.append(" LOWER(p.lastName) LIKE LOWER(CONCAT(:lastName, '%'))");
+            hasCondition = true;
+        }
+
+        if (dob != null) {
+            jpql.append(hasCondition ? " AND" : " WHERE");
+            jpql.append(" p.dob = :dob");
+            hasCondition = true;
+        }
+
+        TypedQuery<Patients> query =
+                dao.getEntityManager().createQuery(jpql.toString(), Patients.class);
+
+        if (firstName != null) {
+            query.setParameter("firstName", firstName);
+        }
+        if (lastName != null) {
+            query.setParameter("lastName", lastName);
+        }
+        if (dob != null) {
+            query.setParameter("dob", dob);
+        }
+
+        return query.getResultList();
+    }
+
+    private String normalize(String input) {
+        if (input == null) return null;
+        String trimmed = input.trim();
+        if (trimmed.isEmpty()) return null;
+        return trimmed.replaceAll("\\s+", " "); // collapse multiple spaces
     }
 }

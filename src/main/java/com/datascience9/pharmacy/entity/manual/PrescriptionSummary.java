@@ -80,6 +80,9 @@ public class PrescriptionSummary implements Serializable {
     @Column(name = "insurance_company_name")
     private String insuranceCompanyName;
 
+    @Column(name = "queue_name")
+    private String queueName;
+
     // Constructors
     public PrescriptionSummary() {}
 
@@ -103,7 +106,8 @@ public class PrescriptionSummary implements Serializable {
             String patientGender,
             ZonedDateTime createdAt,
             BigDecimal copayFixed,
-            String insuranceCompanyName) {
+            String insuranceCompanyName,
+            String queueName) {
         this.prescriptionId = prescriptionId;
         this.issueDate = issueDate;
         this.status = status;
@@ -124,6 +128,7 @@ public class PrescriptionSummary implements Serializable {
         this.createdAt = createdAt;
         this.copayFixed = copayFixed;
         this.insuranceCompanyName = insuranceCompanyName;
+        this.queueName = queueName;
     }
 
     // Getters and Setters
@@ -287,6 +292,14 @@ public class PrescriptionSummary implements Serializable {
         this.insuranceCompanyName = insuranceCompanyName;
     }
 
+    public String getQueueName() {
+        return queueName;
+    }
+
+    public void setQueueName(String queueName) {
+        this.queueName = queueName;
+    }
+
     // Helper methods
     public String getFullPatientName() {
         if (firstName != null && lastName != null) {
@@ -347,6 +360,9 @@ public class PrescriptionSummary implements Serializable {
                 + '\''
                 + ", patientMrn='"
                 + patientMrn
+                + '\''
+                + ", queueName='"
+                + queueName
                 + '\''
                 + ", insuranceCompanyName='"
                 + insuranceCompanyName

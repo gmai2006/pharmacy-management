@@ -493,6 +493,7 @@ CREATE OR REPLACE VIEW public.v_prescription_summary
     p.notes AS description,
     p.prescriber_name,
 	p.assigned_to,
+	p.queue_name,
     i.name AS drug_name,
     i.strength AS drug_strength,
     i.form AS drug_form,
